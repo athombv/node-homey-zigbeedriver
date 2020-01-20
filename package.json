@@ -1,0 +1,30 @@
+{
+  "name": "homey-zigbeedriver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateDocs": "npm install --only=dev; grunt jsdoc"
+  },
+  "keywords": [
+    "zigbee",
+    "homey"
+  ],
+  "author": "Athom B.V.",
+  "license": "ISC",
+  "dependencies": {
+    "color-space": "^1.16.0",
+    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-jsdoc": "^2.4.1",
+    "homey": "^2.0.4"
+  },
+  "config": {
+    "npmPublishTagProduction": "latest",
+    "npmPublishTagStaging": "beta"
+  }
+}
