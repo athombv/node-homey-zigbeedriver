@@ -1,19 +1,30 @@
 {
   "name": "homey-zigbeedriver",
-  "version": "1.1.8",
-  "description": "Generic class to map ZigBee Clusters to Homey capabilities",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateDocs": "npm install --only=dev; grunt jsdoc"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:athombv/node-homey-zigbeedriver.git"
+  "keywords": [
+    "zigbee",
+    "homey"
+  ],
+  "author": "Athom B.V.",
+  "license": "ISC",
+  "dependencies": {
+    "color-space": "^1.16.0",
+    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
   },
-  "author": "Nick Remijn",
-  "bugs": {
-    "url": "https://github.com/athombv/node-homey-zigbeedriver/issues"
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-jsdoc": "^2.4.1",
+    "homey": "^2.0.4"
   },
-  "homepage": "https://github.com/athombv/node-homey-zigbeedriver#readme",
-  "dependencies": {}
+  "config": {
+    "npmPublishTagProduction": "latest",
+    "npmPublishTagStaging": "beta"
+  }
 }

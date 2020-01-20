@@ -15,7 +15,7 @@ We also have a [forum](https://forum.athom.com) for general discussions.
 * Have you updated homey, all apps, and the development tools (if applicable)?
 * Have you checked that it's not a problem with one of the apps you're using, rather than Homey itself?
 * Have you looked at what's involved in fixing/implementing this?
- 
+
 Capable programmers should always attempt to investigate and fix problems themselves before asking for others to help. Submit a pull request instead of an issue!
 
 Regular support is provided through our [support staff](support@athom.com).
