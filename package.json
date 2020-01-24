@@ -18,10 +18,15 @@
     "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-athom": "^1.0.1",
     "grunt": "^1.0.4",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-jsdoc": "^2.4.1",
     "homey": "^2.0.4"
+  },
+  "engines": {
+    "node": ">=8.16.2"
   },
   "config": {
     "npmPublishTagProduction": "latest",
