@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "updateDocs": "npm install --only=dev; grunt jsdoc"
+    "updateDocs": "npm install --only=dev; grunt jsdoc",
+    "lint": "eslint ."
   },
   "keywords": [
     "zigbee",
