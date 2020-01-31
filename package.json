@@ -15,8 +15,7 @@
   "author": "Athom B.V.",
   "license": "ISC",
   "dependencies": {
-    "color-space": "^1.16.0",
-    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
+    "color-space": "^1.16.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
