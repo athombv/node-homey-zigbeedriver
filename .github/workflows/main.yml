@@ -1,12 +1,17 @@
-name: Lint
+name: ESLint
 
 on: [pull_request]
 
 jobs:
   eslint:
+    name: "Check for ESLint errors..."
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-      - run: npm install eslint
-      - run: node_modules/.bin/eslint .
+      - name: Checking out repository...
+        uses: actions/checkout@v1
+      - name: Setting up node environment...
+        uses: actions/setup-node@v1
+      - name: Installing ESLint...
+        run: npm install eslint
+      - name: Running ESLint...
+        run: node_modules/.bin/eslint .
