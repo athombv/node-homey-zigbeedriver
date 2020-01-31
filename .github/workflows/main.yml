@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
-      - run: eslint .
+      - run: npm run lint
