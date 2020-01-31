@@ -6,8 +6,10 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - run: npm install eslint --save-dev
+      - name: Install ESLint
+      - run: npm install eslint
       - run: ls node_modules
       - run: ls node_modules/.bin
+      - name: Run ESLint
       - uses: actions/checkout@v1
       - uses: stefanoeb/eslint-action@1.0.2
