@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install ESLint
-        run: npm install eslint || echo "npm error" && ls node_modules/.bin
+        run: npm ci && ls node_modules/.bin
       - name: Run ESLint
         uses: stefanoeb/eslint-action@1.0.2
