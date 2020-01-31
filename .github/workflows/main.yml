@@ -1,0 +1,13 @@
+name: CI ESLint
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run ESLint
+    - uses: stefanoeb/eslint-action@1.0.2
+
