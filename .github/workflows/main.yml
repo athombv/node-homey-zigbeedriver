@@ -10,6 +10,7 @@ jobs:
       - name: Install ESLint
         run: npm ci 
         continue-on-error: true
-      - run: ls node_modules/.bin
+      - name: test
+        run: ls node_modules/.bin
       - name: Run ESLint
         uses: stefanoeb/eslint-action@1.0.2
