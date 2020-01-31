@@ -9,5 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install ESLint
         run: npm ci && ls node_modules/.bin
+        if: succeeded() || failed()
       - name: Run ESLint
+        if: always()
         uses: stefanoeb/eslint-action@1.0.2
