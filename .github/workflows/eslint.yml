@@ -1,0 +1,17 @@
+name: ESLint
+
+on: [pull_request]
+
+jobs:
+  eslint:
+    name: Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repository...
+        uses: actions/checkout@v1
+      - name: Setting up node environment...
+        uses: actions/setup-node@v1
+      - name: Installing dev dependencies...
+        run: npm install --only=dev
+      - name: Running ESLint...
+        run: node_modules/.bin/eslint .
