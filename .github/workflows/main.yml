@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: athombv/eslint-action
+      - uses: athombv/eslint-action@master
       - run: echo "$NODE_ENV" && npm install --only=dev && ./node_modules/.bin/eslint .
