@@ -9,4 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: athombv/eslint-action@master
+        with:
+          secret: ${{ secrets.ssh_key }}
       - run: echo "$NODE_ENV" && npm install --only=dev && ./node_modules/.bin/eslint .
