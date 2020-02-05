@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: athombv/eslint-action@master
+      - uses: webfactory/ssh-agent@v0.2.0
         with:
-          secret: ${{ secrets.ssh_key }}
+            ssh-private-key: ${{ secrets.SSH_KEY }}
+      - uses: stefanoeb/eslint-action@1.0.2
+        
+#       - uses: athombv/eslint-action@master
+#         with:
+#           secret: ${{ secrets.SSH_KEY }}
