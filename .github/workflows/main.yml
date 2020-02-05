@@ -17,7 +17,3 @@ jobs:
       - run: |
           ls | grep package-lock.json && npm ci --ignore-scripts || npm install --no-package-lock --ignore-scripts
           ./node_modules/.bin/eslint .
-        
-#       - uses: athombv/eslint-action@master
-#         with:
-#           secret: ${{ secrets.SSH_KEY }}
