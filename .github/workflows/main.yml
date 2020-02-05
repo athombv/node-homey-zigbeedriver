@@ -14,7 +14,9 @@ jobs:
       - uses: webfactory/ssh-agent@v0.2.0
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
-      - uses: stefanoeb/eslint-action@1.0.2
+      - run: |
+          npm install
+          eslint .
         
 #       - uses: athombv/eslint-action@master
 #         with:
