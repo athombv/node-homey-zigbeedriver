@@ -13,7 +13,7 @@ jobs:
           node-version: '12'
       - uses: webfactory/ssh-agent@v0.2.0
         with:
-            ssh-private-key: ${{ secrets.SSH_KEY }}
+            ssh-private-key: ${{ secrets.SSH_KEY }} # Only add this if this repo has private git dependencies
       - run: |
           ls | grep package-lock.json && npm ci --ignore-scripts || npm install --no-package-lock --ignore-scripts
           ./node_modules/.bin/eslint .
