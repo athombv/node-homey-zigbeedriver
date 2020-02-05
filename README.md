@@ -1,4 +1,4 @@
-# homey-zigbeedriver ![ESLint](https://github.com/athombv/node-homey-zigbeedriver/workflows/main/badge.svg)
+# homey-zigbeedriver ![](https://github.com/athombv/node-homey-zigbeedriver/workflows/main/badge.svg)
 
 
 ## Introduction
