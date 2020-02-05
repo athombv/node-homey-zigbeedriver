@@ -30,6 +30,6 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
-      # Finally run `npm run lint` (make sure you have defined a lint command in package.json).
+      # Finally run `npm run lint` (make sure you have defined a lint command in package.json e.g. "lint": "eslint .").
       - run: npm ci
       - run: npm run lint
