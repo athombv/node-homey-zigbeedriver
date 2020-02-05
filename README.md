@@ -1,6 +1,5 @@
 # homey-zigbeedriver 
-![](https://github.com/athombv/node-homey-zigbeedriver/workflows/ESLint/badge.svg)
-
+![ESLint](https://github.com/athombv/node-homey-zigbeedriver/workflows/ESLint/badge.svg?branch=master&event=push)
 
 ## Introduction
 This module is used to make the creation of ZigBee apps easier.
