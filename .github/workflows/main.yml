@@ -15,7 +15,8 @@ jobs:
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
       - run: |
-          npm install && ./node_modules/.bin/eslint .
+          npm install
+          ./node_modules/.bin/eslint .
         
 #       - uses: athombv/eslint-action@master
 #         with:
