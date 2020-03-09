@@ -1,11 +1,12 @@
 {
   "name": "homey-zigbeedriver",
   "version": "1.0.0",
-  "description": "",
+  "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "updateDocs": "npm install --only=dev; grunt jsdoc"
+    "lint": "eslint .",
+    "build": "grunt jsdoc"
   },
   "keywords": [
     "zigbee",
@@ -19,17 +20,13 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-athom": "^1.0.1",
+    "eslint-config-athom": "^2.0.8",
     "grunt": "^1.0.4",
-    "grunt-contrib-watch": "^1.1.0",
     "grunt-jsdoc": "^2.4.1",
-    "homey": "^2.0.4"
+    "grunt-contrib-watch": "^1.1.0",
+    "homey": "^2.1.5"
   },
   "engines": {
     "node": ">=8.16.2"
-  },
-  "config": {
-    "npmPublishTagProduction": "latest",
-    "npmPublishTagStaging": "beta"
   }
 }

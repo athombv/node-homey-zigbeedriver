@@ -1,14 +1,14 @@
 # homey-zigbeedriver
 
 ## Introduction
-This module is used to make the creation of ZigBee apps easier.
+This module can be used to make the development of Zigbee apps for Homey easier.
 
-It is essentially a map-tool from Homey-capabilities to ZigBee endpoints and clusters.
+It is essentially a map-tool from Homey-capabilities to Zigeee endpoints and clusters.
 
 ## Installation
 
 ```bash
-$ npm install homey-zigbeedriver
+$ npm install --save homey-zigbeedriver
 ```
 
 ## Usage
