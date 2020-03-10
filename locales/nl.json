@@ -1,5 +1,6 @@
 {
   "error": {
-    "unknown": "Onbekend probleem"
+    "node_initialization": "Kon dit apparaat niet vinden",
+    "command_failed": "Er ging iets fout"
   }
 }
