@@ -1,4 +1,4 @@
-name: NPM
+name: Build and release
 
 # About this workflow:
 # It is triggered on push events to branches production and testing. Then it performs a checkout of the current repo
@@ -34,7 +34,7 @@ on:
       - testing
 
 jobs:
-  npm_version_bump_and_publish:
+  build_and_release:
     name: Update version and publish
 
     # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops
