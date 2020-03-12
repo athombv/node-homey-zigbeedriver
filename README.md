@@ -3,7 +3,7 @@
 ## Introduction
 This module can be used to make the development of Zigbee apps for Homey easier.
 
-It is essentially a map-tool from Homey-capabilities to Zigeee endpoints and clusters.
+It is essentially a map-tool from Homey-capabilities to Zigbee endpoints and clusters.
 
 ## Installation
 
