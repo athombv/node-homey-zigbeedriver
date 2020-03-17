@@ -4,9 +4,10 @@
   "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "build": "grunt jsdoc"
+    "build": "grunt jsdoc",
+    "serve": "grunt connect",
+    "build:watch": "npm run build && concurrently 'npm run serve' 'grunt watch'"
   },
   "keywords": [
     "zigbee",
@@ -19,14 +20,16 @@
     "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
     "grunt": "^1.0.4",
-    "grunt-jsdoc": "^2.4.1",
+    "grunt-contrib-connect": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
+    "grunt-jsdoc": "^2.4.1",
     "homey": "^2.1.5"
   },
   "engines": {
-    "node": ">=8.16.2"
+    "node": ">=12"
   }
 }
