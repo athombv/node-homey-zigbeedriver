@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "build": "grunt jsdoc",
     "serve": "grunt connect",
-    "build:watch": "npm run build && concurrently 'npm run serve' 'grunt watch'"
+    "build:watch": "npm run build && concurrently -n serve,watch 'npm run serve' 'grunt watch'"
   },
   "keywords": [
     "zigbee",
