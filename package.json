@@ -17,9 +17,10 @@
   "license": "ISC",
   "dependencies": {
     "color-space": "^1.16.0",
-    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
+    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git"
   },
   "devDependencies": {
+    "braintree-jsdoc-template": "^3.3.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
