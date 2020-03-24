@@ -80,7 +80,7 @@ jobs:
           npm run build
           git pull
           git add -f docs
-          git commit -m "Update documentation" && git push || echo "\nNo documentation changes to commit"
+          git commit -m "Update documentation" && git push || echo "No documentation changes to commit"
           git push
           
       - name: Publish documentation
