@@ -1,11 +1,13 @@
 {
   "name": "homey-zigbeedriver",
   "version": "1.0.0",
-  "description": "",
+  "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "updateDocs": "npm install --only=dev; grunt jsdoc"
+    "lint": "eslint .",
+    "build": "grunt jsdoc",
+    "serve": "grunt connect",
+    "build:watch": "npm run build && concurrently -n serve,watch 'npm run serve' 'grunt watch'"
   },
   "keywords": [
     "zigbee",
@@ -15,21 +17,20 @@
   "license": "ISC",
   "dependencies": {
     "color-space": "^1.16.0",
-    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git#production"
+    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git"
   },
   "devDependencies": {
+    "braintree-jsdoc-template": "^3.3.0",
+    "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
-    "eslint-config-athom": "^1.0.1",
+    "eslint-config-athom": "^2.0.8",
     "grunt": "^1.0.4",
+    "grunt-contrib-connect": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-jsdoc": "^2.4.1",
-    "homey": "^2.0.4"
+    "homey": "^2.1.5"
   },
   "engines": {
-    "node": ">=8.16.2"
-  },
-  "config": {
-    "npmPublishTagProduction": "latest",
-    "npmPublishTagStaging": "beta"
+    "node": ">=12"
   }
 }

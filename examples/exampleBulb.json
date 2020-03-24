@@ -1,8 +1,8 @@
 {
-  "id": "dimmable_bulb",
+  "id": "example_bulb",
   "name": {
-    "en": "Dimmable Bulb",
-    "nl": "Dimbare Lamp"
+    "en": "Example Bulb",
+    "nl": "Voorbeeld Lamp"
   },
   "class": "light",
   "capabilities": [
@@ -10,12 +10,19 @@
     "dim"
   ],
   "zigbee": {
-    "manufacturerName": "IKEA of Sweden",
-    "productId": "TRADFRI bulb E27 opal 1000lm",
-    "deviceId": 256,
-    "profileId": 260,
+    "manufacturerName": "manufacturer name example",
+    "productId": "product id example",
+    "endpoints": {
+      "1": {
+        "clusters": [
+          6,
+          8,
+          768,
+        ]
+      }
+    },
     "learnmode": {
-      "image": "/drivers/dimmable_bulb/assets/icon.svg",
+      "image": "/drivers/example_bulb/assets/icon.svg",
       "instruction": {
         "en": "Turn the device on and off 6 times",
         "nl": "Zet het apparaat 6 keer aan en uit"
@@ -23,8 +30,8 @@
     }
   },
   "images": {
-    "large": "/drivers/dimmable_bulb/assets/images/large.png",
-    "small": "/drivers/dimmable_bulb/assets/images/small.png"
+    "large": "/drivers/example_bulb/assets/images/large.png",
+    "small": "/drivers/example_bulb/assets/images/small.png"
   },
   "settings": [
     {
