@@ -1,7 +1,0 @@
-{
-  "error": {
-    "node_initialization": "Kon dit apparaat niet vinden",
-    "command_failed": "Er ging iets fout",
-    "invalid_group_id": "Ongeldig groepsadres"
-  }
-}
