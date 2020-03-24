@@ -4,7 +4,7 @@ const { ZigBeeDevice } = require('homey-zigbeedriver');
 
 class MyZigBeeDevice extends ZigBeeDevice {
 
-  onMeshInit() {
+  onNodeInit({ zclNode, node }) {
     this.log('MyZigBeeDevice has been initialized');
   }
 
