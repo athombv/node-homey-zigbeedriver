@@ -74,7 +74,7 @@ jobs:
         run: npm ci
 
       - name: Update documentation
-        if: contains(github.ref, "production")
+        if: contains(github.ref, 'production')
         run: |
           npm run build
           git pull
@@ -83,7 +83,7 @@ jobs:
           git push
           
       - name: Publish documentation
-        if: contains(github.ref, "production")
+        if: contains(github.ref, 'production')
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
