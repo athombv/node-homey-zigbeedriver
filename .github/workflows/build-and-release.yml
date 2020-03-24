@@ -79,6 +79,7 @@ jobs:
           git pull
           git add -f docs
           git commit -m "Update documentation" && git push || echo "\nNo documentation changes to commit"
+          git push
 
 #      - name: Version bump patch
 #        if: "contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
