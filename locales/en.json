@@ -1,6 +1,6 @@
 {
   "error": {
-    "node_initialization": "Could not find this device",
+    "node_initialization": "Something went wrong (error: initialization failed)",
     "command_failed": "Something went wrong",
     "invalid_group_id": "Invalid group id"
   }

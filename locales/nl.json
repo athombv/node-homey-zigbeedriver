@@ -1,6 +1,6 @@
 {
   "error": {
-    "node_initialization": "Kon dit apparaat niet vinden",
+    "node_initialization": "Er ging iets fout (error: initialization failed)",
     "command_failed": "Er ging iets fout",
     "invalid_group_id": "Ongeldig groepsadres"
   }
