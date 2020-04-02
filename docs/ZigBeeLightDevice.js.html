@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      ZigBeeLightDevice.js - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      documentation homey-zigbeedriver
+    </h3>
+
+    
+
+    <h3>Classes</h3><ul><li id="Util-nav"><a href="Util.html">Util</a><ul class='methods'><li data-type="method" id="Util-calculateDimDuration-nav"><a href="Util.html#.calculateDimDuration">calculateDimDuration</a></li><li data-type="method" id="Util-convertHSVToCIE-nav"><a href="Util.html#.convertHSVToCIE">convertHSVToCIE</a></li><li data-type="method" id="Util-convertHSVToRGB-nav"><a href="Util.html#.convertHSVToRGB">convertHSVToRGB</a></li><li data-type="method" id="Util-convertRGBToCIE-nav"><a href="Util.html#.convertRGBToCIE">convertRGBToCIE</a></li><li data-type="method" id="Util-convertRGBToHSV-nav"><a href="Util.html#.convertRGBToHSV">convertRGBToHSV</a></li><li data-type="method" id="Util-mapValueRange-nav"><a href="Util.html#.mapValueRange">mapValueRange</a></li><li data-type="method" id="Util-wait-nav"><a href="Util.html#.wait">wait</a></li><li data-type="method" id="Util-wrapAsyncWithRetry-nav"><a href="Util.html#.wrapAsyncWithRetry">wrapAsyncWithRetry</a></li></ul></li><li id="ZigBeeDevice-nav"><a href="ZigBeeDevice.html">ZigBeeDevice</a><ul class='methods'><li data-type="method" id="ZigBeeDevice-configureAttributeReporting-nav"><a href="ZigBeeDevice.html#configureAttributeReporting">configureAttributeReporting</a></li><li data-type="method" id="ZigBeeDevice-debug-nav"><a href="ZigBeeDevice.html#debug">debug</a></li><li data-type="method" id="ZigBeeDevice-disableDebug-nav"><a href="ZigBeeDevice.html#disableDebug">disableDebug</a></li><li data-type="method" id="ZigBeeDevice-enableDebug-nav"><a href="ZigBeeDevice.html#enableDebug">enableDebug</a></li><li data-type="method" id="ZigBeeDevice-getClusterCapabilityValue-nav"><a href="ZigBeeDevice.html#getClusterCapabilityValue">getClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeDevice-getClusterEndpoint-nav"><a href="ZigBeeDevice.html#getClusterEndpoint">getClusterEndpoint</a></li><li data-type="method" id="ZigBeeDevice-getDeviceTriggerCard-nav"><a href="ZigBeeDevice.html#getDeviceTriggerCard">getDeviceTriggerCard</a></li><li data-type="method" id="ZigBeeDevice-getEnergy-nav"><a href="ZigBeeDevice.html#getEnergy">getEnergy</a></li><li data-type="method" id="ZigBeeDevice-isFirstInit-nav"><a href="ZigBeeDevice.html#isFirstInit">isFirstInit</a></li><li data-type="method" id="ZigBeeDevice-onDeleted-nav"><a href="ZigBeeDevice.html#onDeleted">onDeleted</a></li><li data-type="method" id="ZigBeeDevice-onEndDeviceAnnounce-nav"><a href="ZigBeeDevice.html#onEndDeviceAnnounce">onEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeDevice-onMeshInit-nav"><a href="ZigBeeDevice.html#onMeshInit">onMeshInit</a></li><li data-type="method" id="ZigBeeDevice-onNodeInit-nav"><a href="ZigBeeDevice.html#onNodeInit">onNodeInit</a></li><li data-type="method" id="ZigBeeDevice-onSettings-nav"><a href="ZigBeeDevice.html#onSettings">onSettings</a></li><li data-type="method" id="ZigBeeDevice-parseAttributeReport-nav"><a href="ZigBeeDevice.html#parseAttributeReport">parseAttributeReport</a></li><li data-type="method" id="ZigBeeDevice-printNode-nav"><a href="ZigBeeDevice.html#printNode">printNode</a></li><li data-type="method" id="ZigBeeDevice-registerAttrReportListener-nav"><a href="ZigBeeDevice.html#registerAttrReportListener">registerAttrReportListener</a></li><li data-type="method" id="ZigBeeDevice-registerCapability-nav"><a href="ZigBeeDevice.html#registerCapability">registerCapability</a></li><li data-type="method" id="ZigBeeDevice-registerMultipleCapabilities-nav"><a href="ZigBeeDevice.html#registerMultipleCapabilities">registerMultipleCapabilities</a></li><li data-type="method" id="ZigBeeDevice-registerReportListener-nav"><a href="ZigBeeDevice.html#registerReportListener">registerReportListener</a></li><li data-type="method" id="ZigBeeDevice-scheduleForNextEndDeviceAnnounce-nav"><a href="ZigBeeDevice.html#scheduleForNextEndDeviceAnnounce">scheduleForNextEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeDevice-setClusterCapabilityValue-nav"><a href="ZigBeeDevice.html#setClusterCapabilityValue">setClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeDevice-triggerFlow-nav"><a href="ZigBeeDevice.html#triggerFlow">triggerFlow</a></li></ul></li><li id="ZigBeeLightDevice-nav"><a href="ZigBeeLightDevice.html">ZigBeeLightDevice</a><ul class='methods'><li data-type="method" id="ZigBeeLightDevice-configureAttributeReporting-nav"><a href="ZigBeeLightDevice.html#configureAttributeReporting">configureAttributeReporting</a></li><li data-type="method" id="ZigBeeLightDevice-debug-nav"><a href="ZigBeeLightDevice.html#debug">debug</a></li><li data-type="method" id="ZigBeeLightDevice-disableDebug-nav"><a href="ZigBeeLightDevice.html#disableDebug">disableDebug</a></li><li data-type="method" id="ZigBeeLightDevice-enableDebug-nav"><a href="ZigBeeLightDevice.html#enableDebug">enableDebug</a></li><li data-type="method" id="ZigBeeLightDevice-getClusterCapabilityValue-nav"><a href="ZigBeeLightDevice.html#getClusterCapabilityValue">getClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeLightDevice-getClusterEndpoint-nav"><a href="ZigBeeLightDevice.html#getClusterEndpoint">getClusterEndpoint</a></li><li data-type="method" id="ZigBeeLightDevice-getDeviceTriggerCard-nav"><a href="ZigBeeLightDevice.html#getDeviceTriggerCard">getDeviceTriggerCard</a></li><li data-type="method" id="ZigBeeLightDevice-getEnergy-nav"><a href="ZigBeeLightDevice.html#getEnergy">getEnergy</a></li><li data-type="method" id="ZigBeeLightDevice-isFirstInit-nav"><a href="ZigBeeLightDevice.html#isFirstInit">isFirstInit</a></li><li data-type="method" id="ZigBeeLightDevice-onDeleted-nav"><a href="ZigBeeLightDevice.html#onDeleted">onDeleted</a></li><li data-type="method" id="ZigBeeLightDevice-onEndDeviceAnnounce-nav"><a href="ZigBeeLightDevice.html#onEndDeviceAnnounce">onEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeLightDevice-onMeshInit-nav"><a href="ZigBeeLightDevice.html#onMeshInit">onMeshInit</a></li><li data-type="method" id="ZigBeeLightDevice-onNodeInit-nav"><a href="ZigBeeLightDevice.html#onNodeInit">onNodeInit</a></li><li data-type="method" id="ZigBeeLightDevice-onSettings-nav"><a href="ZigBeeLightDevice.html#onSettings">onSettings</a></li><li data-type="method" id="ZigBeeLightDevice-parseAttributeReport-nav"><a href="ZigBeeLightDevice.html#parseAttributeReport">parseAttributeReport</a></li><li data-type="method" id="ZigBeeLightDevice-printNode-nav"><a href="ZigBeeLightDevice.html#printNode">printNode</a></li><li data-type="method" id="ZigBeeLightDevice-registerAttrReportListener-nav"><a href="ZigBeeLightDevice.html#registerAttrReportListener">registerAttrReportListener</a></li><li data-type="method" id="ZigBeeLightDevice-registerCapability-nav"><a href="ZigBeeLightDevice.html#registerCapability">registerCapability</a></li><li data-type="method" id="ZigBeeLightDevice-registerMultipleCapabilities-nav"><a href="ZigBeeLightDevice.html#registerMultipleCapabilities">registerMultipleCapabilities</a></li><li data-type="method" id="ZigBeeLightDevice-registerReportListener-nav"><a href="ZigBeeLightDevice.html#registerReportListener">registerReportListener</a></li><li data-type="method" id="ZigBeeLightDevice-scheduleForNextEndDeviceAnnounce-nav"><a href="ZigBeeLightDevice.html#scheduleForNextEndDeviceAnnounce">scheduleForNextEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeLightDevice-setClusterCapabilityValue-nav"><a href="ZigBeeLightDevice.html#setClusterCapabilityValue">setClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeLightDevice-triggerFlow-nav"><a href="ZigBeeLightDevice.html#triggerFlow">triggerFlow</a></li></ul></li><li id="ZigBeeXYLightDevice-nav"><a href="ZigBeeXYLightDevice.html">ZigBeeXYLightDevice</a><ul class='methods'><li data-type="method" id="ZigBeeXYLightDevice-configureAttributeReporting-nav"><a href="ZigBeeXYLightDevice.html#configureAttributeReporting">configureAttributeReporting</a></li><li data-type="method" id="ZigBeeXYLightDevice-debug-nav"><a href="ZigBeeXYLightDevice.html#debug">debug</a></li><li data-type="method" id="ZigBeeXYLightDevice-disableDebug-nav"><a href="ZigBeeXYLightDevice.html#disableDebug">disableDebug</a></li><li data-type="method" id="ZigBeeXYLightDevice-enableDebug-nav"><a href="ZigBeeXYLightDevice.html#enableDebug">enableDebug</a></li><li data-type="method" id="ZigBeeXYLightDevice-getClusterCapabilityValue-nav"><a href="ZigBeeXYLightDevice.html#getClusterCapabilityValue">getClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeXYLightDevice-getClusterEndpoint-nav"><a href="ZigBeeXYLightDevice.html#getClusterEndpoint">getClusterEndpoint</a></li><li data-type="method" id="ZigBeeXYLightDevice-getDeviceTriggerCard-nav"><a href="ZigBeeXYLightDevice.html#getDeviceTriggerCard">getDeviceTriggerCard</a></li><li data-type="method" id="ZigBeeXYLightDevice-getEnergy-nav"><a href="ZigBeeXYLightDevice.html#getEnergy">getEnergy</a></li><li data-type="method" id="ZigBeeXYLightDevice-isFirstInit-nav"><a href="ZigBeeXYLightDevice.html#isFirstInit">isFirstInit</a></li><li data-type="method" id="ZigBeeXYLightDevice-onDeleted-nav"><a href="ZigBeeXYLightDevice.html#onDeleted">onDeleted</a></li><li data-type="method" id="ZigBeeXYLightDevice-onEndDeviceAnnounce-nav"><a href="ZigBeeXYLightDevice.html#onEndDeviceAnnounce">onEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeXYLightDevice-onMeshInit-nav"><a href="ZigBeeXYLightDevice.html#onMeshInit">onMeshInit</a></li><li data-type="method" id="ZigBeeXYLightDevice-onNodeInit-nav"><a href="ZigBeeXYLightDevice.html#onNodeInit">onNodeInit</a></li><li data-type="method" id="ZigBeeXYLightDevice-onSettings-nav"><a href="ZigBeeXYLightDevice.html#onSettings">onSettings</a></li><li data-type="method" id="ZigBeeXYLightDevice-parseAttributeReport-nav"><a href="ZigBeeXYLightDevice.html#parseAttributeReport">parseAttributeReport</a></li><li data-type="method" id="ZigBeeXYLightDevice-printNode-nav"><a href="ZigBeeXYLightDevice.html#printNode">printNode</a></li><li data-type="method" id="ZigBeeXYLightDevice-registerAttrReportListener-nav"><a href="ZigBeeXYLightDevice.html#registerAttrReportListener">registerAttrReportListener</a></li><li data-type="method" id="ZigBeeXYLightDevice-registerCapability-nav"><a href="ZigBeeXYLightDevice.html#registerCapability">registerCapability</a></li><li data-type="method" id="ZigBeeXYLightDevice-registerMultipleCapabilities-nav"><a href="ZigBeeXYLightDevice.html#registerMultipleCapabilities">registerMultipleCapabilities</a></li><li data-type="method" id="ZigBeeXYLightDevice-registerReportListener-nav"><a href="ZigBeeXYLightDevice.html#registerReportListener">registerReportListener</a></li><li data-type="method" id="ZigBeeXYLightDevice-scheduleForNextEndDeviceAnnounce-nav"><a href="ZigBeeXYLightDevice.html#scheduleForNextEndDeviceAnnounce">scheduleForNextEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeXYLightDevice-setClusterCapabilityValue-nav"><a href="ZigBeeXYLightDevice.html#setClusterCapabilityValue">setClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeXYLightDevice-triggerFlow-nav"><a href="ZigBeeXYLightDevice.html#triggerFlow">triggerFlow</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        ZigBeeLightDevice.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>'use strict';
+
+const { CLUSTER } = require('zigbee-clusters');
+
+const { mapValueRange, calculateDimDuration } = require('./util');
+const ZigBeeDevice = require('./ZigBeeDevice');
+
+const MAX_HUE = 254;
+const MAX_DIM = 254;
+const MAX_SATURATION = 254;
+
+const ON_OFF = 'onOff';
+const SET_ON = 'setOn';
+const SET_OFF = 'setOff';
+const CURRENT_LEVEL = 'currentLevel';
+
+/**
+ * `onoff` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const onoffCapabilityDefinition = {
+  capability: 'onoff',
+  cluster: CLUSTER.ON_OFF,
+  opts: {
+    get: ON_OFF,
+    reportParser(value) {
+      return value;
+    },
+    report: ON_OFF,
+    getOpts: {
+      getOnStart: true,
+      getOnOnline: true, // When the light is powered off, and powered on again it often issues
+      // an end device announce, this is a good moment to update the capability value in Homey
+    },
+  },
+};
+
+/**
+ * `dim` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const dimCapabilityDefinition = {
+  capability: 'dim',
+  cluster: CLUSTER.LEVEL_CONTROL,
+  opts: {
+    get: CURRENT_LEVEL,
+    reportParser(value) {
+      return value / MAX_DIM;
+    },
+    report: CURRENT_LEVEL,
+    getOpts: {
+      getOnStart: true,
+      getOnOnline: true, // When the light is powered off, and powered on again it often issues
+      // an end device announce, this is a good moment to update the capability value in Homey
+    },
+  },
+};
+
+/**
+ * The ZigBeeLightDevice class handles all light related capabilities [`onoff`, `dim`,
+ * `light_mode`, `light_hue`, `light_saturation` and `light_temperature`] for a Zigbee device
+ * that uses the {@link CLUSTER.LEVEL_CONTROL} with the command `moveToLevelWithOnOff` for
+ * `onoff` and `dim`, and the {@link CLUSTER.COLOR_CONTROL} with the commands
+ * `moveToHueAndSaturation`, `moveToHue` and `moveToColorTemperature` for `light_mode`,
+ * `light_hue`, `light_saturation` and `light_temperature`.
+ * @extends ZigBeeDevice
+ *
+ * @example
+ * const { ZigBeeLightDevice } = require('zigbee-clusters');
+ *
+ * class ZigBeeBulb extends ZigBeeLightDevice {
+ *    async onNodeInit({zclNode, node}) {
+ *      await super.onNodeInit({zclNode, node});
+ *      // Do custom stuff here
+ *    }
+ * }
+ */
+class ZigBeeLightDevice extends ZigBeeDevice {
+
+  async onNodeInit({ zclNode }) {
+    const onOffClusterEndpoint = this.getClusterEndpoint(CLUSTER.ON_OFF);
+    const levelControlClusterEndpoint = this.getClusterEndpoint(CLUSTER.LEVEL_CONTROL);
+
+    if (onOffClusterEndpoint === null) throw new Error('missing_on_off_cluster');
+    if (levelControlClusterEndpoint === null) throw new Error('missing_level_control_cluster');
+
+    const onOffCluster = zclNode.endpoints[onOffClusterEndpoint].clusters.onOff;
+    const levelControlCluster = zclNode.endpoints[levelControlClusterEndpoint].clusters
+      .levelControl;
+
+    // Register multiple capabilities, they will be debounced when one of them is called
+    this.registerMultipleCapabilities(
+      [onoffCapabilityDefinition, dimCapabilityDefinition],
+      // TODO: fix eslint below
+      // eslint-disable-next-line consistent-return
+      (valueObj = {}, optsObj = {}) => {
+        // Bulb is turned on/off
+        if (typeof valueObj.onoff === 'boolean') {
+          if (typeof valueObj.dim === 'number' &amp;&amp; valueObj.onoff &amp;&amp; valueObj.dim > 0) {
+            this.log('registerMultipleCapabilities() → turned on and dimmed to', valueObj.dim);
+            const moveToLevelWithOnOff = {
+              level: Math.round(valueObj.dim * MAX_DIM),
+              transitionTime: calculateDimDuration(optsObj.dim, this.getSettings()),
+            };
+            this.debug('registerMultipleCapabilities() → turned on and dimmed → moveToLevelWithOnOff', moveToLevelWithOnOff);
+
+            // Bulb is turned on and dimmed to a value, then just dim
+            return levelControlCluster.moveToLevelWithOnOff(moveToLevelWithOnOff);
+          }
+          if (typeof valueObj.dim === 'number' &amp;&amp; valueObj.onoff === false) {
+            this.log('registerMultipleCapabilities() → turned off and dimmed to', valueObj.dim);
+
+            // Bulb is turned off and dimmed to a value, then turn off
+            this.debug('registerMultipleCapabilities() → turned off and dimmed →', valueObj.onoff ? SET_ON : SET_OFF);
+            return onOffCluster[valueObj.onoff ? SET_ON : SET_OFF]();
+          }
+          if (typeof valueObj.dim === 'number' &amp;&amp; valueObj.onoff === true &amp;&amp; valueObj.dim === 0) {
+            // Device is turned on and dimmed to zero, then just turn off
+            this.log('registerMultipleCapabilities() → turned on and dimmed to zero → setOff');
+            return onOffCluster.setOff();
+          }
+
+          this.log(`registerMultipleCapabilities() → turned on/off → ${valueObj.onoff ? SET_ON : SET_OFF}`);
+
+          // Device is only turned on/off, request new dim level afterwards
+          return onOffCluster[valueObj.onoff ? SET_ON : SET_OFF]()
+            // TODO: fix eslint below
+            // eslint-disable-next-line consistent-return
+            .then(async () => {
+              if (valueObj.onoff === false) {
+                await this.setCapabilityValue('dim', 0); // Set dim to zero when turned off
+              } else if (valueObj.onoff) {
+                this.debug(`registerMultipleCapabilities() → turned on/off → ${valueObj.onoff ? SET_ON : SET_OFF} → read/update attribute ${CURRENT_LEVEL}`);
+                const { currentLevel } = await levelControlCluster.readAttributes(CURRENT_LEVEL);
+                return this.setCapabilityValue('dim', Math.max(0.01, currentLevel / MAX_DIM)); // Always set dim to 0.01 or higher since bulb is turned on
+              }
+            });
+        }
+        if (typeof valueObj.dim === 'number') { // Bulb is only dimmed
+          this.log('registerMultipleCapabilities() → dimmed to', valueObj.dim);
+
+          // Update onoff value
+          if (valueObj.dim === 0) {
+            this.setCapabilityValue('onoff', false).catch(err => this.error('failed to set onoff capability value', err));
+          } else if (this.getCapabilityValue('onoff') === false &amp;&amp; valueObj.dim > 0) {
+            this.setCapabilityValue('onoff', true).catch(err => this.error('failed to set onoff capability value', err));
+          }
+
+          const moveToLevelWithOnOffCommand = {
+            level: Math.round(valueObj.dim * MAX_DIM),
+            transitionTime: calculateDimDuration(optsObj.dim, this.getSettings()),
+          };
+          this.debug('registerMultipleCapabilities() → dimmed → moveToLevelWithOnOff', moveToLevelWithOnOffCommand);
+
+          // Execute dim
+          return levelControlCluster.moveToLevelWithOnOff(moveToLevelWithOnOffCommand);
+        }
+      },
+    );
+
+    // If needed make color control cluster available
+    let colorControlCluster;
+    if (this.hasCapability('light_hue')
+      || this.hasCapability('light_saturation')
+      || this.hasCapability('light_mode')
+      || this.hasCapability('light_temperature')
+    ) {
+      const colorControlEndpoint = this.getClusterEndpoint(CLUSTER.COLOR_CONTROL);
+      if (colorControlEndpoint === null) throw new Error('missing_color_control_cluster');
+      colorControlCluster = zclNode.endpoints[colorControlEndpoint].clusters.colorControl;
+    }
+
+    // Register debounced capabilities
+    const groupedCapabilities = [];
+
+    if (this.hasCapability('light_hue')) {
+      groupedCapabilities.push({
+        capability: 'light_hue',
+        cluster: CLUSTER.COLOR_CONTROL,
+      });
+    }
+    if (this.hasCapability('light_saturation')) {
+      groupedCapabilities.push({
+        capability: 'light_saturation',
+        cluster: CLUSTER.COLOR_CONTROL,
+      });
+    }
+    if (this.hasCapability('light_temperature')) {
+      this._colorTempMin = this.getStoreValue('colorTempMin');
+      this._colorTempMax = this.getStoreValue('colorTempMax');
+
+      if (typeof this._colorTempMin !== 'number' || typeof this._colorTempMax !== 'number') {
+        try {
+          this.debug('read attributes \'colorTempPhysicalMinMireds\', \'colorTempPhysicalMaxMireds\'');
+
+          const { colorTempPhysicalMinMireds, colorTempPhysicalMaxMireds } = await colorControlCluster.readAttributes('colorTempPhysicalMinMireds', 'colorTempPhysicalMaxMireds');
+          this._colorTempMin = colorTempPhysicalMinMireds;
+          this._colorTempMax = colorTempPhysicalMaxMireds;
+          this.debug('read attributes \'colorTempPhysicalMinMireds\','
+            + ' \'colorTempPhysicalMaxMireds\'', {
+            colorTempPhysicalMinMireds,
+            colorTempPhysicalMaxMireds,
+          });
+          if (typeof this._colorTempMin === 'number') this.setStoreValue('colorTempMin', this._colorTempMin);
+          else this.error('retrieved nun-numeric colorTempMin', this._colorTempMin);
+          if (typeof this._colorTempMax === 'number') this.setStoreValue('colorTempMax', this._colorTempMax);
+          else this.error('retrieved nun-numeric colorTempMax', this._colorTempMax);
+        } catch (err) {
+          this.error('could not get colorTempMin and colorTempMax', err);
+        }
+      }
+
+      groupedCapabilities.push({
+        capability: 'light_temperature',
+        cluster: CLUSTER.COLOR_CONTROL,
+      });
+    }
+    if (this.hasCapability('light_mode')) {
+      groupedCapabilities.push({
+        capability: 'light_mode',
+        cluster: CLUSTER.COLOR_CONTROL,
+      });
+    }
+
+    // Register multiple capabilities, they will be debounced when one of them is called
+    // eslint-disable-next-line consistent-return
+    this.registerMultipleCapabilities(groupedCapabilities, (valueObj, optsObj) => {
+      this.debug('registerMultipleCapabilities()', valueObj, optsObj);
+
+      if (typeof valueObj.light_hue === 'number' &amp;&amp; typeof valueObj.light_saturation === 'number') {
+        this.log('registerMultipleCapabilities() → set hue and saturation');
+        const lightHue = valueObj.light_hue;
+        const lightSaturation = valueObj.light_saturation;
+
+        const moveToHueAndSaturationCommand = {
+          hue: Math.round(lightHue * MAX_HUE),
+          saturation: Math.round(lightSaturation * MAX_SATURATION),
+          transitionTime: this.getSetting('transition_time') ? Math.round(this.getSetting('transition_time') * 10) : 0,
+        };
+        this.debug('registerMultipleCapabilities() → set hue and saturation →'
+          + ' moveToHueAndSaturation', moveToHueAndSaturationCommand);
+
+        return colorControlCluster.moveToHueAndSaturation(moveToHueAndSaturationCommand)
+          .catch(() => {
+            throw new Error('failed_to_do_move_to_hue_and_saturation');
+          });
+      }
+      if (typeof valueObj.light_mode === 'string' &amp;&amp; typeof valueObj.light_temperature === 'number') {
+        this.log('registerMultipleCapabilities() → set mode and temperature');
+        const colorTemperature = Math.round(
+          mapValueRange(
+            0,
+            1,
+            this._colorTempMin,
+            this._colorTempMax,
+            valueObj.light_temperature,
+          ),
+        );
+
+        const moveToColorTemperatureCommand = {
+          colorTemperature,
+          transitionTime: this.getSetting('transition_time') ? Math.round(this.getSetting('transition_time') * 10) : 0,
+        };
+
+        this.debug('registerMultipleCapabilities() → set mode and temperature →'
+          + ' moveToColorTemperature', moveToColorTemperatureCommand);
+
+        return colorControlCluster.moveToColorTemperature(moveToColorTemperatureCommand);
+      }
+      if (typeof valueObj.light_mode === 'string' &amp;&amp; typeof valueObj.light_hue === 'number') {
+        this.log('registerMultipleCapabilities() → set mode and hue');
+        const moveToHueCommand = {
+          hue: Math.round(valueObj.light_hue * MAX_HUE),
+          direction: 0,
+          transitionTime: this.getSetting('transition_time') ? Math.round(this.getSetting('transition_time') * 10) : 0,
+        };
+        this.debug('registerMultipleCapabilities() → set mode and hue →'
+          + ' moveToHue', moveToHueCommand);
+        return colorControlCluster.moveToHue(moveToHueCommand);
+      }
+    });
+    this.log('ZigBeeLightDevice is initialized');
+  }
+
+}
+
+
+module.exports = ZigBeeLightDevice;
+</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>
