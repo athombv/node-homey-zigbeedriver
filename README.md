@@ -1,7 +1,7 @@
 # homey-zigbeedriver
 
 ## Introduction
-This module can be used to make the development of Zigbee apps for Homey easier.
+This module can be used to make the development of Zigbee apps for Homey easier. This library can be used on the latest version of Homey's Zigbee stack released in Homey v5.0.0.
 
 It is essentially a map-tool from Homey-capabilities to Zigbee endpoints and clusters.
 
