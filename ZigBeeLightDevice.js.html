@@ -490,7 +490,7 @@ class ZigBeeLightDevice extends ZigBeeDevice {
 
     const moveToLevelWithOnOffCommand = {
       level: Math.round(dim * MAX_DIM),
-      transitionTime: calculateDimDuration(opts, this.getSettings()),
+      transitionTime: calculateDimDuration(opts),
     };
 
     // Execute dim
@@ -549,7 +549,7 @@ class ZigBeeLightDevice extends ZigBeeDevice {
       // Execute move to color temperature command
       const moveToColorTemperatureCommand = {
         colorTemperature,
-        transitionTime: calculateDimDuration(opts, this.getSettings()),
+        transitionTime: calculateDimDuration(opts),
       };
       this.debug(`changeColorTemperature() → ${temperature} →`, moveToColorTemperatureCommand);
       return this.colorControlCluster.moveToColorTemperature(moveToColorTemperatureCommand);
@@ -572,7 +572,7 @@ class ZigBeeLightDevice extends ZigBeeDevice {
     const moveToColorCommand = {
       colorX: x * CIE_MULTIPLIER,
       colorY: y * CIE_MULTIPLIER,
-      transitionTime: calculateDimDuration(opts, this.getSettings()),
+      transitionTime: calculateDimDuration(opts),
     };
     this.debug(`changeColorTemperature() → ${temperature} →`, moveToColorCommand);
     return this.colorControlCluster.moveToColor(moveToColorCommand);
@@ -622,7 +622,7 @@ class ZigBeeLightDevice extends ZigBeeDevice {
       const moveToHueAndSaturationCommand = {
         hue: Math.round(hue * MAX_HUE),
         saturation: Math.round(saturation * MAX_SATURATION),
-        transitionTime: calculateDimDuration(opts, this.getSettings()),
+        transitionTime: calculateDimDuration(opts),
       };
       this.debug('changeColor() → hue and saturation', moveToHueAndSaturationCommand);
       return this.colorControlCluster.moveToHueAndSaturation(moveToHueAndSaturationCommand);
@@ -644,7 +644,7 @@ class ZigBeeLightDevice extends ZigBeeDevice {
     const moveToColorCommand = {
       colorX: x * CIE_MULTIPLIER,
       colorY: y * CIE_MULTIPLIER,
-      transitionTime: calculateDimDuration(opts, this.getSettings()),
+      transitionTime: calculateDimDuration(opts),
     };
     this.debug('changeColor() → hue', moveToColorCommand);
     return this.colorControlCluster.moveToColor(moveToColorCommand);

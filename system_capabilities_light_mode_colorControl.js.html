@@ -132,7 +132,7 @@ module.exports = {
         ));
         const moveToColorTemperatureCommand = {
           colorTemperature,
-          transitionTime: calculateDimDuration({}, this.getSettings()),
+          transitionTime: calculateDimDuration(),
         };
         this.debug('set → `light_mode`: \'temperature\' → setParser → moveToColorTemperature', moveToColorTemperatureCommand);
 
@@ -155,7 +155,7 @@ module.exports = {
         const moveToHueAndSaturation = {
           hue: Math.round(lightHue * MAX_HUE),
           saturation: Math.round(lightSaturation * MAX_SATURATION),
-          transitionTime: calculateDimDuration({}, this.getSettings()),
+          transitionTime: calculateDimDuration(),
         };
 
         this.debug('set → `light_mode`: \'color\' → setParser → moveToHueAndSaturation', moveToHueAndSaturation);

@@ -122,7 +122,7 @@ module.exports = {
     return {
       colorX: x * CIE_MULTIPLIER,
       colorY: y * CIE_MULTIPLIER,
-      transitionTime: calculateDimDuration({}, this.getSettings()),
+      transitionTime: calculateDimDuration(),
     };
   },
 };

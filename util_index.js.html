@@ -137,25 +137,19 @@ function mapValueRange(originalRangeStart, originalRangeEnd, newRangeStart, newR
 }
 
 /**
- * Calculate a transitionTime value for Zigbee clusters, it takes two parameters, `opts` and
- * `settings`. The former is the `opts` object provided by a
- * {@link Homey.Device.registerCapabilityListener} which can hold a `duration`
- * property (in milliseconds), The latter is an object which can hold a `transition_time` property
- * (in seconds).
- * @param opts {object}
- * @param opts.duration {number} - Duration property in milliseconds (preferred over
+ * Calculate a transitionTime value for Zigbee clusters, it takes one parameter: the `opts`
+ * object provided by a {@link Homey.Device.registerCapabilityListener} which can hold a `duration`
+ * property (in milliseconds).
+ * @param [opts] {object}
+ * @param [opts.duration] {number} - Duration property in milliseconds (preferred over
  * 'transition_time')
- * @param settings {object}
- * @param settings.transition_time {number} - Transition time property in seconds
  * @returns {number} transitionTime - Transition time (0 - 6553)
  * @memberof Util
  */
-function calculateDimDuration(opts = {}, settings = {}) {
+function calculateDimDuration(opts = {}) {
   let transitionTime = 0;
   if (typeof opts.duration === 'number') {
     transitionTime = opts.duration / 100;
-  } else if (typeof settings.transition_time === 'number') {
-    transitionTime = Math.round(settings.transition_time * 10);
   }
   // Cap the range between 0 and 6553
   return Math.max(Math.min(transitionTime, 6553), 0);
@@ -173,7 +167,7 @@ function calculateDimDuration(opts = {}, settings = {}) {
  * @private
  */
 function calculateZigBeeDimDuration(opts = {}, settings = {}) {
-  return calculateDimDuration(opts, settings);
+  return calculateDimDuration(opts);
 }
 
 let localeFile;
