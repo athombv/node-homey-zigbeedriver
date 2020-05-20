@@ -1,6 +1,12 @@
 'use strict';
 
-const { convertHSVToCIE, convertCIEToHSV } = require('../../../lib/util');
+const assert = require('assert');
+
+const {
+  convertHSVToCIE,
+  convertCIEToHSV,
+  calculateDimDuration,
+} = require('../../../lib/util');
 
 /**
  * Returns a random float
@@ -48,8 +54,8 @@ function shouldConvertHSVtoXYY(startHue, startSaturation, startValue) {
   }
 }
 
-describe('color util', function() {
-  it('should convert HSV to xyY', function() {
+describe('util', function() {
+  it('should convert HSV to xyY color space', function() {
     // Generate 1000 random HSV values
     for (let i = 0; i < 100; i++) {
       shouldConvertHSVtoXYY(getRandomFloat(0, 1), getRandomFloat(0, 1), getRandomFloat(0, 1));
@@ -58,5 +64,25 @@ describe('color util', function() {
 
   // This seems to be very inaccurate for random values
   // eslint-disable-next-line mocha/no-pending-tests
-  it('should convert xyY to HSB');
+  it('should convert xyY to HSB color space');
+
+  it('should calculate dim duration', function() {
+    const validDuration = calculateDimDuration({ duration: 5000 });
+    const validDuration2 = calculateDimDuration({ duration: 0 });
+
+    const noDuration = calculateDimDuration();
+    const noDuration2 = calculateDimDuration({});
+
+    const outOfRangeDuration = calculateDimDuration({ duration: 9000000 }); // ~150 min
+    const outOfRangeDuration2 = calculateDimDuration({ duration: -10 }); // ~150 min
+
+    assert.strictEqual(validDuration, 50);
+    assert.strictEqual(validDuration2, 0);
+
+    assert.strictEqual(noDuration, 0xFFFF);
+    assert.strictEqual(noDuration2, 0xFFFF);
+
+    assert.strictEqual(outOfRangeDuration, 0xFFFE);
+    assert.strictEqual(outOfRangeDuration2, 0);
+  });
 });

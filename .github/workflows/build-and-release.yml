@@ -72,16 +72,9 @@ jobs:
 
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
-        run: npm ci
-
-      - name: Update documentation
-        if: contains(github.ref, 'production')
         run: |
+          npm ci
           npm run build
-          git pull
-          git add -f docs
-          git commit -m "Update documentation" && git push || echo "No documentation changes to commit"
-          git push
           
       - name: Publish documentation
         if: contains(github.ref, 'production')
@@ -90,7 +83,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: docs
-          BASE_BRANCH: production
 
 #      - name: Version bump patch
 #        if: "contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
