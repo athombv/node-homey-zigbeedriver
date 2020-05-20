@@ -5,6 +5,8 @@ This module can be used to make the development of Zigbee apps for Homey easier.
 
 It is essentially a map-tool from Homey-capabilities to Zigbee endpoints and clusters.
 
+Note: this module can only be used in Homey Apps built on SDKv3 which is available as of Homey v5.0.0.
+
 ## Installation
 
 ```bash
