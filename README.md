@@ -13,8 +13,7 @@ Note: this module can only be used in Homey Apps built on SDKv3 which is availab
 $ npm install --save homey-zigbeedriver
 ```
 
-Also checkout `zigbee-clusters` if you want to do more advanced things or implement a driver for
- a Zigbee device without `homey-zigbeedriver`.
+Also checkout [`zigbee-clusters`](https://github.com/athombv/node-zigbee-clusters) if you want to do more advanced things or implement a driver for a Zigbee device without `homey-zigbeedriver`.
 
 ```bash
 $ npm install --save zigbee-clusters
