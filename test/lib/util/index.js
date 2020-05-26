@@ -4,8 +4,9 @@ const assert = require('assert');
 
 const {
   convertHSVToCIE,
+  calculateLevelControlTransitionTime,
+  calculateColorControlTransitionTime,
   convertCIEToHSV,
-  calculateDimDuration,
 } = require('../../../lib/util');
 
 /**
@@ -66,15 +67,17 @@ describe('util', function() {
   // eslint-disable-next-line mocha/no-pending-tests
   it('should convert xyY to HSB color space');
 
-  it('should calculate dim duration', function() {
-    const validDuration = calculateDimDuration({ duration: 5000 });
-    const validDuration2 = calculateDimDuration({ duration: 0 });
+  it('should calculate level control transition time', function() {
+    const validDuration = calculateLevelControlTransitionTime({ duration: 5000 });
+    const validDuration2 = calculateLevelControlTransitionTime({ duration: 0 });
 
-    const noDuration = calculateDimDuration();
-    const noDuration2 = calculateDimDuration({});
+    const noDuration = calculateLevelControlTransitionTime();
+    const noDuration2 = calculateLevelControlTransitionTime({});
 
-    const outOfRangeDuration = calculateDimDuration({ duration: 9000000 }); // ~150 min
-    const outOfRangeDuration2 = calculateDimDuration({ duration: -10 }); // ~150 min
+    const outOfRangeDuration = calculateLevelControlTransitionTime({
+      duration: 9000000, // ~150 min
+    });
+    const outOfRangeDuration2 = calculateLevelControlTransitionTime({ duration: -10 }); // ~150 min
 
     assert.strictEqual(validDuration, 50);
     assert.strictEqual(validDuration2, 0);
@@ -83,6 +86,28 @@ describe('util', function() {
     assert.strictEqual(noDuration2, 0xFFFF);
 
     assert.strictEqual(outOfRangeDuration, 0xFFFE);
+    assert.strictEqual(outOfRangeDuration2, 0);
+  });
+
+  it('should calculate color control transition time', function() {
+    const validDuration = calculateColorControlTransitionTime({ duration: 5000 });
+    const validDuration2 = calculateColorControlTransitionTime({ duration: 0 });
+
+    const noDuration = calculateColorControlTransitionTime();
+    const noDuration2 = calculateColorControlTransitionTime({});
+
+    const outOfRangeDuration = calculateColorControlTransitionTime({
+      duration: 9000000, // ~150 min
+    });
+    const outOfRangeDuration2 = calculateColorControlTransitionTime({ duration: -10 }); // ~150 min
+
+    assert.strictEqual(validDuration, 50);
+    assert.strictEqual(validDuration2, 0);
+
+    assert.strictEqual(noDuration, 0);
+    assert.strictEqual(noDuration2, 0);
+
+    assert.strictEqual(outOfRangeDuration, 0xFFFF);
     assert.strictEqual(outOfRangeDuration2, 0);
   });
 });
