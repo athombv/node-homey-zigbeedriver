@@ -1,4 +1,4 @@
-name: Build and release
+name: Deploy
 
 # About this workflow:
 # It is triggered on push events to branches production and testing. Then it performs a checkout of the current repo
@@ -14,15 +14,6 @@ name: Build and release
 # 2. If you have protected branches, go to Branches > edit protected branch > enable 'Restrict who can push to
 #    matching branches' and add the 'athombv/github-actions' team.
 
-# Required secrets:
-# - NPM_AUTH_TOKEN: required for publishing to npm
-# - SLACK_WEBHOOK_URL: required for posting a message in #software
-# - HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN: required when using `npm version` to commit and push to protected
-#   branch. If pushing to a non-protected branch replace HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN with GITHUB_TOKEN
-
-# Optional secrets:
-# - SSH_KEY: required if `npm ci` needs to install private npm packages, make sure to enable webfactory/ssh-agent@v0.2.0 step
-
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
 
 # Defines the trigger for this action, in general you want it to run when pushing to production | testing. For more
@@ -34,8 +25,8 @@ on:
       - testing
 
 jobs:
-  build_and_release:
-    name: Update version and publish
+  deploy_to_npm:
+    name: Deploy to NPM
 
     # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops
     if: github.actor != 'HomeyGithubActionsBot'
@@ -47,7 +38,7 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2
         with:
-#           ssh-key: ${{ secrets.SSH_KEY }}
+          #           ssh-key: ${{ secrets.SSH_KEY }}
           # The token below is only necessary if you want to push the version bump to a protected branch
           token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
@@ -75,14 +66,6 @@ jobs:
         run: |
           npm ci
           npm run build
-          
-      - name: Publish documentation
-        if: contains(github.ref, 'production')
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs
 
 #      - name: Version bump patch
 #        if: "contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
@@ -137,3 +120,30 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
 #          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
+
+  deploy_to_github_pages:
+    needs: deploy_to_npm
+
+    if: github.ref == 'refs/heads/production'
+
+    runs-on: ubuntu-latest
+
+    name: Deploy Docs To GitHub Pages
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - uses: webfactory/ssh-agent@v0.2.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Deploy To GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+          publish_dir: ./build/docs
