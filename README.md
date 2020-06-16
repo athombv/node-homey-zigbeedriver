@@ -21,9 +21,7 @@ $ npm install --save zigbee-clusters
 
 ## Getting started
 
-Start by looking at the docs for [`ZigBeeDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeDevice.html). This is the class you
-most likely want to extend from. If you are implementing a `light` device take a look at
- [`ZigBeeLightDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeLightDevice.html) and [`ZigBeeXYLightDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeXYLightDevice.html)
+Start by looking at the docs for [`ZigBeeDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeDevice.html). This is the class you most likely want to extend from. If you are implementing a `light` device take a look at [`ZigBeeLightDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeLightDevice.html).
 
 See [examples/exampleBulb.js](https://github.com/athombv/node-homey-zigbeedriver/blob/master/examples/exampleBulb.js) and [examples/tradfriBulb.json](https://github.com/athombv/node-homey-zigbeedriver/blob/master/examples/exampleBulb.json)
 
