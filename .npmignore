@@ -1,10 +1,9 @@
-.github
+build
 docs
 examples
-test
-.editorconfig
-.eslintignore
-.eslintrc.json
+
 CONTRIBUTING.md
-Gruntfile.js
-jsdoc.json
+.eslintrc.json
+.eslintignore
+.editorconfig
+.github

@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "source": {
+    "include": [
+      "../README.md",
+      "../lib",
+      "../index.js"
+    ]
+  },
+  "templates": {
+    "referenceTitle": "documentation homey-zwavedriver"
+  },
+  "opts": {
+    "destination": "../build/docs",
+    "template": "../node_modules/braintree-jsdoc-template"
+  }
+}
