@@ -28,7 +28,6 @@ See [examples/exampleBulb.js](https://github.com/athombv/node-homey-zigbeedriver
 ## Docs
 See [https://athombv.github.io/node-homey-zigbeedriver](https://athombv.github.io/node-homey-zigbeedriver)
 
-
 ## Breaking changes for homey-zigbeedriver
 
 This is a non exhaustive list of breaking changes in `homey-zigbeedriver` with respect to `homey-meshdriver` which might be good to be aware of:
@@ -41,6 +40,6 @@ This is a non exhaustive list of breaking changes in `homey-zigbeedriver` with r
 - `registerReportListener` is deprecated in favour of `BoundCluster` implementation.
 - `registerAttrReportListener` is deprecated in favour of `configureAttributeReporting`.
 - `calculateZigbeeDimDuration` renamed to `calculateLevelControlTransitionTime`.
-  - `calculateColorControlTransitionTime` is added for the `colorControl` cluster.
+- `calculateColorControlTransitionTime` is added for the `colorControl` cluster.
 - `ZigBeeXYLightDevice` is removed in favour of `ZigBeeLightDevice`, it detects if the light supports hue and saturation or XY only.
 
