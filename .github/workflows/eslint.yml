@@ -31,12 +31,6 @@ jobs:
         with:
           node-version: '12'
 
-      # Only use the ssh-agent action below if your repository has private git dependencies (see README.md for instructions on how to configure an ssh key).
-      # TODO: remove this step when possible
-      - uses: webfactory/ssh-agent@v0.2.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
       # Finally run `npm run lint` (make sure you have defined a lint command in package.json e.g. "lint": "eslint .").
       - run: npm ci

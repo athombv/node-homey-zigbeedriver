@@ -38,7 +38,6 @@ jobs:
       - name: Checkout git repository
         uses: actions/checkout@v2
         with:
-          #           ssh-key: ${{ secrets.SSH_KEY }}
           # The token below is only necessary if you want to push the version bump to a protected branch
           token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
@@ -56,70 +55,53 @@ jobs:
           # Needed for publishing to npm
           registry-url: 'https://registry.npmjs.org'
 
-      # Only use the ssh-agent action below if your repository has private git dependencies (see README.md for instructions on how to configure an ssh key).
-      - uses: webfactory/ssh-agent@v0.2.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
         run: |
           npm ci
           npm run build
 
-#      - name: Version bump patch
-#        if: "contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
-#        run: |
-#          npm version patch
-#          git pull
-#          git push --follow-tags
+  #      - name: Version bump patch
+  #        if: "contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
+  #        run: |
+  #          npm version patch
+  #          git pull
+  #          git push --follow-tags
 
-#      - name: Version bump minor
-#        if: "contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
-#        run: |
-#          npm version minor
-#          git pull
-#          git push --follow-tags
+  #      - name: Version bump minor
+  #        if: "contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')"
+  #        run: |
+  #          npm version minor
+  #          git pull
+  #          git push --follow-tags
 
-#      - name: Version bump major
-#        if: "contains(github.event.head_commit.message, '#major')"
-#        run: |
-#          npm version major
-#          git pull
-#          git push --follow-tags
+  #      - name: Version bump major
+  #        if: "contains(github.event.head_commit.message, '#major')"
+  #        run: |
+  #          npm version major
+  #          git pull
+  #          git push --follow-tags
 
-#      # Publish when this action is running on branch production
-#      - name: Publish
-#        if: github.ref == 'refs/heads/production'
-#        run: |
-#          npm publish
-#          VERSION="$(node -p "require('./package.json').version")"
-#          echo "::set-env name=package_version::${VERSION}"
-#          echo $package_version
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+  #      # Publish when this action is running on branch production
+  #      - name: Publish
+  #        if: github.ref == 'refs/heads/production'
+  #        run: |
+  #          npm publish
+  #          VERSION="$(node -p "require('./package.json').version")"
+  #          echo "::set-env name=package_version::${VERSION}"
+  #          echo $package_version
+  #        env:
+  #          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
-#      # Publish to beta when this action is running on branch testing
-#      - name: Publish to beta
-#        if: github.ref == 'refs/heads/testing'
-#        run: |
-#          npm publish --tag beta
-#          VERSION="$(node -p "require('./package.json').version")@beta"
-#          echo "::set-env name=package_version::${VERSION}"
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
-#      # Post a Slack notification in #software on success/failure
-#      - name: Slack notify
-#        if: always()
-#        uses: innocarpe/actions-slack@v1
-#        with:
-#          status: ${{ job.status }}
-#          success_text: '${{github.repository}} - published v${{env.package_version}} to npm 🚀'
-#          failure_text: '${{github.repository}} - failed to publish to npm'
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
-#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
+  #      # Publish to beta when this action is running on branch testing
+  #      - name: Publish to beta
+  #        if: github.ref == 'refs/heads/testing'
+  #        run: |
+  #          npm publish --tag beta
+  #          VERSION="$(node -p "require('./package.json').version")@beta"
+  #          echo "::set-env name=package_version::${VERSION}"
+  #        env:
+  #          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
   deploy_to_github_pages:
     needs: deploy_to_npm
@@ -135,9 +117,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - uses: webfactory/ssh-agent@v0.2.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - run: npm install
       - run: npm run build
