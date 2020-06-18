@@ -17,7 +17,7 @@ on:
 
 jobs:
   test:
-    name: Run
+    name: Test
     runs-on: ubuntu-latest
 
     # Define a strategy for running these tests on various operating systems and Node.js versions in parallel.
