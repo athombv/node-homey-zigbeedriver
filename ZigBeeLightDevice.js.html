@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      ZigBeeLightDevice.js - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      documentation homey-zigbeedriver
+    </h3>
+
+    
+
+    <h3>Classes</h3><ul><li id="ZigBeeDevice-nav"><a href="ZigBeeDevice.html">ZigBeeDevice</a><ul class='methods'><li data-type="method" id="ZigBeeDevice-configureAttributeReporting-nav"><a href="ZigBeeDevice.html#configureAttributeReporting">configureAttributeReporting</a></li><li data-type="method" id="ZigBeeDevice-debug-nav"><a href="ZigBeeDevice.html#debug">debug</a></li><li data-type="method" id="ZigBeeDevice-disableDebug-nav"><a href="ZigBeeDevice.html#disableDebug">disableDebug</a></li><li data-type="method" id="ZigBeeDevice-enableDebug-nav"><a href="ZigBeeDevice.html#enableDebug">enableDebug</a></li><li data-type="method" id="ZigBeeDevice-getClusterCapabilityValue-nav"><a href="ZigBeeDevice.html#getClusterCapabilityValue">getClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeDevice-getClusterEndpoint-nav"><a href="ZigBeeDevice.html#getClusterEndpoint">getClusterEndpoint</a></li><li data-type="method" id="ZigBeeDevice-getEnergy-nav"><a href="ZigBeeDevice.html#getEnergy">getEnergy</a></li><li data-type="method" id="ZigBeeDevice-isFirstInit-nav"><a href="ZigBeeDevice.html#isFirstInit">isFirstInit</a></li><li data-type="method" id="ZigBeeDevice-onDeleted-nav"><a href="ZigBeeDevice.html#onDeleted">onDeleted</a></li><li data-type="method" id="ZigBeeDevice-onEndDeviceAnnounce-nav"><a href="ZigBeeDevice.html#onEndDeviceAnnounce">onEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeDevice-onMeshInit-nav"><a href="ZigBeeDevice.html#onMeshInit">onMeshInit</a></li><li data-type="method" id="ZigBeeDevice-onNodeInit-nav"><a href="ZigBeeDevice.html#onNodeInit">onNodeInit</a></li><li data-type="method" id="ZigBeeDevice-parseAttributeReport-nav"><a href="ZigBeeDevice.html#parseAttributeReport">parseAttributeReport</a></li><li data-type="method" id="ZigBeeDevice-printNode-nav"><a href="ZigBeeDevice.html#printNode">printNode</a></li><li data-type="method" id="ZigBeeDevice-registerAttrReportListener-nav"><a href="ZigBeeDevice.html#registerAttrReportListener">registerAttrReportListener</a></li><li data-type="method" id="ZigBeeDevice-registerCapability-nav"><a href="ZigBeeDevice.html#registerCapability">registerCapability</a></li><li data-type="method" id="ZigBeeDevice-registerMultipleCapabilities-nav"><a href="ZigBeeDevice.html#registerMultipleCapabilities">registerMultipleCapabilities</a></li><li data-type="method" id="ZigBeeDevice-registerReportListener-nav"><a href="ZigBeeDevice.html#registerReportListener">registerReportListener</a></li><li data-type="method" id="ZigBeeDevice-scheduleForNextEndDeviceAnnounce-nav"><a href="ZigBeeDevice.html#scheduleForNextEndDeviceAnnounce">scheduleForNextEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeDevice-setClusterCapabilityValue-nav"><a href="ZigBeeDevice.html#setClusterCapabilityValue">setClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeDevice-triggerFlow-nav"><a href="ZigBeeDevice.html#triggerFlow">triggerFlow</a></li></ul></li><li id="ZigBeeLightDevice-nav"><a href="ZigBeeLightDevice.html">ZigBeeLightDevice</a><ul class='methods'><li data-type="method" id="ZigBeeLightDevice-changeColor-nav"><a href="ZigBeeLightDevice.html#changeColor">changeColor</a></li><li data-type="method" id="ZigBeeLightDevice-changeColorTemperature-nav"><a href="ZigBeeLightDevice.html#changeColorTemperature">changeColorTemperature</a></li><li data-type="method" id="ZigBeeLightDevice-changeDimLevel-nav"><a href="ZigBeeLightDevice.html#changeDimLevel">changeDimLevel</a></li><li data-type="method" id="ZigBeeLightDevice-changeOnOff-nav"><a href="ZigBeeLightDevice.html#changeOnOff">changeOnOff</a></li><li data-type="method" id="ZigBeeLightDevice-configureAttributeReporting-nav"><a href="ZigBeeLightDevice.html#configureAttributeReporting">configureAttributeReporting</a></li><li data-type="method" id="ZigBeeLightDevice-debug-nav"><a href="ZigBeeLightDevice.html#debug">debug</a></li><li data-type="method" id="ZigBeeLightDevice-disableDebug-nav"><a href="ZigBeeLightDevice.html#disableDebug">disableDebug</a></li><li data-type="method" id="ZigBeeLightDevice-enableDebug-nav"><a href="ZigBeeLightDevice.html#enableDebug">enableDebug</a></li><li data-type="method" id="ZigBeeLightDevice-getClusterCapabilityValue-nav"><a href="ZigBeeLightDevice.html#getClusterCapabilityValue">getClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeLightDevice-getClusterEndpoint-nav"><a href="ZigBeeLightDevice.html#getClusterEndpoint">getClusterEndpoint</a></li><li data-type="method" id="ZigBeeLightDevice-getEnergy-nav"><a href="ZigBeeLightDevice.html#getEnergy">getEnergy</a></li><li data-type="method" id="ZigBeeLightDevice-isFirstInit-nav"><a href="ZigBeeLightDevice.html#isFirstInit">isFirstInit</a></li><li data-type="method" id="ZigBeeLightDevice-onDeleted-nav"><a href="ZigBeeLightDevice.html#onDeleted">onDeleted</a></li><li data-type="method" id="ZigBeeLightDevice-onEndDeviceAnnounce-nav"><a href="ZigBeeLightDevice.html#onEndDeviceAnnounce">onEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeLightDevice-onMeshInit-nav"><a href="ZigBeeLightDevice.html#onMeshInit">onMeshInit</a></li><li data-type="method" id="ZigBeeLightDevice-onNodeInit-nav"><a href="ZigBeeLightDevice.html#onNodeInit">onNodeInit</a></li><li data-type="method" id="ZigBeeLightDevice-parseAttributeReport-nav"><a href="ZigBeeLightDevice.html#parseAttributeReport">parseAttributeReport</a></li><li data-type="method" id="ZigBeeLightDevice-printNode-nav"><a href="ZigBeeLightDevice.html#printNode">printNode</a></li><li data-type="method" id="ZigBeeLightDevice-readColorControlAttributes-nav"><a href="ZigBeeLightDevice.html#readColorControlAttributes">readColorControlAttributes</a></li><li data-type="method" id="ZigBeeLightDevice-registerAttrReportListener-nav"><a href="ZigBeeLightDevice.html#registerAttrReportListener">registerAttrReportListener</a></li><li data-type="method" id="ZigBeeLightDevice-registerCapability-nav"><a href="ZigBeeLightDevice.html#registerCapability">registerCapability</a></li><li data-type="method" id="ZigBeeLightDevice-registerColorCapabilities-nav"><a href="ZigBeeLightDevice.html#registerColorCapabilities">registerColorCapabilities</a></li><li data-type="method" id="ZigBeeLightDevice-registerMultipleCapabilities-nav"><a href="ZigBeeLightDevice.html#registerMultipleCapabilities">registerMultipleCapabilities</a></li><li data-type="method" id="ZigBeeLightDevice-registerOnOffAndDimCapabilities-nav"><a href="ZigBeeLightDevice.html#registerOnOffAndDimCapabilities">registerOnOffAndDimCapabilities</a></li><li data-type="method" id="ZigBeeLightDevice-registerReportListener-nav"><a href="ZigBeeLightDevice.html#registerReportListener">registerReportListener</a></li><li data-type="method" id="ZigBeeLightDevice-scheduleForNextEndDeviceAnnounce-nav"><a href="ZigBeeLightDevice.html#scheduleForNextEndDeviceAnnounce">scheduleForNextEndDeviceAnnounce</a></li><li data-type="method" id="ZigBeeLightDevice-setClusterCapabilityValue-nav"><a href="ZigBeeLightDevice.html#setClusterCapabilityValue">setClusterCapabilityValue</a></li><li data-type="method" id="ZigBeeLightDevice-triggerFlow-nav"><a href="ZigBeeLightDevice.html#triggerFlow">triggerFlow</a></li></ul></li></ul><h3 id="global-nav"><a href="global.html">Global</a></h3>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        ZigBeeLightDevice.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>'use strict';
+
+const { CLUSTER } = require('zigbee-clusters');
+
+const {
+  mapValueRange,
+  convertHSVToCIE,
+  calculateLevelControlTransitionTime,
+  calculateColorControlTransitionTime,
+  mapTemperatureToHueSaturation,
+  wrapAsyncWithRetry,
+  wait,
+} = require('./util');
+
+const ZigBeeDevice = require('./ZigBeeDevice');
+
+const MAX_HUE = 254;
+const MAX_DIM = 254;
+const MAX_SATURATION = 254;
+const CIE_MULTIPLIER = 65536;
+const CURRENT_LEVEL = 'currentLevel';
+
+/**
+ * `onoff` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const onoffCapabilityDefinition = {
+  capability: 'onoff',
+  cluster: CLUSTER.ON_OFF,
+  opts: {
+    getOpts: {
+      getOnStart: true,
+      getOnOnline: true, // When the light is powered off, and powered on again it often issues
+      // an end device announce, this is a good moment to update the capability value in Homey
+    },
+  },
+};
+
+/**
+ * `dim` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const dimCapabilityDefinition = {
+  capability: 'dim',
+  cluster: CLUSTER.LEVEL_CONTROL,
+  opts: {
+    getOpts: {
+      getOnStart: true,
+      getOnOnline: true, // When the light is powered off, and powered on again it often issues
+      // an end device announce, this is a good moment to update the capability value in Homey
+    },
+  },
+};
+
+/**
+ * `light_hue` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const lightHueCapabilityDefinition = {
+  capability: 'light_hue',
+  cluster: CLUSTER.COLOR_CONTROL,
+};
+
+/**
+ * `light_saturation` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const lightSaturationCapabilityDefinition = {
+  capability: 'light_saturation',
+  cluster: CLUSTER.COLOR_CONTROL,
+};
+
+/**
+ * `light_temperature` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const lightTemperatureCapabilityDefinition = {
+  capability: 'light_temperature',
+  cluster: CLUSTER.COLOR_CONTROL,
+};
+
+/**
+ * `light_mode` capability configuration used for {@link registerMultipleCapabilities}.
+ * @type {MultipleCapabilitiesConfiguration}
+ * @private
+ */
+const lightModeCapabilityDefinition = {
+  capability: 'light_mode',
+  cluster: CLUSTER.COLOR_CONTROL,
+};
+
+/**
+ * The ZigBeeLightDevice class handles all light related capabilities [`onoff`, `dim`,
+ * `light_mode`, `light_hue`, `light_saturation` and `light_temperature`] for a Zigbee device
+ * that uses the {@link CLUSTER.LEVEL_CONTROL} with the command `moveToLevelWithOnOff` for
+ * `onoff` and `dim`, and the {@link CLUSTER.COLOR_CONTROL} with the commands
+ * `moveToHueAndSaturation`, `moveToHue`, `moveToColor` and `moveToColorTemperature` for
+ * `light_mode`, `light_hue`, `light_saturation` and `light_temperature`.
+ * @extends ZigBeeDevice
+ *
+ * @example
+ * const { ZigBeeLightDevice } = require('homey-zigbeedriver');
+ *
+ * class ZigBeeBulb extends ZigBeeLightDevice {
+ *    async onNodeInit({zclNode, node}) {
+ *      await super.onNodeInit({zclNode, node});
+ *      // Do custom stuff here
+ *    }
+ * }
+ */
+class ZigBeeLightDevice extends ZigBeeDevice {
+
+  /**
+   * This method will be called when the {@link ZigBeeDevice} instance is ready and did
+   * initialize a {@link ZCLNode}.
+   *
+   * @param {ZCLNode} zclNode
+   * @param {boolean} supportsHueAndSaturation - If the device does not have attribute
+   * `colorCapabilities` set to `hueAndSaturation` but controlling via hue and saturation is
+   * still required, set this flag to true.
+   * @param {boolean} supportsColorTemperature - If the device does not have attribute
+   * `colorCapabilities` set to `colorTemperature` but controlling color temperature via
+   * `moveToColorTemperature` is still required, set this flag to true.
+   * @returns {Promise&lt;void>}
+   */
+  async onNodeInit({ zclNode, supportsHueAndSaturation, supportsColorTemperature }) {
+    // TODO: remove when stable
+    this.enableDebug();
+
+    // Read attribute values from device on first init if it has color capabilities
+    if (!this.getStoreValue('colorClusterConfigured')
+      &amp;&amp; (this.hasCapability('light_hue')
+      || this.hasCapability('light_saturation')
+      || this.hasCapability('light_mode')
+      || this.hasCapability('light_temperature'))
+    ) {
+      await wrapAsyncWithRetry(this.readColorControlAttributes.bind(this));
+    }
+
+    // Override if needed
+    if (typeof supportsColorTemperature === 'boolean') {
+      this._supportsColorTemperature = supportsColorTemperature;
+    }
+    if (typeof supportsHueAndSaturation === 'boolean') {
+      this._supportsHueAndSaturationOption = supportsHueAndSaturation;
+    }
+
+    // Register `onoff` and `dim` capabilities if device has both
+    if (this.hasCapability('onoff') &amp;&amp; this.hasCapability('dim')) {
+      this.registerOnOffAndDimCapabilities({ zclNode });
+    }
+
+    // Register color related capabilities if device has one of the following
+    if (this.hasCapability('light_hue')
+      || this.hasCapability('light_saturation')
+      || this.hasCapability('light_mode')
+      || this.hasCapability('light_temperature')
+    ) {
+      await this.registerColorCapabilities({ zclNode });
+    }
+
+    this.log('ZigBeeLightDevice is initialized', {
+      supportsHueAndSaturation: this.supportsHueAndSaturation,
+      supportsColorTemperature: this.supportsColorTemperature,
+      colorTemperatureRange: this.colorTemperatureRange,
+    });
+  }
+
+  get supportsHueAndSaturation() {
+    if (typeof this._supportsHueAndSaturationOption === 'boolean') {
+      return this._supportsHueAndSaturationOption;
+    }
+    return !!((this.getStoreValue('colorCapabilities') || {}).hueAndSaturation);
+  }
+
+  get supportsColorTemperature() {
+    if (typeof this._supportsColorTemperature === 'boolean') {
+      return this._supportsColorTemperature;
+    }
+    return !!((this.getStoreValue('colorCapabilities') || {}).colorTemperature);
+  }
+
+  get colorTemperatureRange() {
+    return {
+      min: this.getStoreValue('colorTempMin'),
+      max: this.getStoreValue('colorTempMax'),
+    };
+  }
+
+  get levelControlCluster() {
+    const levelControlClusterEndpoint = this.getClusterEndpoint(CLUSTER.LEVEL_CONTROL);
+    if (levelControlClusterEndpoint === null) throw new Error('missing_level_control_cluster');
+    return this.zclNode.endpoints[levelControlClusterEndpoint].clusters.levelControl;
+  }
+
+  get onOffCluster() {
+    const onOffClusterEndpoint = this.getClusterEndpoint(CLUSTER.ON_OFF);
+    if (onOffClusterEndpoint === null) throw new Error('missing_on_off_cluster');
+    return this.zclNode.endpoints[onOffClusterEndpoint].clusters.onOff;
+  }
+
+  get colorControlCluster() {
+    const colorControlEndpoint = this.getClusterEndpoint(CLUSTER.COLOR_CONTROL);
+    if (colorControlEndpoint === null) throw new Error('missing_color_control_cluster');
+    return this.zclNode.endpoints[colorControlEndpoint].clusters.colorControl;
+  }
+
+  /**
+   * Read colorControl cluster attributes needed in order to operate the device properly.
+   * @returns {Promise&lt;T>}
+   */
+  async readColorControlAttributes() {
+    this.log('readColorControlAttributes()');
+    return this.colorControlCluster.readAttributes(
+      'colorCapabilities', 'colorTemperatureMireds', 'colorTempPhysicalMinMireds',
+      'colorTempPhysicalMaxMireds', 'currentHue', 'currentSaturation', 'colorMode', 'currentX',
+      'currentY',
+    )
+      .then(async ({
+        colorCapabilities, colorTemperatureMireds, colorTempPhysicalMinMireds,
+        colorTempPhysicalMaxMireds, currentHue, currentSaturation, colorMode, currentX, currentY,
+      }) => {
+        // Make sure not undefined
+        colorCapabilities = colorCapabilities || {};
+
+        // Store all properties
+        await this.setStoreValue('colorCapabilities', {
+          hueAndSaturation: colorCapabilities.hueAndSaturation,
+          enhancedHue: colorCapabilities.enhancedHue,
+          colorLoop: colorCapabilities.colorLoop,
+          xy: colorCapabilities.xy,
+          colorTemperature: colorCapabilities.colorTemperature,
+        });
+
+        await this.setStoreValue('colorTempMin', colorTempPhysicalMinMireds);
+        await this.setStoreValue('colorTempMax', colorTempPhysicalMaxMireds);
+        await this.setStoreValue('colorClusterConfigured', true);
+
+        this._supportsColorTemperature = colorCapabilities.colorTemperature;
+        this._supportsHueAndSaturationOption = colorCapabilities.hueAndSaturation;
+
+        this.log('read configuration attributes', {
+          colorCapabilities,
+          colorTemperatureMireds,
+          colorTempPhysicalMinMireds,
+          colorTempPhysicalMaxMireds,
+          currentHue,
+          currentSaturation,
+          colorMode,
+          currentX,
+          currentY,
+        });
+      })
+      .catch(err => {
+        this.error('Error: could not read color control attributes', err);
+      });
+  }
+
+  /**
+   * This method handles registration of the `onoff` and `dim` capabilities.
+   * @param {ZCLNode} zclNode
+   */
+  registerOnOffAndDimCapabilities({ zclNode }) {
+    // Register multiple capabilities, they will be debounced when one of them is called
+    this.registerMultipleCapabilities(
+      [onoffCapabilityDefinition, dimCapabilityDefinition],
+      // eslint-disable-next-line consistent-return
+      (valueObj = {}, optsObj = {}) => {
+        const onoffChanged = typeof valueObj.onoff === 'boolean';
+        const dimChanged = typeof valueObj.dim === 'number';
+
+        this.log('capabilities changed', { onoffChanged, dimChanged });
+
+        if (onoffChanged &amp;&amp; dimChanged) {
+          if (valueObj.onoff &amp;&amp; valueObj.dim > 0) {
+            // Bulb is turned on and dimmed to a value, then just dim
+            return this.changeDimLevel(valueObj.dim, { ...optsObj.dim });
+          }
+          if (valueObj.onoff === false) {
+            // Bulb is turned off and dimmed to a value, then turn off
+            return this.changeOnOff(false); // Turn off
+          }
+          if (valueObj.onoff === true &amp;&amp; valueObj.dim === 0) {
+            // Device is turned on and dimmed to zero, then just turn off
+            return this.changeDimLevel(0, { ...optsObj.dim });
+          }
+        } else if (onoffChanged) {
+          // Device is only turned on/off, request new dim level afterwards
+          return this.changeOnOff(valueObj.onoff);
+        } else if (dimChanged) {
+          // Bulb is only dimmed
+          return this.changeDimLevel(valueObj.dim, { ...optsObj.dim });
+        }
+      },
+    );
+  }
+
+  /**
+   * This method handles registration of the color capabilities `light_hue`, `light_saturation`,
+   * `light_mode` and `light_temperature`.
+   * @param {ZCLNode} zclNode
+   * @returns {Promise&lt;void>}
+   */
+  async registerColorCapabilities({ zclNode }) {
+    // Register debounced capabilities
+    const groupedCapabilities = [];
+    if (this.hasCapability('light_hue')) {
+      groupedCapabilities.push(lightHueCapabilityDefinition);
+    }
+    if (this.hasCapability('light_saturation')) {
+      groupedCapabilities.push(lightSaturationCapabilityDefinition);
+    }
+    if (this.hasCapability('light_temperature')) {
+      groupedCapabilities.push(lightTemperatureCapabilityDefinition);
+    }
+    if (this.hasCapability('light_mode')) {
+      groupedCapabilities.push(lightModeCapabilityDefinition);
+    }
+
+    // Register multiple capabilities, they will be debounced when one of them is called
+    // eslint-disable-next-line consistent-return
+    this.registerMultipleCapabilities(groupedCapabilities, (valueObj, optsObj) => {
+      const lightHueChanged = typeof valueObj.light_hue === 'number';
+      const lightSaturationChanged = typeof valueObj.light_saturation === 'number';
+      const lightTemperatureChanged = typeof valueObj.light_temperature === 'number';
+      const lightModeChanged = typeof valueObj.light_mode === 'string';
+
+      this.log('capabilities changed', {
+        lightHueChanged, lightSaturationChanged, lightTemperatureChanged, lightModeChanged,
+      });
+
+      // If a color capability changed or light mode was changed to color, change the color
+      if (lightHueChanged || lightSaturationChanged || (lightModeChanged &amp;&amp; valueObj.light_mode === 'color')) {
+        return this.changeColor(
+          { hue: valueObj.light_hue, saturation: valueObj.light_saturation },
+          { ...optsObj.light_saturation, ...optsObj.light_hue },
+        );
+      }
+
+      // If the light temperature was changed or the light mode was changed to temperature,
+      // change the temperature
+      if (lightTemperatureChanged || (lightModeChanged &amp;&amp; valueObj.light_mode === 'temperature')) {
+        return this.changeColorTemperature(
+          valueObj.light_temperature,
+          { ...optsObj.light_temperature },
+        );
+      }
+    });
+  }
+
+  /**
+   * Sends a `setOn` or `setOff` command to the device in order to turn it on or off. After
+   * successfully changing the on/off value, the `dim` capability value will be updated
+   * accordingly. Additionally, if the device is turned on, the current dim level will be
+   * requested and updated in the form of the `dim` capability value.
+   * @param {boolean} onoff
+   * @returns {Promise&lt;any>}
+   */
+  async changeOnOff(onoff) {
+    this.log('changeOnOff() →', onoff);
+    return this.onOffCluster[onoff ? 'setOn' : 'setOff']()
+      .then(async result => {
+        if (onoff === false) {
+          await this.setCapabilityValue('dim', 0); // Set dim to zero when turned off
+        } else if (onoff) {
+          // Wait for a little while, some devices do not directly update their currentLevel
+          await wait(1000)
+            .then(async () => {
+              // Get current level attribute to update dim level
+              const { currentLevel } = await this.levelControlCluster.readAttributes(CURRENT_LEVEL);
+              this.debug('changeOnOff() →', onoff, { currentLevel });
+              // Always set dim to 0.01 or higher since bulb is turned on
+              await this.setCapabilityValue('dim', Math.max(0.01, currentLevel / MAX_DIM));
+            })
+            .catch(err => {
+              this.error('Error: could not update dim capability value after `onoff` change', err);
+            });
+        }
+        return result;
+      });
+  }
+
+  /**
+   * Sends a `moveToLevelWithOnOff` command to the device in order to change the dim value.
+   * After successfully changing the dim value, the `onoff` capability value will be updated
+   * accordingly.
+   * @param {number} dim - Range 0 - 1
+   * @param {object} [opts]
+   * @property {number} [opts.duration]
+   * @returns {Promise&lt;any>}
+   */
+  async changeDimLevel(dim, opts = {}) {
+    this.log('changeDimLevel() →', dim);
+
+    const moveToLevelWithOnOffCommand = {
+      level: Math.round(dim * MAX_DIM),
+      transitionTime: calculateLevelControlTransitionTime(opts),
+    };
+
+    // Execute dim
+    this.debug('changeDimLevel() → ', dim, moveToLevelWithOnOffCommand);
+    return this.levelControlCluster.moveToLevelWithOnOff(moveToLevelWithOnOffCommand)
+      .then(async result => {
+        // Update onoff value
+        if (dim === 0) {
+          await this.setCapabilityValue('onoff', false);
+        } else if (this.getCapabilityValue('onoff') === false &amp;&amp; dim > 0) {
+          await this.setCapabilityValue('onoff', true);
+        }
+        return result;
+      });
+  }
+
+  /**
+   * Sends a command to the device which changes it's color temperature. If the device supports
+   * `colorTemperature` the `moveToColorTemperature` command will be used. If it doesn't the
+   * device is not capable to change it's color temperature. In the past a color temperature
+   * would be faked with HSV values i.c.w. `moveToColor` command, with varying results. It is
+   * recommended to remove/no longer add the `light_temperature` capability for devices that do not
+   * support `colorTemperature`. For legacy reasons this still works, but yields sub par
+   * results, colors are often skewed.
+   * @param {number} temperature - Range 0 - 1
+   * @param {object} [opts]
+   * @property {number} [opts.duration]
+   * @returns {Promise&lt;*>}
+   */
+  async changeColorTemperature(temperature, opts = {}) {
+    this.log('changeColorTemperature() →', temperature);
+
+    // Determine value with fallback to current light_saturation capability value or 1
+    if (typeof temperature !== 'number') {
+      if (typeof this.getCapabilityValue('light_temperature') === 'number') {
+        temperature = this.getCapabilityValue('light_temperature');
+      } else {
+        temperature = 1;
+      }
+    }
+
+    // Update light_mode capability if necessary
+    if (this.hasCapability('light_mode')
+      &amp;&amp; this.getCapabilityValue('light_mode') !== 'temperature') {
+      await this.setCapabilityValue('light_mode', 'temperature');
+    }
+
+    // Not all devices support moveToColorTemperature
+    if (this.supportsColorTemperature) {
+      // Map color temperature based on provided min max values
+      const { min, max } = this.colorTemperatureRange;
+      const colorTemperature = Math.round(
+        mapValueRange(0, 1, min, max, temperature),
+      );
+
+      // Execute move to color temperature command
+      const moveToColorTemperatureCommand = {
+        colorTemperature,
+        transitionTime: calculateColorControlTransitionTime(opts),
+      };
+      this.debug(`changeColorTemperature() → ${temperature} →`, moveToColorTemperatureCommand);
+      return this.colorControlCluster.moveToColorTemperature(moveToColorTemperatureCommand);
+    }
+
+    this.error('Warning: this device does not support \'moveToColorTemperature\', it should'
+      + ' not have the \'light_temperature\' capability');
+
+    // Calculate fake temperature range
+    const { hue, saturation, value } = mapTemperatureToHueSaturation(temperature);
+
+    // Convert HSV to CIE
+    const { x, y } = convertHSVToCIE({
+      hue,
+      saturation,
+      value, // || this.getCapabilityValue('dim'),
+    });
+
+    // Execute move to color command
+    const moveToColorCommand = {
+      colorX: x * CIE_MULTIPLIER,
+      colorY: y * CIE_MULTIPLIER,
+      transitionTime: calculateColorControlTransitionTime(opts),
+    };
+    this.debug(`changeColorTemperature() → ${temperature} →`, moveToColorCommand);
+    return this.colorControlCluster.moveToColor(moveToColorCommand);
+  }
+
+  /**
+   * Sends a command to the device which changes it's color. If the device supports
+   * `hueAndSaturation` the `moveToHueAndSaturation` command will be used. If it doesn't it will
+   * fallback to `moveToColor` which should always be supported.
+   * @param {number} hue - Range 0 - 1
+   * @param {number} saturation - Range 0 - 1
+   * @param {number} value - Range 0 - 1
+   * @param {object} [opts]
+   * @property {number} [opts.duration]
+   * @returns {Promise&lt;any>}
+   */
+  async changeColor({ hue, saturation, value }, opts = {}) {
+    this.log('changeColor() →', { hue, saturation, value });
+
+    // Determine value with fallback to current light_saturation capability value or 1
+    if (typeof saturation !== 'number') {
+      if (typeof this.getCapabilityValue('light_saturation') === 'number') {
+        saturation = this.getCapabilityValue('light_saturation');
+      } else {
+        saturation = 1;
+      }
+    }
+
+    // Determine value with fallback to current light_saturation capability value or 1
+    if (typeof hue !== 'number') {
+      if (typeof this.getCapabilityValue('light_hue') === 'number') {
+        hue = this.getCapabilityValue('light_hue');
+      } else {
+        hue = 1;
+      }
+    }
+
+    // Update light_mode capability if necessary
+    if (this.hasCapability('light_mode'
+      &amp;&amp; this.getCapabilityValue('light_mode') !== 'color')) {
+      await this.setCapabilityValue('light_mode', 'color');
+    }
+
+    // If this device supports hue and saturation commands
+    if (this.supportsHueAndSaturation) {
+      // Execute move to hue and saturation command
+      const moveToHueAndSaturationCommand = {
+        hue: Math.round(hue * MAX_HUE),
+        saturation: Math.round(saturation * MAX_SATURATION),
+        transitionTime: calculateColorControlTransitionTime(opts),
+      };
+      this.debug('changeColor() → hue and saturation', moveToHueAndSaturationCommand);
+      return this.colorControlCluster.moveToHueAndSaturation(moveToHueAndSaturationCommand);
+    }
+
+    // Determine value with fallback to current dim capability value or 1
+    if (typeof value !== 'number') {
+      if (typeof this.getCapabilityValue('dim') === 'number') {
+        value = this.getCapabilityValue('dim');
+      } else {
+        value = 1;
+      }
+    }
+
+    // Convert to CIE color space
+    const { x, y } = convertHSVToCIE({ hue, saturation, value });
+
+    // Execute move to color command
+    const moveToColorCommand = {
+      colorX: x * CIE_MULTIPLIER,
+      colorY: y * CIE_MULTIPLIER,
+      transitionTime: calculateColorControlTransitionTime(opts),
+    };
+    this.debug('changeColor() → hue', moveToColorCommand);
+    return this.colorControlCluster.moveToColor(moveToColorCommand);
+  }
+
+  /**
+   * When node sends an end device announce retrieve its color values and update the respective
+   * capabilities.
+   * @returns {Promise&lt;void>}
+   */
+  async onEndDeviceAnnounce() {
+    // Try and get color control cluster
+    let colorControlCluster;
+    try {
+      colorControlCluster = this.colorControlCluster;
+    } catch (err) {
+      // Device does not support the color control cluster, skip
+      return;
+    }
+
+    const {
+      currentSaturation,
+      currentHue,
+      colorMode,
+      colorTemperatureMireds,
+    } = await colorControlCluster.readAttributes(
+      'currentSaturation', 'currentHue', 'colorMode', 'colorTemperatureMireds',
+    );
+
+    this.log('onEndDeviceAnnounce', {
+      currentSaturation,
+      currentHue,
+      colorMode,
+      colorTemperatureMireds,
+    });
+
+    // If device supports hue and saturation fetch it and update the capability values
+    if (this.supportsHueAndSaturation &amp;&amp; typeof currentHue === 'number' &amp;&amp; typeof currentSaturation === 'number') {
+      await this.setCapabilityValue('light_hue', currentHue / MAX_HUE);
+      await this.setCapabilityValue('light_saturation', currentSaturation / MAX_SATURATION);
+    }
+
+    // Determine the light_mode
+    if (this.hasCapability('light_mode')) {
+      await this.setCapabilityValue('light_mode', colorMode === 'colorTemperatureMireds' ? 'temperature' : 'color');
+    }
+
+    // If device supports color temperature and current color temperature is provided
+    if (this.supportsColorTemperature &amp;&amp; typeof colorTemperatureMireds === 'number') {
+      await this.setCapabilityValue('light_temperature', mapValueRange(
+        this.getStoreValue('colorTempMin'),
+        this.getStoreValue('colorTempMax'),
+        0,
+        1,
+        colorTemperatureMireds,
+      ));
+    }
+  }
+
+}
+
+module.exports = ZigBeeLightDevice;
+</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>
