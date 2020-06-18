@@ -10,7 +10,7 @@
     ]
   },
   "templates": {
-    "referenceTitle": "documentation homey-zwavedriver"
+    "referenceTitle": "documentation homey-zigbeedriver"
   },
   "opts": {
     "destination": "../build/docs",
