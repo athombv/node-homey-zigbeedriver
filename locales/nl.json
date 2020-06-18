@@ -1,6 +1,6 @@
 {
   "error": {
-    "node_initialization": "Er ging iets fout (error: initialization failed)",
+    "node_initialization": "Kon dit Zigbee apparaat niet initialiseren",
     "command_failed": "Er ging iets fout",
     "invalid_group_id": "Ongeldig groepsadres"
   }

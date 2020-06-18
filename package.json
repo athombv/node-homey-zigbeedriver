@@ -4,11 +4,12 @@
   "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
     "test": "mocha --recursive",
-    "build": "grunt jsdoc",
-    "serve": "grunt connect",
-    "build:watch": "npm run build && concurrently -n serve,watch 'npm run serve' 'grunt watch'"
+    "lint": "eslint .",
+    "serve": "concurrently \"serve build/docs/\" \"npm run jsdoc:watch\"",
+    "build": "npm run jsdoc",
+    "jsdoc": "cd docs; jsdoc -c jsdoc.json",
+    "jsdoc:watch": "npm-watch jsdoc"
   },
   "keywords": [
     "zigbee",
@@ -19,17 +20,16 @@
   "dependencies": {
     "color-space": "^1.16.0",
     "tinygradient": "^1.1.1",
-    "zigbee-clusters": "git+ssh://git@github.com/athombv/node-zigbee-clusters.git"
+    "zigbee-clusters": "^1.0.1"
   },
   "devDependencies": {
     "braintree-jsdoc-template": "^3.3.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
-    "grunt": "^1.0.4",
-    "grunt-contrib-connect": "^2.1.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-jsdoc": "^2.4.1",
+    "jsdoc": "^3.6.4",
+    "npm-watch": "^0.6.0",
+    "serve": "^11.3.1",
     "homey": "^2.1.5",
     "mocha": "^7.1.1"
   },
@@ -49,5 +49,15 @@
   "bugs": {
     "url": "https://github.com/athombv/node-homey-zigbeedriver/issues"
   },
-  "homepage": "https://github.com/athombv/node-homey-zigbeedriver#readme"
+  "homepage": "https://github.com/athombv/node-homey-zigbeedriver#readme",
+  "watch": {
+    "jsdoc": {
+      "patterns": [
+        "lib"
+      ],
+      "extensions": [
+        "js"
+      ]
+    }
+  }
 }

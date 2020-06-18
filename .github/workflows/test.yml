@@ -1,10 +1,7 @@
 name: Test
 
-# Required secrets:
-# - SSH_KEY: required if `npm ci` needs to install private npm packages, make sure to enable webfactory/ssh-agent@v0.2.0 step
-
 # GitHub repo configuration:
-# 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before 
+# 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before
 #    merging' and select the 'Test' status check.
 
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
@@ -20,14 +17,14 @@ on:
 
 jobs:
   test:
-    name: Run
+    name: Test
     runs-on: ubuntu-latest
 
     # Define a strategy for running these tests on various operating systems and Node.js versions in parallel.
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-        node: [8, 10, 12]
+        os: [macos-latest, ubuntu-latest]
+        node: [12]
 
     steps:
       # Checks out the current repository.
@@ -37,12 +34,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }} # Important: use the matrix.node property when using a matrix strategy
-
-      # Only use the ssh-agent action below if your repository has private git dependencies (see README.md for
-      # instructions on how to configure an ssh key).
-      - uses: webfactory/ssh-agent@v0.2.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
       # Finally run `npm test` (make sure you have defined a proper test command in package.json).
