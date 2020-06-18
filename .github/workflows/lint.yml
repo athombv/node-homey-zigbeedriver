@@ -1,8 +1,8 @@
-name: ESLint
+name: Lint
 
 # GitHub repo configuration:
 # 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before
-#    merging' and select the 'ESLint' status check.
+#    merging' and select the 'Lint' status check.
 
 # Note: make sure to commit package-lock.json, this is needed for `npm ci`.
 
@@ -16,8 +16,8 @@ on:
   pull_request:
 
 jobs:
-  eslint:
-    name: ESLint
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       # Checks out the current repository.
