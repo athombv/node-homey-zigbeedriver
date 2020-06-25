@@ -28,9 +28,9 @@ See [examples/exampleBulb.js](https://github.com/athombv/node-homey-zigbeedriver
 ## Docs
 See [https://athombv.github.io/node-homey-zigbeedriver](https://athombv.github.io/node-homey-zigbeedriver)
 
-## Breaking changes for homey-zigbeedriver
+## Deprecations and breaking changes for homey-zigbeedriver
 
-This is a non exhaustive list of breaking changes in `homey-zigbeedriver` with respect to `homey-meshdriver` which might be good to be aware of:
+This is a non exhaustive list of deprecations and breaking changes in `homey-zigbeedriver` with respect to `homey-meshdriver` which might be good to be aware of:
 
 - `MeshDevice` is removed in favour of `ZigBeeDevice`.
 - `onMeshInit()` is deprecated in favour of `onNodeInit()`.
