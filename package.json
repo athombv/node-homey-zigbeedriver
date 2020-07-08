@@ -20,7 +20,7 @@
   "dependencies": {
     "color-space": "^1.16.0",
     "tinygradient": "^1.1.1",
-    "zigbee-clusters": "^1.0.1"
+    "zigbee-clusters": "^1.2.0"
   },
   "devDependencies": {
     "braintree-jsdoc-template": "^3.3.0",

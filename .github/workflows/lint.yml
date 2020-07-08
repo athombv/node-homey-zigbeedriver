@@ -20,11 +20,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+
       # Checks out the current repository.
       - uses: actions/checkout@v2
-        with:
-          # The token below is only necessary if you want to push the version bump to a protected branch
-          token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
       # Configures a Node.js environment.
       - uses: actions/setup-node@v1
