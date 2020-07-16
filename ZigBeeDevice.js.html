@@ -1248,6 +1248,7 @@ class ZigBeeDevice extends Homey.Device {
         minInterval: reportOpts.configureAttributeReporting.minInterval,
         maxInterval: reportOpts.configureAttributeReporting.maxInterval,
         minChange: reportOpts.configureAttributeReporting.minChange,
+        endpointId: endpoint,
       }];
       this.configureAttributeReporting(attributeReportingConfiguration)
         .then(() => {
