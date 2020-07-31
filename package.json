@@ -19,7 +19,9 @@
   "license": "ISC",
   "dependencies": {
     "color-space": "^1.16.0",
-    "tinygradient": "^1.1.1",
+    "tinygradient": "^1.1.1"
+  },
+  "peerDependencies": {
     "zigbee-clusters": "^1.2.2"
   },
   "devDependencies": {
