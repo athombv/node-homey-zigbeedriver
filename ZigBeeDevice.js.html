@@ -1014,8 +1014,6 @@ class ZigBeeDevice extends Homey.Device {
         this.zclNode = new ZCLNode(this.node);
 
         this.log(`ZigBeeDevice has been initialized (first init: ${this.isFirstInit()})`);
-        this.printNode();
-        this.enableDebug();
 
         // Mark device as available
         await this.setAvailable();
