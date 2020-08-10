@@ -394,6 +394,9 @@ function wrapAsyncWithRetry(
 }
 
 /**
+ * Note: this method has been deprecated since 1.5.0, please use [`debug` from
+ * `zigbee-clusters`](https://athombv.github.io/node-zigbee-clusters/global.html#debug).
+ *
  * Enables or disables debug logging in the [`zigbee-clusters`](https://github.com/athombv/node-zigbee-clusters) module.
  * @param {boolean} flag - Set to true to enable logging
  * @param {string} namespaces - As specified by `debug` npm module (e.g.
@@ -404,8 +407,12 @@ function wrapAsyncWithRetry(
  *
  * const { Util } = require('homey-zigbeedriver');
  * Util.debugZigbeeClusters(true);
+ *
+ * @deprecated since 1.5.0
  */
 function debugZigbeeClusters(...args) {
+  console.warn('DEPRECATED WARNING: please replace `debugZigbeeClusters` by `debug` from'
+    + ' zigbee-clusters: https://athombv.github.io/node-zigbee-clusters/global.html#debug');
   return debug(...args);
 }
 
