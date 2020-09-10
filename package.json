@@ -29,7 +29,7 @@
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
-    "homey": "^2.1.5",
+    "homey": "^2.6.1",
     "jsdoc": "^3.6.4",
     "mocha": "^7.1.1",
     "npm-watch": "^0.6.0",
