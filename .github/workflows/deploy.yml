@@ -54,6 +54,14 @@ jobs:
           node-version: '12'
           # Needed for publishing to npm
           registry-url: 'https://registry.npmjs.org'
+          
+      # Set SSH key
+      - uses: webfactory/ssh-agent@v0.4.1
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        if: env.SSH_KEY != null
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
 
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
