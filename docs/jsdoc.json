@@ -1,20 +1,23 @@
 {
-  "plugins": [
-    "plugins/markdown"
-  ],
   "source": {
-    "include": [
-      "../README.md",
-      "../lib",
-      "../index.js",
-      "../lib/util"
-    ]
-  },
-  "templates": {
-    "referenceTitle": "documentation homey-zigbeedriver"
+    "include": ["./lib", "./index.js", "./lib/util"]
   },
   "opts": {
-    "destination": "../build/docs",
-    "template": "../node_modules/braintree-jsdoc-template"
+    "mainpagetitle": "documentation homey-zigbeedriver",
+    "template": "./node_modules/homey-jsdoc-template",
+    "readme": "./README.md",
+    "destination": "./build/docs"
+  },
+  "plugins": [
+    "jsdoc-ts-utils",
+    "plugins/markdown"
+  ],
+  "templates": {
+    "default": {
+      "outputSourceFiles": false
+    }
+  },
+  "tsUtils": {
+    "typeScriptUtilityTypes": false
   }
 }

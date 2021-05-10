@@ -6,10 +6,10 @@
   "scripts": {
     "test": "mocha --recursive",
     "lint": "eslint .",
-    "serve": "concurrently \"serve build/docs/\" \"npm run jsdoc:watch\"",
-    "build": "npm run jsdoc",
-    "jsdoc": "cd docs; jsdoc -c jsdoc.json",
-    "jsdoc:watch": "npm-watch jsdoc"
+    "serve": "concurrently \"serve build/docs/\" \"npm run build:watch\"",
+    "build": "jsdoc --configure ./docs/jsdoc.json",
+    "build:clean": "rm -rf ./build",
+    "build:watch": "watch \"npm run build:clean && npm run build\" lib docs \"node_modules/homey-jsdoc-template\""
   },
   "keywords": [
     "zigbee",
@@ -25,16 +25,17 @@
     "zigbee-clusters": "^1.4.0"
   },
   "devDependencies": {
-    "braintree-jsdoc-template": "^3.3.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
     "homey": "^2.6.1",
     "jsdoc": "^3.6.4",
     "mocha": "^7.1.1",
-    "npm-watch": "^0.6.0",
     "serve": "^11.3.1",
-    "zigbee-clusters": "^1.4.0"
+    "zigbee-clusters": "^1.4.0",
+    "watch": "^1.0.2",
+    "jsdoc-ts-utils": "^1.1.2",
+    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#563c791766306ecc094c0ab0acdec665fdd5da23"
   },
   "engines": {
     "node": ">=12"
@@ -52,15 +53,5 @@
   "bugs": {
     "url": "https://github.com/athombv/node-homey-zigbeedriver/issues"
   },
-  "homepage": "https://github.com/athombv/node-homey-zigbeedriver#readme",
-  "watch": {
-    "jsdoc": {
-      "patterns": [
-        "lib"
-      ],
-      "extensions": [
-        "js"
-      ]
-    }
-  }
+  "homepage": "https://github.com/athombv/node-homey-zigbeedriver#readme"
 }
