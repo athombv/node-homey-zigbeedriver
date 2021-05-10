@@ -6,7 +6,7 @@
     "mainpagetitle": "Homey ZigbeeDriver",
     "template": "./node_modules/homey-jsdoc-template",
     "readme": "./README.md",
-    "destination": "./build/docs"
+    "destination": "./build"
   },
   "plugins": [
     "jsdoc-ts-utils",
