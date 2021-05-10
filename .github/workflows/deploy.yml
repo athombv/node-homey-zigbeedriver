@@ -132,4 +132,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-          publish_dir: ./build/docs
+          publish_dir: ./build
