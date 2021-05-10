@@ -3,7 +3,7 @@
     "include": ["./lib", "./index.js", "./lib/util"]
   },
   "opts": {
-    "mainpagetitle": "documentation homey-zigbeedriver",
+    "mainpagetitle": "Homey ZigbeeDriver",
     "template": "./node_modules/homey-jsdoc-template",
     "readme": "./README.md",
     "destination": "./build/docs"
