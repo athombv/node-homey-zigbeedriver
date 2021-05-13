@@ -1,0 +1,12 @@
+.component {
+    padding: var(--component-padding, 10px);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    background: var(--color-component);
+}
+
+@media only screen and (min-width: 768px) {
+    :root{
+        --component-padding: 20px;
+    }
+}

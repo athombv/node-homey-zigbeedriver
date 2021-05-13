@@ -1,0 +1,32 @@
+:root{
+    --container-navigation-width: 340px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container__main{
+    flex: 1 1 auto;
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .container{
+        align-items: start;
+        flex-direction: row;
+    }
+
+    .container__navigation{
+        width: var(--container-navigation-width);
+    }
+
+    .container__main{
+        --margin-left: 40px;
+        margin-top: 0;
+        margin-left: var(--margin-left);
+        max-width: calc(100% - var(--container-navigation-width) - var(--margin-left));
+    }
+}
