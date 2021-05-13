@@ -33,8 +33,10 @@ jobs:
   deploy_to_npm:
     name: Version Bump & Deploy to NPM
 
-    # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops and if a version bump is provided
-    if: github.actor != 'HomeyGithubActionsBot' && (github.event.inputs.versionBumpType == 'patch' || github.event.inputs.versionBumpType == 'minor' || github.event.inputs.versionBumpType == 'major' || contains(github.event.head_commit.message, '#patch') || contains(github.event.head_commit.message, '#minor') || contains(github.event.head_commit.message, '#major'))
+    # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops and check if if a version bump is provided and current branch is production or testing
+    if: github.actor != 'HomeyGithubActionsBot'
+        && (github.ref == 'refs/heads/production' || github.ref == 'refs/heads/testing')
+        && (github.event.inputs.versionBumpType == 'patch' || github.event.inputs.versionBumpType == 'minor' || github.event.inputs.versionBumpType == 'major' || contains(github.event.head_commit.message, '#patch') || contains(github.event.head_commit.message, '#minor') || contains(github.event.head_commit.message, '#major'))
 
     runs-on: ubuntu-latest
     steps:
