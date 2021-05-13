@@ -1,0 +1,48 @@
+name: Deploy Documentation To GitHub Pages
+
+# v1.0.0
+#
+# About this workflow:
+# This workflow runs `npm run build` and then syncs the `build` folder to GitHub Pages.
+
+# GitHub repo configuration:
+# 1. Go to Manage access and add 'Github Actions' team with role: admin.
+# 2. If you have protected branches, go to Branches > edit protected branch > enable 'Restrict who can push to
+#    matching branches' and add the 'athombv/github-actions' team.
+
+# Required secrets:
+# - HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN: required for publishing to the gh-pages branch.
+
+# Note: make sure to commit package-lock.json, this is needed for `npm ci`.
+
+# Note: add `.github` to .npmignore
+
+on:
+  push:
+    branches: [ production ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build & Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+      
+      # Build
+    - name: Build
+      run: |
+        npm ci
+        npm run build
+        
+    # Deploy
+    - name: Deploy To GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+        publish_dir: ./build
