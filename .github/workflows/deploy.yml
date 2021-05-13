@@ -109,27 +109,3 @@ jobs:
           echo package_version=${VERSION} >> $GITHUB_ENV
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
-  deploy_to_github_pages:
-    needs: deploy_to_npm
-
-    if: github.ref == 'refs/heads/production'
-
-    runs-on: ubuntu-latest
-
-    name: Deploy Docs To GitHub Pages
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-
-      - run: npm install
-      - run: npm run build
-
-      - name: Deploy To GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3.6.1
-        with:
-          personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-          publish_dir: ./build/docs
