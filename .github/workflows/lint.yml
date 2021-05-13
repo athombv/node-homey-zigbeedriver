@@ -28,6 +28,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
+          
+      # Set SSH key
+      - uses: webfactory/ssh-agent@v0.4.1
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        if: env.SSH_KEY != null
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
       # Finally run `npm run lint` (make sure you have defined a lint command in package.json e.g. "lint": "eslint .").

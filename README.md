@@ -1,31 +1,40 @@
-# homey-zigbeedriver
+# Homey ZigbeeDriver
 
-## Introduction
 This module can be used to make the development of Zigbee apps for Homey easier.
 
 It is essentially a map-tool from Homey-capabilities to Zigbee endpoints and clusters.
 
-Note: this module can only be used in Homey Apps built on SDKv3 which is available as of Homey v5.0.0.
+This module requires Homey Apps SDK v3.
+
+## Related Modules
+
+* [node-homey-oauth2app](https://github.com/athombv/node-homey-oauth2app) — Module for OAuth2 apps
+* [node-homey-rfdriver](https://github.com/athombv/node-homey-rfdriver) — Module for RF drivers
+* [node-homey-zwavedriver](https://github.com/athombv/node-homey-zwavedriver) — Module for Z-Wave drivers
 
 ## Installation
 
 ```bash
-$ npm install --save homey-zigbeedriver
+$ npm install homey-zigbeedriver
 ```
 
 Also checkout [`zigbee-clusters`](https://github.com/athombv/node-zigbee-clusters) if you want to do more advanced things or implement a driver for a Zigbee device without `homey-zigbeedriver`.
 
 ```bash
-$ npm install --save zigbee-clusters
+$ npm install zigbee-clusters
 ```
 
-## Getting started
+## Requirements
 
-Start by looking at the docs for [`ZigBeeDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeDevice.html). This is the class you most likely want to extend from. If you are implementing a `light` device take a look at [`ZigBeeLightDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeLightDevice.html).
+This module requires Homey Apps SDK v3.
+
+## Usage
+
+Your device should extend ZigBeeDevice. Start by looking at the docs for [`ZigBeeDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeDevice.html). This is the class you most likely want to extend from. If you are implementing a `light` device take a look at [`ZigBeeLightDevice`](https://athombv.github.io/node-homey-zigbeedriver/ZigBeeLightDevice.html).
 
 See [examples/exampleBulb.js](https://github.com/athombv/node-homey-zigbeedriver/blob/master/examples/exampleBulb.js) and [examples/tradfriBulb.json](https://github.com/athombv/node-homey-zigbeedriver/blob/master/examples/exampleBulb.json)
 
-## Docs
+## Documentation
 See [https://athombv.github.io/node-homey-zigbeedriver](https://athombv.github.io/node-homey-zigbeedriver)
 
 ## Deprecations and breaking changes for homey-zigbeedriver
