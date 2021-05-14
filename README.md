@@ -8,9 +8,10 @@ This module requires Homey Apps SDK v3.
 
 ## Related Modules
 
-* [node-homey-oauth2app](https://github.com/athombv/node-homey-oauth2app) — Module for OAuth2 apps
-* [node-homey-rfdriver](https://github.com/athombv/node-homey-rfdriver) — Module for RF drivers
-* [node-homey-zwavedriver](https://github.com/athombv/node-homey-zwavedriver) — Module for Z-Wave drivers
+* [node-homey-rfdriver](https://athombv.github.io/node-homey-rfdriver) — Module for RF drivers
+* [node-homey-zwavedriver](https://athombv.github.io/node-homey-zwavedriver) — Module for Z-Wave drivers
+* [node-homey-oauth2app](https://athombv.github.io/node-homey-oauth2app) — Module for OAuth2 apps
+* [node-homey-log](https://athombv.github.io/node-homey-log) — Module to log unhandled errors to Sentry
 
 ## Installation
 
