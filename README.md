@@ -1,5 +1,7 @@
 # Homey ZigbeeDriver
 
+[![npm](https://img.shields.io/npm/v/homey-zigbeedriver)](https://www.npmjs.com/package/homey-zigbeedriver) [![Lint](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/lint.yml) [![NPM](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/deploy.yml/badge.svg)](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/deploy.yml) [![Deploy Documentation To GitHub Pages](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/docs.yml/badge.svg?branch=master)](https://github.com/athombv/node-homey-zigbeedriver/actions/workflows/docs.yml)
+
 This module can be used to make the development of Zigbee apps for Homey easier.
 
 It is essentially a map-tool from Homey-capabilities to Zigbee endpoints and clusters.
