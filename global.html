@@ -11,7 +11,7 @@
   <link rel="preload" href="styles/homey.min.css" as="style">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="styles/atom-one-light.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Roboto:wght@100;300;400;500;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
         rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
 </head>
@@ -124,8 +124,9 @@
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -134,24 +135,25 @@
 
       <th>Type</th>
 
-      
-      <th>Attributes</th>
-      
-
-      
-      <th>Default</th>
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>cluster</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>cluster</code>
+        
+      </td>
       
 
       <td class="type">
@@ -161,32 +163,35 @@
 
 
         
-      </td>
 
-      
-      <td class="attributes">
+        
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
 
-      <td class="description trim last">
-        
-      </td>
+
+      <td class="description trim last"></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>attributeName</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>attributeName</code>
+        
+      </td>
       
 
       <td class="type">
@@ -196,32 +201,35 @@
 
 
         
-      </td>
 
-      
-      <td class="attributes">
+        
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
 
-      <td class="description trim last"><p>The name of the attribute (e.g. <code>onOff</code>)</p>
-        
-      </td>
+
+      <td class="description trim last"><p>The name of the attribute (e.g. <code>onOff</code>)</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-2"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>minInterval</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>minInterval</code>
+        
+      </td>
       
 
       <td class="type">
@@ -231,38 +239,41 @@
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        0
+        
+        default: <code>0</code>
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>The minimum reporting interval in seconds (e.g. 10), the
 default value is 0 which imposes no minimum limit (unless one is imposed by the
-specification of the cluster using this reporting mechanism). Range: 0 - 65535.</p>
-        
-      </td>
+specification of the cluster using this reporting mechanism). Range: 0 - 65535.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-3"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>maxInterval</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>maxInterval</code>
+        
+      </td>
       
 
       <td class="type">
@@ -272,36 +283,39 @@ specification of the cluster using this reporting mechanism). Range: 0 - 65535.<
 
 
         
-      </td>
 
-      
-      <td class="attributes">
+        
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>The maximum reporting interval in seconds (e.g. 300), this
 value must be larger than 60 and larger than <code>minInterval</code>. When this parameter is set to
 65535 the device shall not issue reports for the specified attribute. When this parameter
 is set to 0 and the <code>minInterval</code> is set to 65535 the device will revert back to its
-default reporting configuration. Range: 0 - 65535.</p>
-        
-      </td>
+default reporting configuration. Range: 0 - 65535.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-4"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>minChange</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>minChange</code>
+        
+      </td>
       
 
       <td class="type">
@@ -311,39 +325,42 @@ default reporting configuration. Range: 0 - 65535.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        1
+        
+        default: <code>1</code>
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>The minimum value the attribute has to change in order to
 trigger a report. For attributes with 'discrete' data type this field is irrelevant. If
 <code>minInterval</code> is set to 65535, and <code>maxInterval</code> to 0, this value will be set to 0. See
-section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revision 6.</p>
-        
-      </td>
+section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revision 6.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-5"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>endpointId</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>endpointId</code>
+        
+      </td>
       
 
       <td class="type">
@@ -353,35 +370,33 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        1
+        
+        default: <code>1</code>
+        
         
       </td>
-      
 
-      <td class="description trim last"><p>The endpoint index (e.g. 1)</p>
-        
-      </td>
+
+      <td class="description trim last"><p>The endpoint index (e.g. 1)</p></td>
     </tr>
-
+    
+    
     
     </tbody>
   </table>
 </figure>
+
+
 
 
 
@@ -464,8 +479,9 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -474,20 +490,25 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>x</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>x</code>
+        
+      </td>
       
 
       <td class="type">
@@ -497,23 +518,30 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 
 
         
+
+        
+
+        
       </td>
 
-      
-
-      
 
       <td class="description trim last"><p>CIE x (small x) value, range 0 - 1 (for Zigbee CurrentX multiply by
-65536)</p>
-        
-      </td>
+65536)</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>y</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>y</code>
+        
+      </td>
       
 
       <td class="type">
@@ -523,23 +551,30 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 
 
         
+
+        
+
+        
       </td>
 
-      
-
-      
 
       <td class="description trim last"><p>CIE y (small y) value, range 0 - 1 (for Zigbee CurrentY multiply by
-65536)</p>
-        
-      </td>
+65536)</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-2"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>Y</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>Y</code>
+        
+      </td>
       
 
       <td class="type">
@@ -549,22 +584,24 @@ section 2.5.7.1.7 of the Zigbee Cluster Library specification version 1.0, revis
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last"><p>CIE Y value, range 0 - 100, this represents the luminance which is not
-used by the Zigbee color control cluster.</p>
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"><p>CIE Y value, range 0 - 100, this represents the luminance which is not
+used by the Zigbee color control cluster.</p></td>
+    </tr>
+    
+    
     
     </tbody>
   </table>
 </figure>
+
+
 
 
 
@@ -607,8 +644,9 @@ used by the Zigbee color control cluster.</p>
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -617,24 +655,25 @@ used by the Zigbee color control cluster.</p>
 
       <th>Type</th>
 
-      
-      <th>Attributes</th>
-      
-
-      
-      <th>Default</th>
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>get</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>get</code>
+        
+      </td>
       
 
       <td class="type">
@@ -644,36 +683,39 @@ used by the Zigbee color control cluster.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Cluster attribute as specified in Cluster.ATTRIBUTES. This
 attribute will be fetched by Cluster.readAttributes when the capability value needs
-to be fetched.</p>
-        
-      </td>
+to be fetched.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>set</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>set</code>
+        
+      </td>
       
 
       <td class="type">
@@ -683,35 +725,38 @@ to be fetched.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Cluster command as specified in Cluster.COMMANDS, this
-command will be executed when the capability is set.</p>
-        
-      </td>
+command will be executed when the capability is set.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-2"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>setParser</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>setParser</code>
+        
+      </td>
       
 
       <td class="type">
@@ -721,35 +766,38 @@ command will be executed when the capability is set.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Method that will be called before <code>set</code> is
-called, to generate the parameters for the Cluster command execution.</p>
-        
-      </td>
+called, to generate the parameters for the Cluster command execution.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-3"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>report</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>report</code>
+        
+      </td>
       
 
       <td class="type">
@@ -759,35 +807,38 @@ called, to generate the parameters for the Cluster command execution.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Cluster attribute as specified in Cluster.ATTRIBUTES.
-When a report is received for this attribute the respective <code>reportParser</code> will be called.</p>
-        
-      </td>
+When a report is received for this attribute the respective <code>reportParser</code> will be called.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-4"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>reportParser</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>reportParser</code>
+        
+      </td>
       
 
       <td class="type">
@@ -797,34 +848,37 @@ When a report is received for this attribute the respective <code>reportParser</
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
 
-      <td class="description trim last">
-        
-      </td>
+
+      <td class="description trim last"></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-5"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>endpoint</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>endpoint</code>
+        
+      </td>
       
 
       <td class="type">
@@ -834,37 +888,42 @@ When a report is received for this attribute the respective <code>reportParser</
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        1
+        
+        default: <code>1</code>
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>The ZCLNode's endpoint to use for this
-configuration.</p>
-        
-      </td>
+configuration.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-6"
+        data-table-row-parent="0" data-table-collapsed=true>
       
-      <td class="name"><code>getOpts</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl lvl--group">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>getOpts</code>
+        
+      </td>
       
 
       <td class="type">
@@ -874,55 +933,41 @@ configuration.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
 
-      <td class="description trim last"><p>Options object specific for <code>get</code>.</p>
-        
-        <h6>Properties</h6>
-<figure class="table-container trim">
-  <table class="props">
-    <thead>
-    <tr>
-      
-      <th>Name</th>
-      
 
-      <th>Type</th>
-
-      
-      <th>Attributes</th>
-      
-
-      
-      <th>Default</th>
-      
-
-      <th class="last">Description</th>
+      <td class="description trim last"><p>Options object specific for <code>get</code>.</p></td>
     </tr>
-    </thead>
-
-    <tbody>
+    
     
 
-    <tr>
+    
+
+    <tr data-table-lvl="1" data-table-row-id="0-6-0"
+        data-table-row-parent="0-6" >
       
-      <td class="name"><code>getOnStart</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>getOnStart</code>
+        
+      </td>
       
 
       <td class="type">
@@ -932,38 +977,43 @@ configuration.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        false
+        
+        default: <code>false</code>
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Fetches the <code>get</code> attribute when the
 ZCLNode is first initialized and the capability value is unknown (i.e. <code>null</code>).
-Note: this only works for non-sleepy devices.</p>
-        
-      </td>
+Note: this only works for non-sleepy devices.</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="1" data-table-row-id="0-6-1"
+        data-table-row-parent="0-6" >
       
-      <td class="name"><code>getOnOnline</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>getOnOnline</code>
+        
+      </td>
       
 
       <td class="type">
@@ -973,38 +1023,43 @@ Note: this only works for non-sleepy devices.</p>
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
         
-        false
+        
+        default: <code>false</code>
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Fetches the <code>get</code> attribute when the
 ZCLNode comes online (i.e. Homey received an end device announce indication,
-directly after receiving this a sleepy node should be able to respond to any request).</p>
-        
-      </td>
+directly after receiving this a sleepy node should be able to respond to any request).</p></td>
     </tr>
-
+    
     
 
-    <tr>
+    <tr data-table-lvl="1" data-table-row-id="0-6-2"
+        data-table-row-parent="0-6" >
       
-      <td class="name"><code>pollInterval</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>pollInterval</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1017,43 +1072,45 @@ directly after receiving this a sleepy node should be able to respond to any req
 
 
         
-      </td>
 
-      
-      <td class="attributes">
         
-        &lt;optional><br>
+        
+        <span class="color-text-light">&lt;optional></span>
         
 
         
-      </td>
-      
+        
 
-      
-      <td class="default">
+        
+        
         
       </td>
-      
+
 
       <td class="description trim last"><p>Number: interval (in ms) to poll <code>get</code>.
 String: the Homey.Device's setting key which represents a user configurable poll interval
-value.</p>
-        
+value.</p></td>
+    </tr>
+    
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-parent="0-6" data-table-row-is-shown="false">
+      <td class="name">
+        <div class="lvl">
+          
+        </div>
+        <span class="font-weight-bold">}</span>
       </td>
     </tr>
-
+    
+    
     
     </tbody>
   </table>
 </figure>
-        
-      </td>
-    </tr>
 
-    
-    </tbody>
-  </table>
-</figure>
+
 
 
 
@@ -1100,8 +1157,9 @@ value.</p>
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -1110,20 +1168,25 @@ value.</p>
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>NAME</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>NAME</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1133,22 +1196,29 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last"><p>Cluster name (e.g. 'onOff')</p>
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"><p>Cluster name (e.g. 'onOff')</p></td>
+    </tr>
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>ID</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>ID</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1158,21 +1228,23 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last"><p>Cluster id (e.g. 4)</p>
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"><p>Cluster id (e.g. 4)</p></td>
+    </tr>
+    
+    
     
     </tbody>
   </table>
 </figure>
+
+
 
 
 
@@ -1255,8 +1327,9 @@ value.</p>
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -1265,45 +1338,25 @@ value.</p>
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
-
-    <tr>
-      
-      <td class="name"><code>hue</code></td>
-      
-
-      <td class="type">
-        
-        
-<span class="param-type">number</span>
-
-
-        
-      </td>
-
-      
-
-      
-
-      <td class="description trim last"><p>Hue value, range 0 - 1.</p>
-        
-      </td>
-    </tr>
-
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>saturation</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>hue</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1313,22 +1366,29 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last"><p>Saturation value, range 0 - 1.</p>
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"><p>Hue value, range 0 - 1.</p></td>
+    </tr>
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>value</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>saturation</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1338,21 +1398,55 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last"><p>Value (brightness) value, range 0 - 1.</p>
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"><p>Saturation value, range 0 - 1.</p></td>
+    </tr>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-2"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>value</code>
+        
+      </td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">number</span>
+
+
+        
+
+        
+
+        
+      </td>
+
+
+      <td class="description trim last"><p>Value (brightness) value, range 0 - 1.</p></td>
+    </tr>
+    
+    
     
     </tbody>
   </table>
 </figure>
+
+
 
 
 
@@ -1395,8 +1489,9 @@ value.</p>
 <h4 class="subsection-title">Properties</h4>
 
 
+
 <figure class="table-container trim">
-  <table class="props">
+  <table data-table class="properties">
     <thead>
     <tr>
       
@@ -1405,20 +1500,25 @@ value.</p>
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>capabilityId</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>capabilityId</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1428,22 +1528,29 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last">
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"></td>
+    </tr>
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>cluster</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>cluster</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1453,22 +1560,29 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last">
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"></td>
+    </tr>
+    
     
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-2"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>userOpts</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>userOpts</code>
+        
+      </td>
       
 
       <td class="type">
@@ -1478,21 +1592,23 @@ value.</p>
 
 
         
-      </td>
 
-      
+        
 
-      
-
-      <td class="description trim last">
         
       </td>
-    </tr>
 
+
+      <td class="description trim last"></td>
+    </tr>
+    
+    
     
     </tbody>
   </table>
 </figure>
+
+
 
 
 
@@ -1544,7 +1660,7 @@ value.</p>
       
 
 <figure class="table-container trim">
-  <table class="params">
+  <table data-table class="params">
     <thead>
     <tr>
       
@@ -1553,44 +1669,55 @@ value.</p>
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>reportValue</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>reportValue</code>
+        
+      </td>
       
 
-      <td class="type">
+      <td class="params__type">
         
         
 <span class="param-type">any</span>
 
 
         
+
+        
+
+        
+
       </td>
 
-      
-
-      
 
       <td class="description last trim">
-        
       </td>
     </tr>
 
     
+
+    
+    
     </tbody>
   </table>
 </figure>
+
+
     </section>
     
 
@@ -1687,7 +1814,7 @@ to the Cluster command as parameters when executed.</p>
       
 
 <figure class="table-container trim">
-  <table class="params">
+  <table data-table class="params">
     <thead>
     <tr>
       
@@ -1696,44 +1823,55 @@ to the Cluster command as parameters when executed.</p>
 
       <th>Type</th>
 
-      
-
-      
-
       <th class="last">Description</th>
     </tr>
     </thead>
 
     <tbody>
     
+    
 
-    <tr>
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
       
-      <td class="name"><code>setValue</code></td>
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>setValue</code>
+        
+      </td>
       
 
-      <td class="type">
+      <td class="params__type">
         
         
 <span class="param-type">any</span>
 
 
         
+
+        
+
+        
+
       </td>
 
-      
-
-      
 
       <td class="description last trim">
-        
       </td>
     </tr>
 
     
+
+    
+    
     </tbody>
   </table>
 </figure>
+
+
     </section>
     
 
@@ -1874,6 +2012,7 @@ to the Cluster command as parameters when executed.</p>
 <script src="scripts/ready.js"></script>
 <script src="scripts/navigation.js"></script>
 <script src="scripts/toc.js"></script>
+<script src="scripts/table.js"></script>
 
 <link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
 <script src="scripts/highlight.min.js"></script>

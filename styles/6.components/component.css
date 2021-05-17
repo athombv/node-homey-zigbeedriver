@@ -5,6 +5,10 @@
     background: var(--color-component);
 }
 
+.component blockquote {
+    box-shadow: none;
+}
+
 @media only screen and (min-width: 768px) {
     :root{
         --component-padding: 20px;

@@ -74,6 +74,7 @@ blockquote::before {
     color: var(--color-blue);
     text-align: center;
     font-weight: var(--fontWeight-medium);
+    box-shadow: var(--boxShadow);
 }
 
 blockquote *:first-child {
