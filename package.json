@@ -1,6 +1,6 @@
 {
   "name": "homey-zigbeedriver",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
