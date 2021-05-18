@@ -29,7 +29,7 @@
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
     "homey": "^2.6.1",
-    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.1",
+    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.1.2",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "mocha": "^7.1.1",
