@@ -3,6 +3,7 @@
     "include": ["./lib", "./index.js", "./lib/util"]
   },
   "opts": {
+    "simpleAnalyticsHost": "sa.athom.com",
     "mainpagetitle": "Homey ZigbeeDriver",
     "template": "./node_modules/homey-jsdoc-template",
     "readme": "./README.md",
