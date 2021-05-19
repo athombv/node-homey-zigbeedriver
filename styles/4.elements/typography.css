@@ -22,6 +22,7 @@ h1 {
     margin-bottom: 0;
 }
 
+header + p,
 h1 + p {
     font-size: var(--fontSize-medium);
     line-height: 30px;
