@@ -114,6 +114,12 @@ dl {
     margin: 10px 0;
 }
 
+dl::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
 dl dt {
     clear: left;
     float: left;

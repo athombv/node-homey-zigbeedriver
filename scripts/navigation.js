@@ -20,8 +20,12 @@
      * Active menu item
      */
     const url = window.location.toString();
-    const page = url.substring(url.lastIndexOf('/') + 1).split('#')[0];
-    const $activeMenuItem = document.querySelector(`[href="${page}.html"]`);
+    let page = url.substring(url.lastIndexOf('/') + 1).split('#')[0];
+    if(page.indexOf('.html')===-1){
+      page += '.html';
+    }
+
+    const $activeMenuItem = document.querySelector(`[href="${page}"]`);
 
     if ($activeMenuItem) {
       $activeMenuItem.classList.add('is-active');
