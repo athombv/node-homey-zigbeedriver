@@ -3,6 +3,7 @@
 }
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -11,6 +12,12 @@
 .container__main{
     flex: 1 1 auto;
     margin-top: 20px;
+}
+
+.container__docs-nav{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 @media only screen and (min-width: 768px) {

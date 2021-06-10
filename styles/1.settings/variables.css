@@ -6,6 +6,7 @@
     --boxShadow: 0 10px 44px 0 rgba(0, 0, 0, 0.07),0 2px 12px 0 rgba(0, 0, 0, 0.1),0 2px 4px 0 rgba(0, 0, 0, 0.04);
 
     /* Border Radius */
+    --borderRadius-large: 20px;
     --borderRadius: 10px;
     --borderRadius-small: 5px;
 
@@ -43,6 +44,8 @@
 
     /* Z-index */
     --z-index-navigation: 100;
+    --z-index-docs-nav: 200;
+    --z-index-toast-message: 300;
 
     /* Input */
 }

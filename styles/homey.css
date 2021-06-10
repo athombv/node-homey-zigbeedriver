@@ -36,5 +36,7 @@
 @import "6.components/search.css";
 @import "6.components/main-page.css";
 @import "6.components/other.css";
+@import "6.components/toastmessage.css";
+@import "6.components/docs-nav.css";
 /* Utilities */
 @import "7.utilities/trim.css";

@@ -4,20 +4,75 @@
   <meta charset="utf-8">
   <title>ZigBeeLightDevice - Homey ZigbeeDriver</title>
 
-  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png" />
-  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png" />
-  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png" />
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png"/>
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png"/>
   <link rel="preload" as="image" href="images/logo.png">
   <link rel="preload" href="styles/homey.min.css" as="style">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="styles/atom-one-light.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+    rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+
+  <!-- preload javascript -->
+  <link rel="preload" as="script" href="scripts/ready.js">
+  <link rel="preload" as="script" href="scripts/navigation.js">
+  <link rel="preload" as="script" href="scripts/toc.js">
+  <link rel="preload" as="script" href="scripts/table.js">
+  <link rel="preload" as="script" href="scripts/hash-link.js">
+  <link rel="preload" as="script" href="scripts/docs-nav.js">
 </head>
 
 <body>
 <div class="container">
+  <div class="container__docs-nav">
+    <div class="docs-nav">
+      <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
+          class="docs-nav__button-icon --mask"></span></button>
+      <nav data-docs-nav-menu class="docs-nav__menu component">
+        <div class="docs-nav__banner trim">
+          <h2>Homey Developers</h2>
+        </div>
+        <div class="docs-nav__columns">
+          <div class="docs-nav__column trim">
+            <h3>Homey Apps SDK</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+            </ul>
+            <h3>Homey Web API</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+            </ul>
+            <h3>Tools</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer Tools</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__column trim">
+            <h3>Node.js Modules</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zigbeedriver/">Homey
+                  ZigbeeDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
+                  ZWaveDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey RFDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee Clusters</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey OAuth2</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
   <nav class="navigation container__navigation component">
     <header class="navigation__header">
                 <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
@@ -26,7 +81,7 @@
              </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
             <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
             <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
-           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="util" class="nav-group__item"><a href="Util.html"> Util</a></li><li data-lvl="0" data-search-key="zigbeedevice" class="nav-group__item"><a href="ZigBeeDevice.html"> ZigBeeDevice</a></li><li data-lvl="0" data-search-key="zigbeelightdevice" class="nav-group__item"><a href="ZigBeeLightDevice.html"> ZigBeeLightDevice</a></li></ul></nav><h3 class="nav-group__title">Global</h3><ul class="nav-group__list"><li class="nav-group__item"><a href="global.html">Overview</a></li></ul></div></div></div>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Classes</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="util" class="nav-group__item"><a href="Util.html"> Util</a></li><li data-lvl="0" data-search-key="zigbeedevice" class="nav-group__item"><a href="ZigBeeDevice.html"> ZigBeeDevice</a></li><li data-lvl="0" data-search-key="zigbeelightdevice" class="nav-group__item"><a href="ZigBeeLightDevice.html"> ZigBeeLightDevice</a></li></ul></nav><h3 class="nav-group__title">Global</h3><ul class="nav-group__list"><li class="nav-group__item"><a href="global.html">Overview</a></li></ul></div></div></div>
   </nav>
 
   <main id="main" class="main container__main">
@@ -47,7 +102,9 @@
     <div class="flex">
       <div class="main__center">
         <div class="main__content align-baseline">
-          <section>
+          
+
+<section>
   <header>
     
       <h2 class="display-none">
@@ -82,7 +139,7 @@ that uses the CLUSTER.LEVEL_CONTROL with the command <code>moveToLevelWithOnOff<
   
 
   
-  <h3 class="method__name">ZigBeeLightDevice</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#ZigBeeLightDevice"></a>ZigBeeLightDevice</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>new ZigBeeLightDevice<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -182,7 +239,7 @@ class ZigBeeBulb extends ZigBeeLightDevice {
       
       
 <section id="energyMap" class="method component trim">
-  <h3 class="method__name">energyMap</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#energyMap"></a>energyMap</h3>
   <span class="method__function function">
     <span class="function__type-signature">(abstract) </span>energyMap<span class="function__type-signature"></span>
   </span>
@@ -248,7 +305,7 @@ class ZigBeeBulb extends ZigBeeLightDevice {
   
 
   
-  <h3 class="method__name">changeColor</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#changeColor"></a>changeColor</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>changeColor<span class="function__parameters">(<span class="function__parameter">hue</span>, <span class="function__parameter">saturation</span>, <span class="function__parameter">value</span>, <span class="function__parameter"><span class="function__parameter">opts</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;any></span>
@@ -593,7 +650,7 @@ fallback to <code>moveToColor</code> which should always be supported.</p>
   
 
   
-  <h3 class="method__name">changeColorTemperature</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#changeColorTemperature"></a>changeColorTemperature</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>changeColorTemperature<span class="function__parameters">(<span class="function__parameter">temperature</span>, <span class="function__parameter"><span class="function__parameter">opts</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;*></span>
@@ -858,7 +915,7 @@ results, colors are often skewed.</p>
   
 
   
-  <h3 class="method__name">changeDimLevel</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#changeDimLevel"></a>changeDimLevel</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>changeDimLevel<span class="function__parameters">(<span class="function__parameter">dim</span>, <span class="function__parameter"><span class="function__parameter">opts</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;any></span>
@@ -1119,7 +1176,7 @@ accordingly.</p>
   
 
   
-  <h3 class="method__name">changeOnOff</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#changeOnOff"></a>changeOnOff</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>changeOnOff<span class="function__parameters">(<span class="function__parameter">onoff</span>)</span><span class="function__type-signature">:  Promise.&lt;any></span>
@@ -1263,7 +1320,7 @@ requested and updated in the form of the <code>dim</code> capability value.</p>
   
 
   
-  <h3 class="method__name">configureAttributeReporting</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#configureAttributeReporting"></a>configureAttributeReporting</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>configureAttributeReporting<span class="function__parameters">(<span class="function__parameter">attributeReportingConfigurations</span>)</span><span class="function__type-signature">:  Promise</span>
@@ -1454,7 +1511,7 @@ zclNode.endpoints[1].clusters[CLUSTER.COLOR_CONTROL.NAME]
   
 
   
-  <h3 class="method__name">debug</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#debug"></a>debug</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>debug<span class="function__parameters">(&hellip;<span class="function__parameter">args</span>)</span><span class="function__type-signature"></span>
@@ -1589,7 +1646,7 @@ zclNode.endpoints[1].clusters[CLUSTER.COLOR_CONTROL.NAME]
   
 
   
-  <h3 class="method__name">disableDebug</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#disableDebug"></a>disableDebug</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>disableDebug<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -1651,7 +1708,7 @@ zclNode.endpoints[1].clusters[CLUSTER.COLOR_CONTROL.NAME]
   
 
   
-  <h3 class="method__name">enableDebug</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#enableDebug"></a>enableDebug</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>enableDebug<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -1713,7 +1770,7 @@ zclNode.endpoints[1].clusters[CLUSTER.COLOR_CONTROL.NAME]
   
 
   
-  <h3 class="method__name">getClusterCapabilityValue</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#getClusterCapabilityValue"></a>getClusterCapabilityValue</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>getClusterCapabilityValue<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>)</span><span class="function__type-signature">:  Promise.&lt;*></span>
@@ -1904,7 +1961,7 @@ CLUSTER.ILLUMINANCE_MEASUREMENT);</code></pre>
   
 
   
-  <h3 class="method__name">getClusterEndpoint</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#getClusterEndpoint"></a>getClusterEndpoint</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>getClusterEndpoint<span class="function__parameters">(<span class="function__parameter">cluster</span>)</span><span class="function__type-signature">:  <a href="global.html#EndpointId">EndpointId</a>|null</span>
@@ -2053,7 +2110,7 @@ endpoint.</p>
   
 
   
-  <h3 class="method__name">getEnergy</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#getEnergy"></a>getEnergy</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>getEnergy<span class="function__parameters">()</span><span class="function__type-signature">:  object</span>
@@ -2136,7 +2193,7 @@ this entry will be returned instead of the energy object in the drivers' manifes
   
 
   
-  <h3 class="method__name">isFirstInit</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#isFirstInit"></a>isFirstInit</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>isFirstInit<span class="function__parameters">()</span><span class="function__type-signature">:  boolean</span>
@@ -2213,7 +2270,7 @@ onNodeInit this value will be updated.</p>
   
 
   
-  <h3 class="method__name">isSubDevice</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#isSubDevice"></a>isSubDevice</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>isSubDevice<span class="function__parameters">()</span><span class="function__type-signature">:  boolean</span>
@@ -2289,7 +2346,7 @@ onNodeInit this value will be updated.</p>
   
 
   
-  <h3 class="method__name">onDeleted</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#onDeleted"></a>onDeleted</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(abstract) </span>onDeleted<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -2352,7 +2409,7 @@ clean up actions are required, but be sure to call <code>super.onDeleted()</code
   
 
   
-  <h3 class="method__name">onEndDeviceAnnounce</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#onEndDeviceAnnounce"></a>onEndDeviceAnnounce</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>onEndDeviceAnnounce<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -2429,7 +2486,7 @@ capabilities.</p>
   
 
   
-  <h3 class="method__name">onMeshInit</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#onMeshInit"></a>onMeshInit</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(abstract) </span>onMeshInit<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -2452,7 +2509,7 @@ capabilities.</p>
   
 
   
-  <h3 class="method__name">onNodeInit</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#onNodeInit"></a>onNodeInit</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>onNodeInit<span class="function__parameters">(<span class="function__parameter">zclNode</span>, <span class="function__parameter">supportsHueAndSaturation</span>, <span class="function__parameter">supportsColorTemperature</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -2670,7 +2727,7 @@ still required, set this flag to true.</p>
   
 
   
-  <h3 class="method__name">parseAttributeReport</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#parseAttributeReport"></a>parseAttributeReport</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>parseAttributeReport<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>, <span class="function__parameter">payload</span>)</span><span class="function__type-signature">:  Promise.&lt;(null|*)></span>
@@ -2901,7 +2958,7 @@ zclNode.endpoints[1].clusters.onOff.on('attr.onOff', value => {
   
 
   
-  <h3 class="method__name">printNode</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#printNode"></a>printNode</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>printNode<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -2964,7 +3021,7 @@ clusters (and if it is a sleepy device or not).</p>
   
 
   
-  <h3 class="method__name">readColorControlAttributes</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#readColorControlAttributes"></a>readColorControlAttributes</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>readColorControlAttributes<span class="function__parameters">()</span><span class="function__type-signature">:  Promise.&lt;T></span>
@@ -3040,7 +3097,7 @@ clusters (and if it is a sleepy device or not).</p>
   
 
   
-  <h3 class="method__name">registerAttrReportListener</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerAttrReportListener"></a>registerAttrReportListener</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>registerAttrReportListener<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -3063,7 +3120,7 @@ clusters (and if it is a sleepy device or not).</p>
   
 
   
-  <h3 class="method__name">registerCapability</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerCapability"></a>registerCapability</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>registerCapability<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>, <span class="function__parameter"><span class="function__parameter">clusterCapabilityConfiguration</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature"></span>
@@ -3321,7 +3378,7 @@ this.registerCapability('onoff', CLUSTER.ON_OFF, {
   
 
   
-  <h3 class="method__name">registerColorCapabilities</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerColorCapabilities"></a>registerColorCapabilities</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>registerColorCapabilities<span class="function__parameters">(<span class="function__parameter">zclNode</span>)</span><span class="function__type-signature">:  Promise.&lt;void></span>
@@ -3463,7 +3520,7 @@ this.registerCapability('onoff', CLUSTER.ON_OFF, {
   
 
   
-  <h3 class="method__name">registerMultipleCapabilities</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerMultipleCapabilities"></a>registerMultipleCapabilities</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>registerMultipleCapabilities<span class="function__parameters">(<span class="function__parameter">multipleCapabilitiesConfiguration</span>, <span class="function__parameter">multipleCapabilitiesListener</span>)</span><span class="function__type-signature"></span>
@@ -3658,7 +3715,7 @@ this.registerMultipleCapabilities([
   
 
   
-  <h3 class="method__name">registerOnOffAndDimCapabilities</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerOnOffAndDimCapabilities"></a>registerOnOffAndDimCapabilities</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>registerOnOffAndDimCapabilities<span class="function__parameters">(<span class="function__parameter">zclNode</span>)</span><span class="function__type-signature"></span>
@@ -3785,7 +3842,7 @@ this.registerMultipleCapabilities([
   
 
   
-  <h3 class="method__name">registerReportListener</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#registerReportListener"></a>registerReportListener</h3>
   <span class="method__function function">
     
     <span class="function__type-signature"></span>registerReportListener<span class="function__parameters">()</span><span class="function__type-signature"></span>
@@ -3856,7 +3913,7 @@ zclNode.endpoints[1].clusters.bind('onOff', new CustomBoundCluster());</code></p
   
 
   
-  <h3 class="method__name">setClusterCapabilityValue</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#setClusterCapabilityValue"></a>setClusterCapabilityValue</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>setClusterCapabilityValue<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>, <span class="function__parameter">value</span>, <span class="function__parameter"><span class="function__parameter">opts</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;(*|null)></span>
@@ -4159,7 +4216,7 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, {duratio
   
 
   
-  <h3 class="method__name">triggerFlow</h3>
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#triggerFlow"></a>triggerFlow</h3>
   <span class="method__function function">
     
     <span class="function__type-signature">(async) </span>triggerFlow<span class="function__parameters">(<span class="function__parameter">id</span>, <span class="function__parameter">tokens</span>, <span class="function__parameter">state</span>)</span><span class="function__type-signature">:  Promise.&lt;T></span>
@@ -4374,6 +4431,7 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, {duratio
   </article>
 
 </section>
+
         </div>
         <div class="main__index">
           
@@ -4549,6 +4607,8 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, {duratio
 <script src="scripts/navigation.js"></script>
 <script src="scripts/toc.js"></script>
 <script src="scripts/table.js"></script>
+<script src="scripts/hash-link.js"></script>
+<script src="scripts/docs-nav.js"></script>
 
 <link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
 <script src="scripts/highlight.min.js"></script>
