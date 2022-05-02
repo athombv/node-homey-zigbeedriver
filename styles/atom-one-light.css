@@ -26,6 +26,10 @@ hue-6-2: #c18401
   background: var(--color-background-pre);
 }
 
+.darkmode .hljs{
+  color: var(--color-text);
+}
+
 .hljs-comment,
 .hljs-quote {
   color: #a0a1a7;

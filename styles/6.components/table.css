@@ -41,6 +41,11 @@
     padding-left: 50px;
 }
 
+[data-table-lvl="3"] td:first-child {
+    position: relative;
+    padding-left: 70px;
+}
+
 /* Collapse functionality */
 [data-table-collapsed] {
     cursor: pointer;

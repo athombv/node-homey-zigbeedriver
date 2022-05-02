@@ -26,14 +26,14 @@
     $navigationSearchReset.addEventListener('click', searchResetOnClickHandler);
 
     // reactivate filter after opening new page
-    navigationSearchTerm = localStorage.getItem('navigationSearch');
+    navigationSearchTerm = sessionStorage.getItem('navigationSearch');
     if (navigationSearchTerm) {
       $navigationSearch.value = navigationSearchTerm;
       filterKeyword();
     }
 
     // remove local storage for navigation search
-    localStorage.removeItem('navigationSearch');
+    sessionStorage.removeItem('navigationSearch');
 
     /**
      * Active menu item
@@ -82,10 +82,10 @@
      *  Save menu scroll position
      */
     const $navigationScroll = document.querySelector(`[data-navigation-scroll]`);
-    $navigationScroll.scrollTop = localStorage.getItem('navigationScroll');
+    $navigationScroll.scrollTop = sessionStorage.getItem('navigationScroll');
 
-    // reset localstorage for scroll position
-    localStorage.removeItem('navigationScroll');
+    // reset sessionStorage for scroll position
+    sessionStorage.removeItem('navigationScroll');
 
     /**
      * Save data over multiple pages
@@ -93,10 +93,10 @@
     window.onbeforeunload = function () {
       // Save scroll position in navigation
       let position = $navigationScroll.scrollTop;
-      localStorage.setItem('navigationScroll', position);
+      sessionStorage.setItem('navigationScroll', position);
       // Save current search term for navigation
       if (navigationSearchTerm) {
-        localStorage.setItem('navigationSearch', navigationSearchTerm);
+        sessionStorage.setItem('navigationSearch', navigationSearchTerm);
       }
     }
   });
@@ -149,7 +149,7 @@
     // if no value stop
     if (!navigationSearchTerm) {
       $body.classList.remove('is-navigation-search');
-      localStorage.removeItem('navigationSearch');
+      sessionStorage.removeItem('navigationSearch');
       return;
     }
 

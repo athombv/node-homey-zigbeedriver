@@ -21,13 +21,8 @@
           behavior: "smooth"
         });
 
-        // Set correct hash after animation
-        setTimeout(function () {
-          // check if hash hasn't changed
-          if (hashCheck === id) {
-            window.location.hash = id;
-          }
-        }, 750);
+        history.pushState({}, this.href, this.href);
+        window.dispatchEvent(new CustomEvent('hash-highlight'));
       });
     });
   })

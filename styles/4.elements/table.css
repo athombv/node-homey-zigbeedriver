@@ -25,8 +25,8 @@ table code {
 }
 
 td, th {
-    border-top: 1px solid var(--color-mono-05);
-    border-bottom: 1px solid var(--color-mono-05);
+    border-top: 1px solid var(--color-line-light);
+    border-bottom: 1px solid var(--color-line-light);
     margin: 0px;
     text-align: left;
     vertical-align: top;

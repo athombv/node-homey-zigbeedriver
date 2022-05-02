@@ -7,7 +7,7 @@
     --input-border-selected: var(--color-highlight);
     --input-border-focus: var(--color-blue-o-50);
     --input-border-error: var(--color-red-o-50);
-    --input-background: var(--color-white);
+    --input-background: var(--color-component);
     --input-background-selected: var(--color-highlight);
     --input-boxShadow-hover: 0 0 3px 0px rgba(0, 0, 0, .1);
     --input-boxShadow-focus: 0 0 3px 0px rgba(0, 130, 250, .5);

@@ -67,7 +67,7 @@
 .method__function {
     font-size: 14px;
     margin-bottom: 0;
-    background: var(--color-background-component);
+    background: var(--color-component);
     z-index: 10;
     padding: 10px 0;
     display: block;
@@ -113,7 +113,7 @@
         margin-right: calc(0px - var(--method-padding));
         padding: 10px var(--method-padding);
         border-bottom: 1px solid var(--color-line);
-        background: var(--color-background-component);
+        background: var(--color-component);
         border-top-left-radius: var(--borderRadius);
         border-top-right-radius: var(--borderRadius);
         margin-bottom: -8px; /* compensate transform */

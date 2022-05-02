@@ -23,7 +23,7 @@
     /* Lines */
     --color-line: var(--color-mono-10);
     --color-line-hover: var(--color-mono-30);
-    --color-line-light: var(--color-mono-02);
+    --color-line-light: var(--color-mono-05);
     --color-line-medium: var(--color-mono-10);
 
     /* Icons */
@@ -42,8 +42,6 @@
     --color-component: var(--color-mono-0);
 
     /* Backgrounds */
-    --color-background-body: var(--color-ice-white);
-    --color-background-component: var(--color-mono-0);
     --color-background-hover: var(--color-mono-02);
     --color-background-active: var(--color-mono-05);
     --color-background-overlay: var(--color-mono-o-50);

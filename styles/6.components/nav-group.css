@@ -43,7 +43,7 @@ body.is-navigation-search .nav-group__item:not(.is-match):not(.is-match-parent) 
     padding: 5px 10px;
     margin: 0 -10px;
     font-size: 16px;
-    transition: all var(--curve-fastInNormalOut) var(--duration-fast);
+    transition: background-color var(--curve-fastInNormalOut) var(--duration-fast);
     position: relative;
     z-index: 0;
 }
