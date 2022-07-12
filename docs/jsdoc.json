@@ -5,7 +5,7 @@
   "opts": {
     "simpleAnalyticsHost": "sa.athom.com",
     "mainpagetitle": "Homey ZigbeeDriver",
-    "template": "./node_modules/homey-jsdoc-template",
+    "template": "./node_modules/@athombv/jsdoc-template",
     "readme": "./README.md",
     "destination": "./build"
   },

@@ -9,7 +9,7 @@
     "serve": "concurrently \"serve build/\" \"npm run build:watch\"",
     "build": "jsdoc --configure ./docs/jsdoc.json",
     "build:clean": "rm -rf ./build",
-    "build:watch": "watch \"npm run build:clean && npm run build\" lib docs \"node_modules/homey-jsdoc-template\""
+    "build:watch": "watch \"npm run build:clean && npm run build\" lib docs \"node_modules/@athombv/jsdoc-template\""
   },
   "keywords": [
     "zigbee",
@@ -22,20 +22,20 @@
     "tinygradient": "^1.1.1"
   },
   "peerDependencies": {
-    "zigbee-clusters": "^1.4.0"
+    "zigbee-clusters": "^1.5.2"
   },
   "devDependencies": {
+    "@athombv/jsdoc-template": "^1.6.1",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
     "homey": "^2.6.1",
-    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "mocha": "^7.1.1",
     "serve": "^11.3.1",
     "watch": "^1.0.2",
-    "zigbee-clusters": "^1.4.0"
+    "zigbee-clusters": "^1.5.2"
   },
   "engines": {
     "node": ">=12"
