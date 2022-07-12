@@ -20,12 +20,6 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
 
-    # Define a strategy for running these tests on various operating systems and Node.js versions in parallel.
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest]
-        node: [12]
-
     steps:
       # Checks out the current repository.
       - uses: actions/checkout@v2
@@ -33,7 +27,7 @@ jobs:
       # Configures a Node.js environment.
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }} # Important: use the matrix.node property when using a matrix strategy
+          node-version: 16 # Important: use the matrix.node property when using a matrix strategy
           registry-url: https://npm.pkg.github.com
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).

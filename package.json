@@ -22,7 +22,7 @@
     "tinygradient": "^1.1.1"
   },
   "peerDependencies": {
-    "zigbee-clusters": "^1.4.0"
+    "zigbee-clusters": "^1.5.2"
   },
   "devDependencies": {
     "@athombv/jsdoc-template": "^1.6.1",
@@ -35,7 +35,7 @@
     "mocha": "^7.1.1",
     "serve": "^11.3.1",
     "watch": "^1.0.2",
-    "zigbee-clusters": "^1.4.0"
+    "zigbee-clusters": "^1.5.2"
   },
   "engines": {
     "node": ">=12"
