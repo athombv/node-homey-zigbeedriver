@@ -60,7 +60,7 @@ jobs:
         with:
           node-version: '12'
           # Needed for publishing to npm
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: https://npm.pkg.github.com
           
       # Set SSH key
       - uses: webfactory/ssh-agent@v0.4.1
@@ -73,7 +73,7 @@ jobs:
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
         run: |
-          npm ci --production
+          npm ci
           npm run build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
@@ -103,6 +103,7 @@ jobs:
       - name: Publish
         if: github.ref == 'refs/heads/production'
         run: |
+          npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
           npm publish
           VERSION="$(node -p "require('./package.json').version")"
           echo package_version=${VERSION} >> $GITHUB_ENV
@@ -113,6 +114,7 @@ jobs:
       - name: Publish to beta
         if: github.ref == 'refs/heads/testing'
         run: |
+          npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
           npm publish --tag beta
           VERSION="$(node -p "require('./package.json').version")@beta"
           echo package_version=${VERSION} >> $GITHUB_ENV
