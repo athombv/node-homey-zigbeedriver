@@ -27,6 +27,13 @@ Also checkout [`zigbee-clusters`](https://github.com/athombv/node-zigbee-cluster
 $ npm install zigbee-clusters
 ```
 
+## Changelog
+
+# 2.0.0
+
+Breaking: [don't invert windowcoverings_set values.](https://github.com/athombv/node-homey-zigbeedriver/commit/9edeb2713c9476ea2d5cde4a05ab8cf8d4ab52a2)
+
+
 ## Requirements
 
 This module requires Homey Apps SDK v3.
