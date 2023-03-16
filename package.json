@@ -33,7 +33,7 @@
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "mocha": "^7.1.1",
-    "serve": "^11.3.1",
+    "serve": "^14.2.0",
     "watch": "^1.0.2",
     "zigbee-clusters": "^1.5.2"
   },
