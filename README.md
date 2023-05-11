@@ -33,6 +33,9 @@ $ npm install zigbee-clusters
 
 Breaking: [don't invert windowcoverings_set values.](https://github.com/athombv/node-homey-zigbeedriver/commit/9edeb2713c9476ea2d5cde4a05ab8cf8d4ab52a2)
 
+## Release
+
+Merge to production and include `#patch`, `#minor` or `#major` in the PR/commit message. Or merge to production and run the "Deploy" workflow and provide a version bump parameter.
 
 ## Requirements
 
