@@ -1192,6 +1192,279 @@ this entry will be added to the energy object in the drivers' manifest.</p>
       
 
 
+<section id="getSwBuildId" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#getSwBuildId"></a>getSwBuildId</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>getSwBuildId<span class="function__parameters">(<span class="function__parameter"><span class="function__parameter">params</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;string></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Retrieves the <code>swBuildId</code> from the Basic cluster of the specified endpoint. If the
+<code>swBuildId</code> is already cached in the device store, it will return the cached value.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" data-table-collapsed=true>
+      
+      <td class="name position-relative">
+        
+        <div class="lvl lvl--group">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>params</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">object</span>
+
+
+        
+
+        
+        
+        <span class="color-text-light">&lt;optional></span><br>
+        
+
+        
+
+        
+        
+
+        
+        
+        default:<code>{}</code>
+        
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Method parameters.</p>
+      </td>
+    </tr>
+
+    
+    
+
+    
+
+    <tr data-table-lvl="1" data-table-row-id="0-0-0"
+        data-table-row-parent="0-0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>endpointId</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">number</span>
+
+
+        
+
+        
+        
+        <span class="color-text-light">&lt;optional></span><br>
+        
+
+        
+
+        
+        
+
+        
+        
+        default:<code>1</code>
+        
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>The endpoint id to fetch the swBuildId from (default: 1).</p>
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="1" data-table-row-id="0-0-1"
+        data-table-row-parent="0-0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+          <div class="lvl__indent"></div>
+          
+        </div>
+        <code>skipCache</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">boolean</span>
+
+
+        
+
+        
+        
+        <span class="color-text-light">&lt;optional></span><br>
+        
+
+        
+
+        
+        
+
+        
+        
+        default:<code>false</code>
+        
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>If true, it will skip the cache and always fetch the
+swBuildId from the device (default: false).</p>
+      </td>
+    </tr>
+
+    
+
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-parent="0-0" data-table-row-is-shown="false">
+      <td class="name">
+        <div class="lvl">
+          
+        </div>
+        <span class="font-weight-bold">}</span>
+      </td>
+    </tr>
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+  <p>The swBuildId of the device.</p>
+
+
+<div class="text-preset-small">
+  
+<span class="param-type">Promise.&lt;string></span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
 <section id="isFirstInit" class="method trim component">
   
 
@@ -3100,6 +3373,10 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, { durati
         
         <li class="toc__item">
           <a class="toc__link" title="getEnergy" href="#getEnergy">getEnergy</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="getSwBuildId" href="#getSwBuildId">getSwBuildId</a>
         </li>
         
         <li class="toc__item">
