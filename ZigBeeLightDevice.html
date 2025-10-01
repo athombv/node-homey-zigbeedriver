@@ -275,7 +275,9 @@ class ZigBeeBulb extends ZigBeeLightDevice {
 
     
     <div class="description trim">
-      <p>This method can be overridden to use different energy objects per Zigbee device <code>productId</code>.</p>
+      <p>This method can be overridden to use different energy objects per Zigbee device <code>productId</code>.
+Note that when configured for a product id all relevant energy settings must be provided,
+as it fully overrides the energy object configured in the driver manifest.</p>
     </div>
     
 
@@ -2115,89 +2117,6 @@ endpoint.</p>
 |
 
 <span class="param-type">null</span>
-
-
-</div>
-
-    </section>
-    
-
-    
-
-    
-  </div>
-  
-
-</section>
-
-      
-      
-
-
-<section id="getEnergy" class="method trim component">
-  
-
-  
-  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#getEnergy"></a>getEnergy</h3>
-  <span class="method__function function">
-    
-    <span class="function__type-signature"></span>getEnergy<span class="function__parameters">()</span><span class="function__type-signature">:  object</span>
-    
-  </span>
-  
-
-  
-  
-
-  
-  <div class="method__content trim">
-    
-    <div class="method__description">
-      <p>Overrides Homey.Device.getEnergy to enable zigbee devices to expose a energyMap
-object with different energy objects <code>productId</code> (as specified in the driver manifest). If
-the <code>energyMap</code> object is available and has an entry for the <code>productId</code> of this device
-this entry will be added to the energy object in the drivers' manifest.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <section class="method__section trim">
-      <h4>Returns</h4>
-      
-      
-  <ul>
-<li>Energy object</li>
-</ul>
-
-
-<div class="text-preset-small">
-  
-<span class="param-type">object</span>
 
 
 </div>
@@ -4596,6 +4515,69 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, { durati
 </section>
 
       
+      
+
+
+<section id="updateEnergyConfiguration" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#updateEnergyConfiguration"></a>updateEnergyConfiguration</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async) </span>updateEnergyConfiguration<span class="function__parameters">()</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>If the energyMap object is available and has an entry for the <code>productId</code> of this
+device this entry will override the energy object configured in the drivers' manifest.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
     </section>
     
 
@@ -4684,10 +4666,6 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, { durati
         </li>
         
         <li class="toc__item">
-          <a class="toc__link" title="getEnergy" href="#getEnergy">getEnergy</a>
-        </li>
-        
-        <li class="toc__item">
           <a class="toc__link" title="getSwBuildId" href="#getSwBuildId">getSwBuildId</a>
         </li>
         
@@ -4753,6 +4731,10 @@ await this.setClusterCapabilityValue('dim', CLUSTER.LEVEL_CONTROL, 0.6, { durati
         
         <li class="toc__item">
           <a class="toc__link" title="triggerFlow" href="#triggerFlow">triggerFlow</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="updateEnergyConfiguration" href="#updateEnergyConfiguration">updateEnergyConfiguration</a>
         </li>
         
       </ul>
