@@ -85,6 +85,8 @@ jobs:
           npm ci
           npm run build
           rm -f .npmrc
+          npm config delete @athombv:registry
+          npm config set registry https://registry.npmjs.org/
 
       - name: Version bump patch
         if: github.event.inputs.versionBumpType == 'patch' || contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')
@@ -111,7 +113,6 @@ jobs:
       - name: Publish
         if: github.ref == 'refs/heads/production'
         run: |
-          npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
           npm publish
           VERSION="$(node -p "require('./package.json').version")"
           echo package_version=${VERSION} >> $GITHUB_ENV
@@ -120,7 +121,6 @@ jobs:
       - name: Publish to beta
         if: github.ref == 'refs/heads/testing'
         run: |
-          npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
           npm publish --tag beta
           VERSION="$(node -p "require('./package.json').version")@beta"
           echo package_version=${VERSION} >> $GITHUB_ENV
