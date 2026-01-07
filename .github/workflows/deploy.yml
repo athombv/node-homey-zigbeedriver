@@ -26,7 +26,7 @@ on:
   workflow_dispatch:
     inputs:
       versionBumpType:
-        description: 'Version bump (major, minor or patch)'
+        description: "Version bump (major, minor or patch)"
         required: true
 
 permissions:
@@ -39,12 +39,11 @@ jobs:
 
     # Only run this job if initiator is not the Homey Github Actions Bot to prevent loops and check if if a version bump is provided and current branch is production or testing
     if: github.actor != 'homey-bot'
-        && (github.ref == 'refs/heads/production' || github.ref == 'refs/heads/testing')
-        && (github.event.inputs.versionBumpType == 'patch' || github.event.inputs.versionBumpType == 'minor' || github.event.inputs.versionBumpType == 'major' || contains(github.event.head_commit.message, '#patch') || contains(github.event.head_commit.message, '#minor') || contains(github.event.head_commit.message, '#major'))
+      && (github.ref == 'refs/heads/production' || github.ref == 'refs/heads/testing')
+      && (github.event.inputs.versionBumpType == 'patch' || github.event.inputs.versionBumpType == 'minor' || github.event.inputs.versionBumpType == 'major' || contains(github.event.head_commit.message, '#patch') || contains(github.event.head_commit.message, '#minor') || contains(github.event.head_commit.message, '#major'))
 
     runs-on: ubuntu-latest
     steps:
-
       # Checks out the current repository.
       - name: Checkout git repository
         uses: actions/checkout@v2
@@ -59,34 +58,25 @@ jobs:
           git config --local user.name "Homey Github Actions Bot"
 
       # Configures a Node.js environment.
-      - name: Set up node 22 environment
-        uses: actions/setup-node@v4
+      - name: Set up node 22 environment (build)
+        uses: actions/setup-node@v5
         with:
-          node-version: '22'
-          registry-url: 'https://registry.npmjs.org'
-          
-      # Set SSH key
-      - uses: webfactory/ssh-agent@v0.4.1
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-        if: env.SSH_KEY != null
-        with:
-          ssh-private-key: ${{ env.SSH_KEY }}
-
-      # Configure npm to use GitHub Packages for @athombv scope (needed for jsdoc-template during build)
-      - name: Configure GitHub Packages access
-        run: |
-          echo "@athombv:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}" >> .npmrc
+          node-version: "22"
+          registry-url: "https://npm.pkg.github.com"
 
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
         run: |
           npm ci
           npm run build
-          rm -f .npmrc
-          npm config delete @athombv:registry
-          npm config set registry https://registry.npmjs.org/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Set up node 22 environment (publish)
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Version bump patch
         if: github.event.inputs.versionBumpType == 'patch' || contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')
