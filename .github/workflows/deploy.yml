@@ -97,7 +97,7 @@ jobs:
       - name: Publish
         if: github.ref == 'refs/heads/production'
         run: |
-          npm publish
+          npm publish || (echo "Publishing failed. Debug log:" && cat ~/.npm/_logs/*-debug-*.log 2>/dev/null && exit 1)
           VERSION="$(node -p "require('./package.json').version")"
           echo package_version=${VERSION} >> $GITHUB_ENV
 
@@ -105,6 +105,6 @@ jobs:
       - name: Publish to beta
         if: github.ref == 'refs/heads/testing'
         run: |
-          npm publish --tag beta
+          npm publish --tag beta || (echo "Publishing failed. Debug log:" && cat ~/.npm/_logs/*-debug-*.log 2>/dev/null && exit 1)
           VERSION="$(node -p "require('./package.json').version")@beta"
           echo package_version=${VERSION} >> $GITHUB_ENV
