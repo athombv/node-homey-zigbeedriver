@@ -73,13 +73,18 @@ jobs:
         with:
           ssh-private-key: ${{ env.SSH_KEY }}
 
+      # Configure npm to use GitHub Packages for @athombv scope (needed for jsdoc-template during build)
+      - name: Configure GitHub Packages access
+        run: |
+          echo "@athombv:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
       # Run `npm ci && npm run build` to re-create your local environment (make sure to commit your - package-lock.json!).
       - name: Build
         run: |
           npm ci
           npm run build
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+          rm -f .npmrc
 
       - name: Version bump patch
         if: github.event.inputs.versionBumpType == 'patch' || contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')
