@@ -58,7 +58,7 @@ jobs:
           git config --local user.name "Homey Github Actions Bot"
 
       # Configures a Node.js environment.
-      - name: Set up node 22 environment (build)
+      - name: Set up node 22 environment
         uses: actions/setup-node@v5
         with:
           node-version: "22"
@@ -71,12 +71,6 @@ jobs:
           npm run build
         env:
           NODE_AUTH_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-
-      - name: Set up node 22 environment (publish)
-        uses: actions/setup-node@v5
-        with:
-          node-version: "22"
-          registry-url: "https://registry.npmjs.org"
 
       - name: Version bump patch
         if: github.event.inputs.versionBumpType == 'patch' || contains(github.event.head_commit.message, '#patch') && !contains(github.event.head_commit.message, '#minor') && !contains(github.event.head_commit.message, '#major')
