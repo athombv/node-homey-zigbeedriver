@@ -63,8 +63,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          # Needed for publishing to npm
-          registry-url: https://npm.pkg.github.com
+          registry-url: 'https://registry.npmjs.org'
           
       # Set SSH key
       - uses: webfactory/ssh-agent@v0.4.1
