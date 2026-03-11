@@ -25,7 +25,7 @@
     "zigbee-clusters": "^2.1.2"
   },
   "devDependencies": {
-    "@athombv/jsdoc-template": "^1.6.1",
+    "@athombv/jsdoc-template": "^1.6.3",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
