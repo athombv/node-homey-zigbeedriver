@@ -25,9 +25,9 @@ jobs:
       - uses: actions/checkout@v2
 
       # Configures a Node.js environment.
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16 # Important: use the matrix.node property when using a matrix strategy
+          node-version: '24'
           registry-url: https://npm.pkg.github.com
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
