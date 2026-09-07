@@ -9,7 +9,13 @@ const {
 
 // `homey` is not a real module, the apps SDK injects it by patching `Module.prototype.require`.
 // Do the same here so `ZigBeeLightDevice` can be required outside of a Homey app.
-class HomeyBase {}
+class HomeyBase {
+
+  async onUninit() {
+    // The SDK's own `Device.onUninit` is a no-op too
+  }
+
+}
 
 const originalRequire = Module.prototype.require;
 Module.prototype.require = function homeyRequire(...args) {
@@ -23,7 +29,7 @@ const ZigBeeLightDevice = require('../../lib/ZigBeeLightDevice');
 Module.prototype.require = originalRequire;
 
 const {
-  changeOnOff, changeDimLevel, registerAttributeReportListeners,
+  changeOnOff, changeDimLevel, registerAttributeReportListeners, onUninit,
 } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
@@ -35,6 +41,8 @@ function createDevice({ capabilities = ['onoff', 'dim'], clusters = ['levelContr
     commands: [],
     readAttributesCalls: 0,
     _dimCommandAt: 0,
+    _attributeReportListeners: [],
+    _addAttributeReportListener: ZigBeeLightDevice.prototype._addAttributeReportListener,
     log() {},
     debug() {},
     error() {},
@@ -188,6 +196,16 @@ describe('ZigBeeLightDevice', function() {
       const device = createDevice({ clusters: [] });
 
       registerAttributeReportListeners.call(device);
+
+      assert.strictEqual(device.levelControlCluster.listenerCount('attr.currentLevel'), 0);
+      assert.strictEqual(device.onOffCluster.listenerCount('attr.onOff'), 0);
+    });
+
+    it('removes its listeners again on uninit', async function() {
+      const device = createDevice();
+
+      registerAttributeReportListeners.call(device);
+      await onUninit.call(device);
 
       assert.strictEqual(device.levelControlCluster.listenerCount('attr.currentLevel'), 0);
       assert.strictEqual(device.onOffCluster.listenerCount('attr.onOff'), 0);
