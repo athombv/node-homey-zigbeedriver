@@ -46,7 +46,7 @@ jobs:
     steps:
       # Checks out the current repository.
       - name: Checkout git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           # The token below is only necessary if you want to push the version bump to a protected branch
           token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
 
       # Configures a Node.js environment.
       - name: Set up node 24 environment
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v7
         with:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
