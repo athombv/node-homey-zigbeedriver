@@ -27,13 +27,10 @@ const CURRENT_LEVEL_MID_TRANSITION = 7;
 const DIM_READBACK_DELAY = 1000;
 
 function createDevice() {
-  let resolveReadAttributes;
   const device = {
     capabilityValues: [],
     commands: [],
-    readAttributesCalled: new Promise(resolve => {
-      resolveReadAttributes = resolve;
-    }),
+    readAttributesCalls: 0,
     _dimCommandAt: 0,
     log() {},
     debug() {},
@@ -48,7 +45,7 @@ function createDevice() {
     },
     levelControlCluster: {
       async readAttributes() {
-        resolveReadAttributes();
+        device.readAttributesCalls++;
         return { currentLevel: CURRENT_LEVEL_MID_TRANSITION };
       },
       async moveToLevelWithOnOff({ level }) {
@@ -66,10 +63,9 @@ function createDevice() {
 }
 
 /** Let the unawaited dim readback promise chain in `changeOnOff` run to completion. */
-async function flush(device) {
+async function flush() {
   mock.timers.tick(DIM_READBACK_DELAY);
-  await device.readAttributesCalled;
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 5; i++) {
     await new Promise(resolve => setImmediate(resolve));
   }
 }
@@ -88,7 +84,7 @@ describe('ZigBeeLightDevice', function() {
       const device = createDevice();
 
       await changeOnOff.call(device, true);
-      await flush(device);
+      await flush();
 
       assert.deepStrictEqual(device.capabilityValues, [
         { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
@@ -100,13 +96,14 @@ describe('ZigBeeLightDevice', function() {
 
       await changeDimLevel.call(device, 0.5);
       await changeOnOff.call(device, true);
-      await flush(device);
+      await flush();
 
       assert.deepStrictEqual(device.commands, [
         { command: 'moveToLevelWithOnOff', level: 127 },
         { command: 'setOn' },
       ]);
       assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 0);
     });
 
     it('does not overwrite `dim` when a dim command was issued after the on/off command', async function() {
@@ -115,9 +112,25 @@ describe('ZigBeeLightDevice', function() {
       const onOffPromise = changeOnOff.call(device, true);
       await changeDimLevel.call(device, 0.5);
       await onOffPromise;
-      await flush(device);
+      await flush();
 
       assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 0);
+    });
+
+    it('does not overwrite `dim` when a dim command arrives while the readback is in flight', async function() {
+      const device = createDevice();
+      const { readAttributes } = device.levelControlCluster;
+      device.levelControlCluster.readAttributes = async (...args) => {
+        await changeDimLevel.call(device, 0.5);
+        return readAttributes(...args);
+      };
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 1);
     });
 
     it('updates `dim` when the last dim command is older than the grace period', async function() {
@@ -125,7 +138,7 @@ describe('ZigBeeLightDevice', function() {
       device._dimCommandAt = Date.now() - 5000;
 
       await changeOnOff.call(device, true);
-      await flush(device);
+      await flush();
 
       assert.deepStrictEqual(device.capabilityValues, [
         { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
