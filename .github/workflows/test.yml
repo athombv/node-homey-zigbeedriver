@@ -22,12 +22,12 @@ jobs:
 
     steps:
       # Checks out the current repository.
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       # Configures a Node.js environment.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version-file: .nvmrc
           registry-url: https://npm.pkg.github.com
 
       # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
