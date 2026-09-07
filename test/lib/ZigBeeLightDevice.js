@@ -2,6 +2,9 @@
 
 const assert = require('assert');
 const Module = require('module');
+const {
+  describe, it, beforeEach, afterEach, mock,
+} = require('node:test');
 
 // `homey` is not a real module, the apps SDK injects it by patching `Module.prototype.require`.
 // Do the same here so `ZigBeeLightDevice` can be required outside of a Homey app.
@@ -21,6 +24,7 @@ Module.prototype.require = originalRequire;
 const { changeOnOff, changeDimLevel } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
+const DIM_READBACK_DELAY = 1000;
 
 function createDevice() {
   let resolveReadAttributes;
@@ -63,6 +67,7 @@ function createDevice() {
 
 /** Let the unawaited dim readback promise chain in `changeOnOff` run to completion. */
 async function flush(device) {
+  mock.timers.tick(DIM_READBACK_DELAY);
   await device.readAttributesCalled;
   for (let i = 0; i < 3; i++) {
     await new Promise(resolve => setImmediate(resolve));
@@ -71,16 +76,12 @@ async function flush(device) {
 
 describe('ZigBeeLightDevice', function() {
   describe('changeOnOff()', function() {
-    let realSetTimeout;
-
     beforeEach(function() {
-      // Fire the readback delay immediately instead of waiting a real second
-      realSetTimeout = global.setTimeout;
-      global.setTimeout = (fn, timeout, ...args) => realSetTimeout(fn, 0, ...args);
+      mock.timers.enable({ apis: ['setTimeout'] });
     });
 
     afterEach(function() {
-      global.setTimeout = realSetTimeout;
+      mock.timers.reset();
     });
 
     it('updates `dim` from the read `currentLevel` when the light is only turned on', async function() {
