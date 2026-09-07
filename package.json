@@ -4,7 +4,7 @@
   "description": "This module can be used to make the development of Zigbee apps for Homey easier.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "node --test",
     "lint": "eslint .",
     "serve": "concurrently \"serve build/\" \"npm run build:watch\"",
     "build": "jsdoc --configure ./docs/jsdoc.json",
@@ -26,19 +26,18 @@
   },
   "devDependencies": {
     "@athombv/jsdoc-template": "^1.7.0",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
-    "homey": "^2.6.1",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
-    "mocha": "^10.2.0",
     "serve": "^14.2.0",
     "watch": "^1.0.2",
     "zigbee-clusters": "^2.1.2 || ^3.0.2"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=22"
   },
   "directories": {
     "doc": "docs",
