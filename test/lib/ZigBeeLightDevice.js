@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const Module = require('module');
+const { EventEmitter } = require('events');
 const {
   describe, it, beforeEach, afterEach, mock,
 } = require('node:test');
@@ -21,12 +22,14 @@ const ZigBeeLightDevice = require('../../lib/ZigBeeLightDevice');
 
 Module.prototype.require = originalRequire;
 
-const { changeOnOff, changeDimLevel } = ZigBeeLightDevice.prototype;
+const {
+  changeOnOff, changeDimLevel, registerAttributeReportListeners,
+} = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
 const DIM_READBACK_DELAY = 1000;
 
-function createDevice() {
+function createDevice({ capabilities = ['onoff', 'dim'], clusters = ['levelControl', 'onOff'] } = {}) {
   const device = {
     capabilityValues: [],
     commands: [],
@@ -35,15 +38,15 @@ function createDevice() {
     log() {},
     debug() {},
     error() {},
-    onOffCluster: {
+    onOffCluster: Object.assign(new EventEmitter(), {
       async setOn() {
         device.commands.push({ command: 'setOn' });
       },
       async setOff() {
         device.commands.push({ command: 'setOff' });
       },
-    },
-    levelControlCluster: {
+    }),
+    levelControlCluster: Object.assign(new EventEmitter(), {
       async readAttributes() {
         device.readAttributesCalls++;
         return { currentLevel: CURRENT_LEVEL_MID_TRANSITION };
@@ -51,6 +54,12 @@ function createDevice() {
       async moveToLevelWithOnOff({ level }) {
         device.commands.push({ command: 'moveToLevelWithOnOff', level });
       },
+    }),
+    hasCapability(capabilityId) {
+      return capabilities.includes(capabilityId);
+    },
+    getClusterEndpoint(cluster) {
+      return clusters.includes(cluster.NAME) ? 1 : null;
     },
     getCapabilityValue() {
       return true;
@@ -151,6 +160,46 @@ describe('ZigBeeLightDevice', function() {
       await changeOnOff.call(device, false);
 
       assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 0 }]);
+    });
+  });
+
+  describe('registerAttributeReportListeners()', function() {
+    it('updates `dim` from a `currentLevel` attribute report', async function() {
+      const device = createDevice();
+
+      registerAttributeReportListeners.call(device);
+      device.levelControlCluster.emit('attr.currentLevel', 127);
+      await new Promise(resolve => setImmediate(resolve));
+
+      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 127 / 254 }]);
+    });
+
+    it('updates `onoff` from an `onOff` attribute report', async function() {
+      const device = createDevice();
+
+      registerAttributeReportListeners.call(device);
+      device.onOffCluster.emit('attr.onOff', false);
+      await new Promise(resolve => setImmediate(resolve));
+
+      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'onoff', value: false }]);
+    });
+
+    it('does not listen for clusters the device does not have', function() {
+      const device = createDevice({ clusters: [] });
+
+      registerAttributeReportListeners.call(device);
+
+      assert.strictEqual(device.levelControlCluster.listenerCount('attr.currentLevel'), 0);
+      assert.strictEqual(device.onOffCluster.listenerCount('attr.onOff'), 0);
+    });
+
+    it('does not listen for capabilities the device does not have', function() {
+      const device = createDevice({ capabilities: ['onoff'] });
+
+      registerAttributeReportListeners.call(device);
+
+      assert.strictEqual(device.levelControlCluster.listenerCount('attr.currentLevel'), 0);
+      assert.strictEqual(device.onOffCluster.listenerCount('attr.onOff'), 1);
     });
   });
 });
