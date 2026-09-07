@@ -1,21 +1,22 @@
 'use strict';
 
 const assert = require('assert');
+const Module = require('module');
 
-// The `homey` devDependency is the CLI, it does not expose the apps SDK, so `Homey.Device` and
-// `Homey.Driver` are missing. Stub them to be able to require `ZigBeeLightDevice` outside an app.
+// `homey` is not a real module, the apps SDK injects it by patching `Module.prototype.require`.
+// Do the same here so `ZigBeeLightDevice` can be required outside of a Homey app.
 class HomeyBase {}
 
-const homeyModulePath = require.resolve('homey');
-require.cache[homeyModulePath] = {
-  id: homeyModulePath,
-  filename: homeyModulePath,
-  loaded: true,
-  exports: { Device: HomeyBase, Driver: HomeyBase },
+const originalRequire = Module.prototype.require;
+Module.prototype.require = function homeyRequire(...args) {
+  if (args[0] === 'homey') return { Device: HomeyBase, Driver: HomeyBase };
+  return originalRequire.apply(this, args);
 };
 
 // eslint-disable-next-line import/order
 const ZigBeeLightDevice = require('../../lib/ZigBeeLightDevice');
+
+Module.prototype.require = originalRequire;
 
 const { changeOnOff, changeDimLevel } = ZigBeeLightDevice.prototype;
 
