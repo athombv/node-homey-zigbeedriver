@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assert');
+const { describe, it } = require('node:test');
 
 const {
   convertHSVToCIE,
@@ -65,7 +66,7 @@ describe('util', function() {
 
   // This seems to be very inaccurate for random values
   // eslint-disable-next-line mocha/no-pending-tests
-  it('should convert xyY to HSB color space');
+  it('should convert xyY to HSB color space', { todo: true });
 
   it('should calculate level control transition time', function() {
     const validDuration = calculateLevelControlTransitionTime({ duration: 5000 });
