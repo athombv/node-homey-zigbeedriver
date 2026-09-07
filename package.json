@@ -26,10 +26,10 @@
   },
   "devDependencies": {
     "@athombv/jsdoc-template": "^1.7.0",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-athom": "^2.0.8",
-    "homey": "^2.6.1",
     "jsdoc": "^3.6.6",
     "jsdoc-ts-utils": "^1.1.2",
     "mocha": "^10.2.0",
