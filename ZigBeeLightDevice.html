@@ -1228,7 +1228,8 @@ accordingly.</p>
       <p>Sends a <code>setOn</code> or <code>setOff</code> command to the device in order to turn it on or off. After
 successfully changing the on/off value, the <code>dim</code> capability value will be updated
 accordingly. Additionally, if the device is turned on, the current dim level will be
-requested and updated in the form of the <code>dim</code> capability value.</p>
+requested and updated in the form of the <code>dim</code> capability value, unless a <code>dim</code> command was
+issued around the same time, in which case that dim level takes precedence.</p>
     </div>
     
 
