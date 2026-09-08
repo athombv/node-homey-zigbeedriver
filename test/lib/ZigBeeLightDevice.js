@@ -30,7 +30,7 @@ Module.prototype.require = originalRequire;
 
 const {
   changeOnOff, changeDimLevel, registerAttributeReportListeners, onUninit,
-  readTransitionTimes, scheduleTransitionTimesRead,
+  readTransitionTimes, scheduleTransitionTimesRead, onEndDeviceAnnounce,
 } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
@@ -103,8 +103,9 @@ function createDevice({
     getClusterEndpoint(cluster) {
       return clusters.includes(cluster.NAME) ? 1 : null;
     },
-    getCapabilityValue() {
-      return true;
+    getCapabilityValue(capabilityId) {
+      const written = device.capabilityValues.filter(v => v.capabilityId === capabilityId).pop();
+      return written ? written.value : true;
     },
     async setCapabilityValue(capabilityId, value) {
       device.capabilityValues.push({ capabilityId, value });
@@ -343,6 +344,22 @@ describe('ZigBeeLightDevice', function() {
       assert.deepStrictEqual(device.capabilityValues, []);
     });
 
+    it('drops a readback for a light that is off by the time it runs', async function() {
+      const device = createDevice({ onOffTransitionTime: 80 });
+      await readTransitionTimes.call(device); // The device ramps over eight seconds
+
+      await changeOnOff.call(device, true);
+      await changeOnOff.call(device, false);
+      await device.setCapabilityValue('onoff', false); // Homey commits this after the listener
+
+      await flush(9000);
+
+      // The off set `dim` to zero, the readback still pending from the on may not undo that
+      assert.deepStrictEqual(device.capabilityValues.filter(v => v.capabilityId === 'dim'), [
+        { capabilityId: 'dim', value: 0 },
+      ]);
+    });
+
     it('sets `dim` to zero when the light is turned off', async function() {
       const device = createDevice();
 
@@ -458,6 +475,30 @@ describe('ZigBeeLightDevice', function() {
 
       assert.deepStrictEqual(device.capabilityValues, []);
       assert.strictEqual(device.readAttributesCalls, 0);
+    });
+  });
+
+  describe('onEndDeviceAnnounce()', function() {
+    it('does not touch `dim` or `onoff` while a dim transition is running', async function() {
+      const device = createDevice();
+
+      // A fade to zero has already set `onoff` false, a level above zero would undo that
+      await changeDimLevel.call(device, 0, { duration: 8000 });
+      device.capabilityValues.length = 0;
+      await onEndDeviceAnnounce.call(device);
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+    });
+
+    it('updates `dim` and `onoff` when no transition is running', async function() {
+      const device = createDevice();
+
+      await onEndDeviceAnnounce.call(device);
+
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+        { capabilityId: 'onoff', value: true },
+      ]);
     });
   });
 
