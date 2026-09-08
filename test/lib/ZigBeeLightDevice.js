@@ -30,17 +30,28 @@ Module.prototype.require = originalRequire;
 
 const {
   changeOnOff, changeDimLevel, registerAttributeReportListeners, onUninit,
+  readOnOffTransitionTime, scheduleOnOffTransitionTimeRead,
 } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
 const DIM_READBACK_DELAY = 1000;
 
-function createDevice({ capabilities = ['onoff', 'dim'], clusters = ['levelControl', 'onOff'] } = {}) {
+function createDevice({
+  capabilities = ['onoff', 'dim'],
+  clusters = ['levelControl', 'onOff'],
+  onOffTransitionTime,
+} = {}) {
   const device = {
     capabilityValues: [],
     commands: [],
     readAttributesCalls: 0,
     _dimCommandAt: 0,
+    _dimTransitionEndsAt: 0,
+    _onOffTransitionTime: null,
+    homey: {
+      setTimeout: (fn, ms) => setTimeout(fn, ms),
+      clearTimeout: timeout => clearTimeout(timeout),
+    },
     _attributeReportListeners: [],
     _addAttributeReportListener: ZigBeeLightDevice.prototype._addAttributeReportListener,
     log() {},
@@ -55,8 +66,9 @@ function createDevice({ capabilities = ['onoff', 'dim'], clusters = ['levelContr
       },
     }),
     levelControlCluster: Object.assign(new EventEmitter(), {
-      async readAttributes() {
+      async readAttributes(attributes) {
         device.readAttributesCalls++;
+        if (attributes.includes('onOffTransitionTime')) return { onOffTransitionTime };
         return { currentLevel: CURRENT_LEVEL_MID_TRANSITION };
       },
       async moveToLevelWithOnOff({ level }) {
@@ -163,6 +175,52 @@ describe('ZigBeeLightDevice', function() {
       assert.strictEqual(device.readAttributesCalls, 0);
     });
 
+    it('does not keep guarding past the transition time the device was given', async function() {
+      const device = createDevice();
+
+      // Out of range, the command clamps it to 65534 tenths of a second
+      await changeDimLevel.call(device, 0.5, { duration: 9000000 });
+
+      assert.strictEqual(device._dimTransitionEndsAt - device._dimCommandAt, 6553400);
+    });
+
+    it('does not overwrite `dim` while the transition of an older dim command is still running', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      device._dimCommandAt = Date.now() - 5000; // Older than the grace period, still fading
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 0);
+    });
+
+    it('updates `dim` once the transition of the last dim command has finished', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5, { duration: 100 });
+      device._dimCommandAt = Date.now() - 5000;
+      device._dimTransitionEndsAt = Date.now() - 4900;
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+      ]);
+    });
+
+    it('stops guarding the dim transition once the light is turned off', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      await changeOnOff.call(device, false);
+
+      assert.strictEqual(device._dimTransitionEndsAt, 0);
+    });
+
     it('updates `dim` when the last dim command is older than the grace period', async function() {
       const device = createDevice();
       device._dimCommandAt = Date.now() - 5000;
@@ -181,6 +239,67 @@ describe('ZigBeeLightDevice', function() {
       await changeOnOff.call(device, false);
 
       assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 0 }]);
+    });
+  });
+
+  describe('readOnOffTransitionTime()', function() {
+    beforeEach(function() {
+      mock.timers.enable({ apis: ['setTimeout'] });
+    });
+
+    afterEach(function() {
+      mock.timers.reset();
+    });
+
+    it('stores the transition time the device applies on its own, in milliseconds', async function() {
+      const device = createDevice({ onOffTransitionTime: 50 });
+
+      await readOnOffTransitionTime.call(device);
+
+      assert.strictEqual(device._onOffTransitionTime, 5000);
+    });
+
+    it('keeps the transition time unknown when the device does not report one', async function() {
+      const device = createDevice({ onOffTransitionTime: undefined });
+
+      await readOnOffTransitionTime.call(device);
+
+      assert.strictEqual(device._onOffTransitionTime, null);
+    });
+
+    it('keeps the transition time unknown when the device cannot be reached', async function() {
+      const device = createDevice();
+      device.levelControlCluster.readAttributes = async () => {
+        throw new Error('Timeout');
+      };
+
+      await readOnOffTransitionTime.call(device);
+
+      assert.strictEqual(device._onOffTransitionTime, null);
+    });
+
+    it('does not read from a device without a dim capability', function() {
+      const device = createDevice({ capabilities: ['onoff'] });
+
+      scheduleOnOffTransitionTimeRead.call(device);
+      mock.timers.tick(60000);
+
+      assert.strictEqual(device.readAttributesCalls, 0);
+    });
+
+    it('does not overwrite `dim` while the device fades over its own transition time', async function() {
+      const device = createDevice({ onOffTransitionTime: 80 });
+      await readOnOffTransitionTime.call(device);
+      device.readAttributesCalls = 0;
+
+      await changeDimLevel.call(device, 0.5); // No duration, so the device decides
+      device._dimCommandAt = Date.now() - 5000; // Older than the grace period, still fading
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 0);
     });
   });
 
