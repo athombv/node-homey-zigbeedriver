@@ -41,6 +41,7 @@ function createDevice({
   clusters = ['levelControl', 'onOff'],
   onOffTransitionTime,
   onTransitionTime,
+  remainingTimes = [],
 } = {}) {
   const device = {
     capabilityValues: [],
@@ -53,6 +54,7 @@ function createDevice({
     _transitionTimesReadTimeout: null,
     _dimReadbackTimeout: null,
     readTransitionTimes: ZigBeeLightDevice.prototype.readTransitionTimes,
+    _scheduleDimReadback: ZigBeeLightDevice.prototype._scheduleDimReadback,
     homey: {
       setTimeout: (fn, ms) => setTimeout(fn, ms),
       clearTimeout: timeout => clearTimeout(timeout),
@@ -73,6 +75,13 @@ function createDevice({
     levelControlCluster: Object.assign(new EventEmitter(), {
       async readAttributes(attributes) {
         device.readAttributesCalls++;
+        if (attributes.includes('remainingTime')) {
+          return {
+            currentLevel: CURRENT_LEVEL_MID_TRANSITION,
+            // A device that does not keep the attribute leaves it out
+            ...(remainingTimes.length ? { remainingTime: remainingTimes.shift() } : {}),
+          };
+        }
         if (attributes.includes('onOffTransitionTime')) {
           // A device that does not support an attribute leaves it out of the result
           const attributeValues = { onOffTransitionTime, onTransitionTime };
@@ -261,6 +270,36 @@ describe('ZigBeeLightDevice', function() {
       await flush();
 
       // The off already set `dim` to zero, so skipping the readback would leave it there
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+      ]);
+    });
+
+    it('reads again when the device says it is still transitioning', async function() {
+      const device = createDevice({ remainingTimes: [20, 0] });
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.strictEqual(device.readAttributesCalls, 1);
+      assert.deepStrictEqual(device.capabilityValues, []);
+
+      await flush(2000); // The device said two seconds were left
+
+      assert.strictEqual(device.readAttributesCalls, 2);
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+      ]);
+    });
+
+    it('stops reading again when the device never stops transitioning', async function() {
+      const device = createDevice({ remainingTimes: [20, 20, 20, 20, 20] });
+
+      await changeOnOff.call(device, true);
+      await flush();
+      for (let i = 0; i < 4; i++) await flush(2000);
+
+      assert.strictEqual(device.readAttributesCalls, 3);
       assert.deepStrictEqual(device.capabilityValues, [
         { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
       ]);
