@@ -133,6 +133,19 @@ describe('ZigBeeLightDevice', function() {
       assert.strictEqual(device.readAttributesCalls, 1);
     });
 
+    it('does not overwrite `dim` when a dim command landed just before the grace period ends', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5);
+      device._dimCommandAt = Date.now() - 400; // Simultaneous API writes land this far apart
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+      assert.strictEqual(device.readAttributesCalls, 0);
+    });
+
     it('updates `dim` when the last dim command is older than the grace period', async function() {
       const device = createDevice();
       device._dimCommandAt = Date.now() - 5000;
