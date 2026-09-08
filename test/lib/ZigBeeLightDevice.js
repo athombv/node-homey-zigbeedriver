@@ -49,6 +49,7 @@ function createDevice({
     readAttributesCalls: 0,
     _dimCommandAt: 0,
     _dimTransitionEndsAt: 0,
+    _dimCommandCount: 0,
     _onOffTransitionTime: null,
     _onTransitionTime: null,
     _transitionTimesReadTimeout: null,
@@ -321,6 +322,43 @@ describe('ZigBeeLightDevice', function() {
       ]);
     });
 
+    it('stops guarding the level when the dim command fails', async function() {
+      const device = createDevice();
+      device.levelControlCluster.moveToLevelWithOnOff = async () => {
+        throw new Error('Timeout');
+      };
+
+      await assert.rejects(changeDimLevel.call(device, 0.5, { duration: 8000 }));
+
+      assert.strictEqual(device._dimCommandAt, 0);
+      assert.strictEqual(device._dimTransitionEndsAt, 0);
+    });
+
+    it('leaves a newer dim command alone when an older one fails', async function() {
+      const device = createDevice();
+      let failFirstCommand;
+      const firstCommandSent = new Promise(resolve => {
+        device.levelControlCluster.moveToLevelWithOnOff = async () => {
+          resolve();
+          await new Promise(fail => {
+            failFirstCommand = fail;
+          });
+          throw new Error('Timeout');
+        };
+      });
+
+      const failing = changeDimLevel.call(device, 0.5, { duration: 8000 });
+      await firstCommandSent;
+      device.levelControlCluster.moveToLevelWithOnOff = async () => {};
+      await changeDimLevel.call(device, 0.8, { duration: 8000 });
+      const { _dimCommandAt, _dimTransitionEndsAt } = device;
+      failFirstCommand();
+      await assert.rejects(failing);
+
+      assert.strictEqual(device._dimCommandAt, _dimCommandAt);
+      assert.strictEqual(device._dimTransitionEndsAt, _dimTransitionEndsAt);
+    });
+
     it('sets `dim` to zero when the light is turned off', async function() {
       const device = createDevice();
 
@@ -440,14 +478,15 @@ describe('ZigBeeLightDevice', function() {
   });
 
   describe('onEndDeviceAnnounce()', function() {
-    it('does not overwrite `dim` while a dim transition is running', async function() {
+    it('does not touch `dim` or `onoff` while a dim transition is running', async function() {
       const device = createDevice();
 
-      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      // A fade to zero has already set `onoff` false, a level above zero would undo that
+      await changeDimLevel.call(device, 0, { duration: 8000 });
       device.capabilityValues.length = 0;
       await onEndDeviceAnnounce.call(device);
 
-      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'onoff', value: true }]);
+      assert.deepStrictEqual(device.capabilityValues, []);
     });
 
     it('updates `dim` and `onoff` when no transition is running', async function() {
