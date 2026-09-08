@@ -101,8 +101,9 @@ function createDevice({
     getClusterEndpoint(cluster) {
       return clusters.includes(cluster.NAME) ? 1 : null;
     },
-    getCapabilityValue() {
-      return true;
+    getCapabilityValue(capabilityId) {
+      const written = device.capabilityValues.filter(v => v.capabilityId === capabilityId).pop();
+      return written ? written.value : true;
     },
     async setCapabilityValue(capabilityId, value) {
       device.capabilityValues.push({ capabilityId, value });
@@ -302,6 +303,22 @@ describe('ZigBeeLightDevice', function() {
       assert.strictEqual(device.readAttributesCalls, 3);
       assert.deepStrictEqual(device.capabilityValues, [
         { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+      ]);
+    });
+
+    it('drops a readback for a light that is off by the time it runs', async function() {
+      const device = createDevice({ onOffTransitionTime: 80 });
+      await readTransitionTimes.call(device); // The device ramps over eight seconds
+
+      await changeOnOff.call(device, true);
+      await changeOnOff.call(device, false);
+      await device.setCapabilityValue('onoff', false); // Homey commits this after the listener
+
+      await flush(9000);
+
+      // The off set `dim` to zero, the readback still pending from the on may not undo that
+      assert.deepStrictEqual(device.capabilityValues.filter(v => v.capabilityId === 'dim'), [
+        { capabilityId: 'dim', value: 0 },
       ]);
     });
 
