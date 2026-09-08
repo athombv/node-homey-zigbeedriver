@@ -72,6 +72,7 @@ describe('util', function() {
     const validDuration = calculateLevelControlTransitionTime({ duration: 5000 });
     const validDuration2 = calculateLevelControlTransitionTime({ duration: 0 });
 
+    const nanDuration = calculateLevelControlTransitionTime({ duration: NaN });
     const noDuration = calculateLevelControlTransitionTime();
     const noDuration2 = calculateLevelControlTransitionTime({});
 
@@ -83,6 +84,7 @@ describe('util', function() {
     assert.strictEqual(validDuration, 50);
     assert.strictEqual(validDuration2, 0);
 
+    assert.strictEqual(nanDuration, 0xFFFF);
     assert.strictEqual(noDuration, 0xFFFF);
     assert.strictEqual(noDuration2, 0xFFFF);
 
@@ -94,6 +96,7 @@ describe('util', function() {
     const validDuration = calculateColorControlTransitionTime({ duration: 5000 });
     const validDuration2 = calculateColorControlTransitionTime({ duration: 0 });
 
+    const nanDuration = calculateColorControlTransitionTime({ duration: NaN });
     const noDuration = calculateColorControlTransitionTime();
     const noDuration2 = calculateColorControlTransitionTime({});
 
@@ -105,6 +108,7 @@ describe('util', function() {
     assert.strictEqual(validDuration, 50);
     assert.strictEqual(validDuration2, 0);
 
+    assert.strictEqual(nanDuration, 0);
     assert.strictEqual(noDuration, 0);
     assert.strictEqual(noDuration2, 0);
 
