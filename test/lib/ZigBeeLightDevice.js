@@ -54,6 +54,7 @@ function createDevice({
     _transitionTimesReadTimeout: null,
     _dimReadbackTimeout: null,
     readTransitionTimes: ZigBeeLightDevice.prototype.readTransitionTimes,
+    applyTransitionTimes: ZigBeeLightDevice.prototype.applyTransitionTimes,
     _scheduleDimReadback: ZigBeeLightDevice.prototype._scheduleDimReadback,
     homey: {
       setTimeout: (fn, ms) => setTimeout(fn, ms),
@@ -75,21 +76,21 @@ function createDevice({
     levelControlCluster: Object.assign(new EventEmitter(), {
       async readAttributes(attributes) {
         device.readAttributesCalls++;
-        if (attributes.includes('remainingTime')) {
-          return {
-            currentLevel: CURRENT_LEVEL_MID_TRANSITION,
-            // A device that does not keep the attribute leaves it out
-            ...(remainingTimes.length ? { remainingTime: remainingTimes.shift() } : {}),
-          };
+        // A device leaves an attribute it does not support out of the result
+        const values = {};
+        if (attributes.includes('currentLevel')) {
+          values.currentLevel = CURRENT_LEVEL_MID_TRANSITION;
         }
-        if (attributes.includes('onOffTransitionTime')) {
-          // A device that does not support an attribute leaves it out of the result
-          const attributeValues = { onOffTransitionTime, onTransitionTime };
-          return Object.fromEntries(
-            Object.entries(attributeValues).filter(([, value]) => value !== undefined),
-          );
+        if (attributes.includes('remainingTime') && remainingTimes.length) {
+          values.remainingTime = remainingTimes.shift();
         }
-        return { currentLevel: CURRENT_LEVEL_MID_TRANSITION };
+        if (attributes.includes('onOffTransitionTime') && onOffTransitionTime !== undefined) {
+          values.onOffTransitionTime = onOffTransitionTime;
+        }
+        if (attributes.includes('onTransitionTime') && onTransitionTime !== undefined) {
+          values.onTransitionTime = onTransitionTime;
+        }
+        return values;
       },
       async moveToLevelWithOnOff({ level }) {
         device.commands.push({ command: 'moveToLevelWithOnOff', level });
@@ -293,7 +294,7 @@ describe('ZigBeeLightDevice', function() {
       ]);
     });
 
-    it('stops reading again when the device never stops transitioning', async function() {
+    it('gives up rather than write a level the device is still moving away from', async function() {
       const device = createDevice({ remainingTimes: [20, 20, 20, 20, 20] });
 
       await changeOnOff.call(device, true);
@@ -301,9 +302,7 @@ describe('ZigBeeLightDevice', function() {
       for (let i = 0; i < 4; i++) await flush(2000);
 
       assert.strictEqual(device.readAttributesCalls, 3);
-      assert.deepStrictEqual(device.capabilityValues, [
-        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
-      ]);
+      assert.deepStrictEqual(device.capabilityValues, []);
     });
 
     it('drops a readback for a light that is off by the time it runs', async function() {
@@ -382,6 +381,19 @@ describe('ZigBeeLightDevice', function() {
       await readTransitionTimes.call(device);
 
       assert.strictEqual(device._onTransitionTime, null);
+      assert.strictEqual(device.onCommandTransitionTime, 5000);
+    });
+
+    it('drops its own transition time when the device stops reporting one', async function() {
+      const device = createDevice({ onOffTransitionTime: 50, onTransitionTime: 20 });
+      await readTransitionTimes.call(device);
+      assert.strictEqual(device.onCommandTransitionTime, 2000);
+
+      device.levelControlCluster.readAttributes = async () => ({
+        onOffTransitionTime: 50, onTransitionTime: 0xFFFF,
+      });
+      await readTransitionTimes.call(device);
+
       assert.strictEqual(device.onCommandTransitionTime, 5000);
     });
 
