@@ -30,7 +30,7 @@ Module.prototype.require = originalRequire;
 
 const {
   changeOnOff, changeDimLevel, registerAttributeReportListeners, onUninit,
-  readTransitionTimes, scheduleTransitionTimesRead,
+  readTransitionTimes, scheduleTransitionTimesRead, onEndDeviceAnnounce,
 } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
@@ -50,6 +50,9 @@ function createDevice({
     _dimTransitionEndsAt: 0,
     _onOffTransitionTime: null,
     _onTransitionTime: null,
+    _transitionTimesReadTimeout: null,
+    _dimReadbackTimeout: null,
+    readTransitionTimes: ZigBeeLightDevice.prototype.readTransitionTimes,
     homey: {
       setTimeout: (fn, ms) => setTimeout(fn, ms),
       clearTimeout: timeout => clearTimeout(timeout),
@@ -96,9 +99,11 @@ function createDevice({
       device.capabilityValues.push({ capabilityId, value });
     },
   };
-  // Use the real getter, it decides which of the two transition times applies
-  Object.defineProperty(device, 'onCommandTransitionTime',
-    Object.getOwnPropertyDescriptor(ZigBeeLightDevice.prototype, 'onCommandTransitionTime'));
+  // Use the real getters, they decide which transition time applies and when one is running
+  for (const name of ['onCommandTransitionTime', 'isDimTransitionRunning', 'hasDimOnLevelControl']) {
+    Object.defineProperty(device, name,
+      Object.getOwnPropertyDescriptor(ZigBeeLightDevice.prototype, name));
+  }
 
   return device;
 }
@@ -245,6 +250,22 @@ describe('ZigBeeLightDevice', function() {
       ]);
     });
 
+    it('reads the level again when the light was turned off after the dim command', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5);
+      await changeOnOff.call(device, false);
+      device.capabilityValues.length = 0;
+
+      await changeOnOff.call(device, true);
+      await flush();
+
+      // The off already set `dim` to zero, so skipping the readback would leave it there
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+      ]);
+    });
+
     it('sets `dim` to zero when the light is turned off', async function() {
       const device = createDevice();
 
@@ -347,6 +368,29 @@ describe('ZigBeeLightDevice', function() {
 
       assert.deepStrictEqual(device.capabilityValues, []);
       assert.strictEqual(device.readAttributesCalls, 0);
+    });
+  });
+
+  describe('onEndDeviceAnnounce()', function() {
+    it('does not overwrite `dim` while a dim transition is running', async function() {
+      const device = createDevice();
+
+      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      device.capabilityValues.length = 0;
+      await onEndDeviceAnnounce.call(device);
+
+      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'onoff', value: true }]);
+    });
+
+    it('updates `dim` and `onoff` when no transition is running', async function() {
+      const device = createDevice();
+
+      await onEndDeviceAnnounce.call(device);
+
+      assert.deepStrictEqual(device.capabilityValues, [
+        { capabilityId: 'dim', value: CURRENT_LEVEL_MID_TRANSITION / 254 },
+        { capabilityId: 'onoff', value: true },
+      ]);
     });
   });
 
