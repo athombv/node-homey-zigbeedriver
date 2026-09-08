@@ -314,6 +314,31 @@ describe('ZigBeeLightDevice', function() {
       assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 127 / 254 }]);
     });
 
+    it('ignores a `currentLevel` attribute report from halfway a dim transition', async function() {
+      const device = createDevice();
+      registerAttributeReportListeners.call(device);
+
+      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      device.capabilityValues.length = 0;
+      device.levelControlCluster.emit('attr.currentLevel', 40);
+      await new Promise(resolve => setImmediate(resolve));
+
+      assert.deepStrictEqual(device.capabilityValues, []);
+    });
+
+    it('updates `dim` from a `currentLevel` attribute report once the transition has finished', async function() {
+      const device = createDevice();
+      registerAttributeReportListeners.call(device);
+
+      await changeDimLevel.call(device, 0.5, { duration: 8000 });
+      device.capabilityValues.length = 0;
+      device._dimTransitionEndsAt = Date.now() - 1;
+      device.levelControlCluster.emit('attr.currentLevel', 127);
+      await new Promise(resolve => setImmediate(resolve));
+
+      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 127 / 254 }]);
+    });
+
     it('updates `onoff` from an `onOff` attribute report', async function() {
       const device = createDevice();
 
