@@ -21,7 +21,7 @@ const ZigBeeLightDevice = require('../../lib/ZigBeeLightDevice');
 
 Module.prototype.require = originalRequire;
 
-const { changeOnOff, changeDimLevel } = ZigBeeLightDevice.prototype;
+const { changeOnOff, changeDimLevel, changeColor } = ZigBeeLightDevice.prototype;
 
 const CURRENT_LEVEL_MID_TRANSITION = 7;
 const DIM_READBACK_DELAY = 1000;
@@ -164,6 +164,38 @@ describe('ZigBeeLightDevice', function() {
       await changeOnOff.call(device, false);
 
       assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'dim', value: 0 }]);
+    });
+  });
+
+  describe('changeColor()', function() {
+    function createColorDevice(lightMode) {
+      const device = createDevice();
+      device.supportsHueAndSaturation = true;
+      device.colorControlCluster = {
+        async moveToHueAndSaturation({ hue, saturation }) {
+          device.commands.push({ command: 'moveToHueAndSaturation', hue, saturation });
+        },
+      };
+      device.hasCapability = capabilityId => capabilityId === 'light_mode';
+      device.getCapabilityValue = capabilityId => (capabilityId === 'light_mode' ? lightMode : null);
+      return device;
+    }
+
+    it('sets `light_mode` to `color` when the light is in temperature mode', async function() {
+      const device = createColorDevice('temperature');
+
+      await changeColor.call(device, { hue: 0.5 });
+
+      assert.deepStrictEqual(device.capabilityValues, [{ capabilityId: 'light_mode', value: 'color' }]);
+      assert.strictEqual(device.commands.length, 1);
+    });
+
+    it('does not set `light_mode` when the light is already in color mode', async function() {
+      const device = createColorDevice('color');
+
+      await changeColor.call(device, { hue: 0.5 });
+
+      assert.deepStrictEqual(device.capabilityValues, []);
     });
   });
 });
