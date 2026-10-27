@@ -34,7 +34,7 @@
     "jsdoc-ts-utils": "^1.1.2",
     "serve": "^14.2.0",
     "watch": "^1.0.2",
-    "zigbee-clusters": "^2.1.2 || ^3.0.2"
+    "zigbee-clusters": "^3.9.1"
   },
   "engines": {
     "node": ">=22"
