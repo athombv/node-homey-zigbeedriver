@@ -1711,6 +1711,112 @@ value.</p></td>
 
       
       
+<section id="ReportMeta" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#ReportMeta"></a>ReportMeta</h3>
+  <span class="method__function function">
+    ReportMeta
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Meta data of an attribute report the device sent. Requires
+zigbee-clusters 3.9.0 or later. There is none with an older version, nor for a value the driver
+read itself (<code>get</code>, <code>getOnStart</code>, <code>getOnOnline</code>, <code>pollInterval</code>).</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+<h4 class="subsection-title">Properties</h4>
+
+
+
+<figure class="table-container trim">
+  <table data-table class="properties">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>transactionSequenceNumber</code>
+        
+      </td>
+      
+
+      <td class="type">
+        
+        
+<span class="param-type">number</span>
+
+
+        
+
+        
+
+        
+      </td>
+
+
+      <td class="description trim last"><p>ZCL transaction sequence number of the report.
+A device that resends a report repeats it, but some devices reuse it for distinct reports too,
+so only drop duplicates for a device known to resend.</p></td>
+    </tr>
+    
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
 
 
 <section id="ReportParserFunction" class="method trim component">
@@ -1720,7 +1826,7 @@ value.</p></td>
   <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#ReportParserFunction"></a>ReportParserFunction</h3>
   <span class="method__function function">
     
-    <span class="function__type-signature"></span>ReportParserFunction<span class="function__parameters">(<span class="function__parameter">reportValue</span>)</span><span class="function__type-signature">:  any|null|Promise</span>
+    <span class="function__type-signature"></span>ReportParserFunction<span class="function__parameters">(<span class="function__parameter">reportValue</span>, <span class="function__parameter"><span class="function__parameter">reportMeta</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  any|null|Promise</span>
     
   </span>
   
@@ -1788,6 +1894,12 @@ value.</p></td>
         
 
         
+        
+
+        
+
+        
+        
 
         
 
@@ -1795,6 +1907,50 @@ value.</p></td>
 
 
       <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>reportMeta</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type"><a href="global.html#ReportMeta">ReportMeta</a></span>
+
+
+        
+
+        
+        
+        <span class="color-text-light">&lt;optional></span><br>
+        
+
+        
+
+        
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Meta data of the report, <code>undefined</code> when there is none.</p>
       </td>
     </tr>
 
@@ -2074,6 +2230,10 @@ to the Cluster command as parameters when executed.</p>
         
         <li class="toc__item">
           <a class="toc__link" title="MultipleCapabilitiesConfiguration" href="#MultipleCapabilitiesConfiguration">MultipleCapabilitiesConfiguration</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="ReportMeta" href="#ReportMeta">ReportMeta</a>
         </li>
         
         <li class="toc__item">

@@ -500,7 +500,7 @@ await this.configureAttributeReporting([
 
 // In order to handle the attribute reports, bind a listener
 zclNode.endpoints[1].clusters[CLUSTER.COLOR_CONTROL.NAME]
-  .on('attr.currentSaturation', (currentSaturation) => {
+  .on('attr.currentSaturation', (currentSaturation, reportMeta) => {
      // handle reported attribute value
   });</code></pre>
 
@@ -1880,7 +1880,7 @@ class ZigBeeBulb extends ZigBeeDevice {
   <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#parseAttributeReport"></a>parseAttributeReport</h3>
   <span class="method__function function">
     
-    <span class="function__type-signature">(async) </span>parseAttributeReport<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>, <span class="function__parameter">payload</span>)</span><span class="function__type-signature">:  Promise.&lt;(null|*)></span>
+    <span class="function__type-signature">(async) </span>parseAttributeReport<span class="function__parameters">(<span class="function__parameter">capabilityId</span>, <span class="function__parameter">cluster</span>, <span class="function__parameter">payload</span>, <span class="function__parameter"><span class="function__parameter">reportMeta</span></span><span class="function__signature-attributes">opt</span>)</span><span class="function__type-signature">:  Promise.&lt;(null|*)></span>
     
   </span>
   
@@ -1949,6 +1949,12 @@ succeeded the capability value will be updated and the parsed payload will be re
         
 
         
+        
+
+        
+
+        
+        
 
         
 
@@ -1984,6 +1990,12 @@ succeeded the capability value will be updated and the parsed payload will be re
 
         
 
+        
+        
+
+        
+
+        
         
 
         
@@ -2021,6 +2033,12 @@ succeeded the capability value will be updated and the parsed payload will be re
         
 
         
+        
+
+        
+
+        
+        
 
         
 
@@ -2028,6 +2046,50 @@ succeeded the capability value will be updated and the parsed payload will be re
 
 
       <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-3"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>reportMeta</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type"><a href="global.html#ReportMeta">ReportMeta</a></span>
+
+
+        
+
+        
+        
+        <span class="color-text-light">&lt;optional></span><br>
+        
+
+        
+
+        
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Meta data of the report, passed on to the <code>reportParser</code>.</p>
       </td>
     </tr>
 
@@ -2088,8 +2150,8 @@ succeeded the capability value will be updated and the parsed payload will be re
       
     <pre class="highlight"><code>const { CLUSTER } = require('zigbee-clusters');
 
-zclNode.endpoints[1].clusters.onOff.on('attr.onOff', value => {
-  return this.parseAttributeReport('onoff', CLUSTER.ON_OFF, { onOff: value });
+zclNode.endpoints[1].clusters.onOff.on('attr.onOff', (value, reportMeta) => {
+  return this.parseAttributeReport('onoff', CLUSTER.ON_OFF, { onOff: value }, reportMeta);
 });</code></pre>
 
 
@@ -2416,9 +2478,8 @@ this.registerCapability('onoff', CLUSTER.ON_OFF, {
  },
  get: 'onOff',
  report: 'onOff',
- reportParser(report) {
-   if (report &amp;&amp; report.onOff === true) return true;
-   return false;
+ reportParser(value) {
+   return value === true;
  },
  reportOpts: {
    configureAttributeReporting: {
@@ -2700,7 +2761,7 @@ this.registerMultipleCapabilities([
   }
 }
 
-zclNode.endpoints[1].clusters.bind('onOff', new CustomBoundCluster());</code></pre>
+zclNode.endpoints[1].bind('onOff', new CustomBoundCluster());</code></pre>
 
 
     </section>
