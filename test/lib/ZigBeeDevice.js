@@ -1,10 +1,9 @@
 'use strict';
 
 const assert = require('assert');
-const EventEmitter = require('events');
 const Module = require('module');
 const { describe, it } = require('node:test');
-const { CLUSTER } = require('zigbee-clusters');
+const { CLUSTER, ZCLNode, zclFrames } = require('zigbee-clusters');
 
 // `homey` is not a real module, the apps SDK injects it by patching `Module.prototype.require`.
 // Do the same here so `ZigBeeDevice` can be required outside of a Homey app.
@@ -27,7 +26,6 @@ const { parseAttributeReport, _registerCapabilityGet } = ZigBeeDevice.prototype;
 function onOffDevice() {
   const parserCalls = [];
   const capabilityValues = [];
-  const onOff = new EventEmitter();
   const device = {
     parserCalls,
     capabilityValues,
@@ -35,7 +33,6 @@ function onOffDevice() {
     debug() {},
     error() {},
     hasCapability: () => true,
-    zclNode: { endpoints: { 1: { clusters: { onOff } } } },
     parseAttributeReport,
     _getClusterCapabilityConfiguration: () => ({
       endpoint: 1,
@@ -68,15 +65,27 @@ describe('ZigBeeDevice', () => {
   });
 
   describe('registered report listener', () => {
-    it('should forward the report meta of an attr event to the reportParser', async () => {
+    it('should pass the report meta of a received report to the reportParser', async () => {
+      const node = {
+        endpointDescriptors: [{ endpointId: 1, inputClusters: [CLUSTER.ON_OFF.ID] }],
+        sendFrame: () => Promise.resolve(),
+      };
       const device = onOffDevice();
+      device.zclNode = new ZCLNode(node);
       _registerCapabilityGet.call(device, 'onoff', CLUSTER.ON_OFF);
 
-      // zigbee-clusters 3.9.0 and later emit the report meta as second argument
-      const reportMeta = { transactionSequenceNumber: 42 };
-      device.zclNode.endpoints[1].clusters.onOff.emit('attr.onOff', true, reportMeta);
+      // A real report through zigbee-clusters, so the meta has the key it actually emits
+      const report = new zclFrames.ZCLStandardHeader();
+      report.frameControl.directionToClient = true;
+      report.frameControl.disableDefaultResponse = true;
+      report.trxSequenceNumber = 42;
+      report.cmdId = 0x0a; // Report Attributes
+      report.data = Buffer.from([0x00, 0x00, 0x10, 0x01]); // onOff, boolean, true
+      await node.handleFrame(1, CLUSTER.ON_OFF.ID, report.toBuffer(), {});
 
-      assert.deepStrictEqual(device.parserCalls, [{ value: true, reportMeta }]);
+      assert.deepStrictEqual(device.parserCalls, [
+        { value: true, reportMeta: { transactionSequenceNumber: 42 } },
+      ]);
     });
   });
 });
